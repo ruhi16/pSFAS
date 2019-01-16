@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     return view('admin.adminHome');
+    // return view('admin.layouts.baselayout');
 });
 
 Auth::routes();
