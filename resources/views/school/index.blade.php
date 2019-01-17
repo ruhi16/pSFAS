@@ -37,7 +37,11 @@
                 <td>{{ $school->pstn }}</td>
                 <td>{{ $school->dist }}</td>
                 <td>{{ $school->pin }}</td>
-                <td></td>
+                <td>
+                    <a hre="#" class="btn btn-primary"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                    <a hre="#" class="btn btn-info"><spna class="glyphicon glyphicon-edit"></spna></a>
+                    <a hre="#" class="btn btn-danger"><spna class="glyphicon glyphicon-trash"></spna></a>
+                </td>
             @endforeach
         </tbody>
     </table>
