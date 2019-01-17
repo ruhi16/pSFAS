@@ -2,14 +2,14 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\School::class, function (Faker $faker) {
     return [
         'name'=> $faker->name,
-        'vill'=> $faker->name,
-        'post'=> $faker->name,
-        'pstn'=> $faker->name,
-        'dist'=> $faker->name,
-        'pin' => $faker->name,
-        'dise'=> $faker->name,
+        'vill'=> $faker->address,
+        'post'=> $faker->word,
+        'pstn'=> $faker->city,
+        'dist'=> $faker->state,
+        'pin' => $faker->postcode,
+        'dise'=> $faker->randomNumber,
     ];
 });
