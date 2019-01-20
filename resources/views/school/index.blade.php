@@ -23,7 +23,10 @@
                 <td>PS</td>
                 <td>Dist</td>
                 <td>Pin</td>
-                <td>Action</td>
+                <td>
+                    Action
+                    <a href="{{ route('schools.create') }}" class="btn btn-success"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                </td>
             </tr>
         </thead>
         <tbody>
@@ -38,9 +41,22 @@
                 <td>{{ $school->dist }}</td>
                 <td>{{ $school->pin }}</td>
                 <td>
-                    <a hre="#" class="btn btn-primary"><spna class="glyphicon glyphicon-pencil"></spna></a>
-                    <a hre="#" class="btn btn-info"><spna class="glyphicon glyphicon-edit"></spna></a>
-                    <a hre="#" class="btn btn-danger"><spna class="glyphicon glyphicon-trash"></spna></a>
+                    <a href="{{ route('schools.show',    ['school' => $school]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
+                    <a href="{{ route('schools.edit',    ['school' => $school]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
+                    {{--  <a href="{{ route('schools.destroy', ['school' => $school]) }}" data-method="delete"  class="btn btn-danger"><spna class="glyphicon glyphicon-trash"></spna></a>  --}}
+                    {{--  {{ Form::open(array('url' => 'schools/' . $school->id, 'class' => 'pull-right')) }}  --}}
+                    {{--  <form id="delete-school" action="{{route('schools.destroy')}}" method="POST" style="display:none">
+                        @method('DELETE')
+                        @csrf
+                        <input type="hidden" name="school-id" value="{{$school->id}}">
+                    </form>  --}}
+                    
+                    {!! Form::open(['method'=>'DELETE', 'route'=>['schools.destroy', $school], 'style'=>'display:inline']) !!}                    
+                    {{--  {{ Form::hidden('_method', 'DELETE') }}  --}}
+                        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
+                    {{ Form::close() }}
+                    
+
                 </td>
             @endforeach
         </tbody>

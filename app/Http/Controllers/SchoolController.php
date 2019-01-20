@@ -16,7 +16,7 @@ class SchoolController extends Controller
     {
         $schools = School::all();
         return view('school.index')
-        ->with('schools', $schools);
+            ->with('schools', $schools);
         
     }
 
@@ -27,7 +27,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        return view('school.create');
     }
 
     /**
@@ -38,7 +38,21 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $school = new School;
+        if( $school ){
+            $school->name = $request->name;
+            $school->vill = $request->vill;
+            $school->post = $request->post;
+            $school->pstn = $request->pstn;
+            $school->dist = $request->dist;
+            $school->pin  = $request->pin;
+            $school->dise = $request->dise;
+            $school->save();
+        }
+        // dd($request);
+        // echo "Name:".$request->name."<br>";
+        return redirect()->route('schools.index');
     }
 
     /**
@@ -49,7 +63,9 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //
+        // return 'I am from school show '. $school->name;
+        return view('school.show')
+            ->with('school', $school);
     }
 
     /**
@@ -60,19 +76,33 @@ class SchoolController extends Controller
      */
     public function edit(School $school)
     {
-        //
+        // dd($school);
+        // echo $school->name;
+        return view('school.edit')
+            ->with('school', $school);
+        // return 'I am from school edit '. $school->name;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\School  $school
+     * @param  \Illuminate\Http\Request  $request   (new data)
+     * @param  \App\School  $school                 (old data)
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, School $school)
     {
-        //
+        $school->name = $request->name;
+        $school->vill = $request->vill;
+        $school->post = $request->post;
+        $school->pstn = $request->pstn;
+        $school->dist = $request->dist;
+        $school->pin  = $request->pin;
+        $school->dise = $request->dise;
+        $school->save();
+        return redirect()->route('schools.index');
+        // dd($school);
+        // return "updateed";
     }
 
     /**
@@ -83,6 +113,9 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        //
+        
+        $school->delete();
+        // return 'I am from school destroy '. $school->name;
+        return redirect()->route('schools.index');
     }
 }
