@@ -17,13 +17,21 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-// Route::get('/schools',function(){ return "Hello";})->name('schools.index');
+Route::get('/test', function(){
+    $stdcr = App\Studentcr::find(4);
+    echo $stdcr->clss_id.'<br>';
+
+    $now = new \DateTime('now');
+    $month_no = (int) $now->format('m');
+    $feesch = App\Feeschedule::where('clss_id', $stdcr->clss_id)
+                        ->where('month_no', $month_no)->get();
+
+    foreach($feesch as $fsch){
+        echo $fsch->total_fee;
+    }
+});
+
 Route::resource('schools', 'SchoolController');

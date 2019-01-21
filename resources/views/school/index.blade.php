@@ -15,18 +15,18 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>DISE Code</td>
-                <td>Village</td>
-                <td>Post</td>
-                <td>PS</td>
-                <td>Dist</td>
-                <td>Pin</td>
-                <td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>DISE Code</th>
+                <th>Village</th>
+                <th>Post</th>
+                <th>PS</th>
+                <th>Dist</th>
+                <th>Pin</th>
+                <th>
                     Action
                     <a href="{{ route('schools.create') }}" class="btn btn-success"><spna class="glyphicon glyphicon-pencil"></spna></a>
-                </td>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -64,9 +64,10 @@
 
 
 
-
-
-
+    {{--  @php
+        $now = new \DateTime('now');
+        echo (int) $now->format('m');
+    @endphp  --}}
 
 
 
