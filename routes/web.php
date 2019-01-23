@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/vue-app', 'HomeController@vueApp');
 
 Route::get('/test', function(){
     $stdcr = App\Studentcr::find(20);
