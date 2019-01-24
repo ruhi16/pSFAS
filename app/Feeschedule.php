@@ -12,4 +12,9 @@ class Feeschedule extends Model
     {
         return $this->belongsTo('App\Clss');
     }
+
+    public function feecollections()
+    {
+        return $this->hasMany('App\Feeschedule');
+    }
 }

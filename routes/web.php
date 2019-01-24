@@ -21,17 +21,39 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/test', function(){
-    $stdcr = App\Studentcr::find(4);
-    echo $stdcr->clss_id.'<br>';
+    $stdcr = App\Studentcr::find(20);
+    echo "studentcr_id: ". $stdcr->id.'<br>';
+    echo "class_id: ". $stdcr->clss_id.'<br>';
 
-    $now = new \DateTime('now');
+    $now = new DateTime('now');
     $month_no = (int) $now->format('m');
+    
+    $feecol = App\Feecollection::where('studentcr_id', $stdcr->id)
+                        ->where('month_no','<=',$month_no)
+                        ->get();
+    
     $feesch = App\Feeschedule::where('clss_id', $stdcr->clss_id)
-                        ->where('month_no', $month_no)->get();
+                        ->where('month_no','<=', $month_no)
+                        ->whereNotIn('id', $feecol->pluck('feeschedule_id'))
+                        ->get();
 
-    foreach($feesch as $fsch){
-        echo $fsch->total_fee;
+    // dd($feesch);
+    if($feesch){
+        foreach($feesch as $fsch){
+            echo "<pre>";
+            echo "Pending: ". $fsch->total_fee ."(".$fsch->id .")". ", Month:(".$fsch->month_no .")";
+            // print_r($fsch);
+            echo "</pre>";
+        }
     }
+
+    foreach($feecol as $fcol){
+        echo "<pre>";
+        echo "Paid: ". $fcol->fee_received."(".$fcol->feeschedule_id .")". ", Month:(".$fsch->month_no .")";
+        echo "</pre>";
+    }
+
+
 });
 
 Route::resource('schools', 'SchoolController');

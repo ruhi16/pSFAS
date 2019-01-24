@@ -17,6 +17,7 @@ class CreateFeecollectionsTable extends Migration
             $table->increments('id');
             $table->integer('studentcr_id');
             $table->integer('month_no');
+            $table->integer('feeschedule_id');
             $table->integer('fee_received');
             $table->integer('fee_pending');
             $table->integer('fee_discount')->nullable();
