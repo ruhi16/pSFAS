@@ -61,3 +61,7 @@ Route::resource('schools', 'SchoolController');
 Route::resource('sessions', 'SessionController');
 Route::resource('clsss', 'ClssController');
 Route::resource('sections', 'SectionController');
+
+Route::get('/index', 'ClsssectionController@index')->name('admin.clsssections');
+Route::get('/addSection', 'ClsssectionController@addSection');
+Route::get('/addSection', 'ClsssectionController@delSection');
