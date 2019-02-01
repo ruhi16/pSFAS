@@ -7,13 +7,10 @@
 
 @section('body-content-sidebar')
     @include('admin.layouts.sidebar')
-
 @endsection
 
 @section('body-content-content')
     <h1>School/Create Page</h1>
-    
-
 		<div class="panel panel-default">
 			<div class="panel-body">
 

@@ -38,7 +38,9 @@
                 <td>{{ $school->pstn }}</td>
                 <td>{{ $school->dist }}</td>
                 <td>{{ $school->pin }}</td>
-                <td></td>
+                <td>
+                    <a href="{{ route('schools.index') }}" class="btn btn-primary">Back</a><br>
+                </td>
         </tbody>
     </table>
 

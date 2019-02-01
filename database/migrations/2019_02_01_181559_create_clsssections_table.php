@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFeeschedulesTable extends Migration
+class CreateClsssectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateFeeschedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('feeschedules', function (Blueprint $table) {
+        Schema::create('clsssections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('clss_id');
-            $table->integer('formonth_no');
-            $table->integer('foryear_no');
-            $table->integer('total_fee');
-            $table->string('feestructure')->nullable();
-            $table->integer('total_fee_discount')->nullable();
+            $table->integer('clss_id')->nullable();
+            $table->integer('section_id')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });
@@ -34,6 +29,6 @@ class CreateFeeschedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feeschedules');
+        Schema::dropIfExists('clsssections');
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class clss extends Model
+class Clss extends Model
 {
     protected $guarded = [];
 
@@ -16,5 +16,10 @@ class clss extends Model
     public function feeschedules()
     {
         return $this->hasMany('App\Feeschedule');
+    }
+
+    public function clsssections()
+    {
+        return $this->hasMany('App\Clsssection');
     }
 }

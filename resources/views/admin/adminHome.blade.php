@@ -11,18 +11,27 @@
 @endsection
 
 @section('body-content-content')
-    @include('admin.layouts.content')
+    
     <br>
-	<a href="{{ route('schools.index') }}">Index</a><br>
-	<a href="{{ url('/schools')}}">create</a><br>
-	<a href="">Store</a><br>
-	<a href="">show One</a><br>
-	<a href="">Edit</a><br>
-	<a href="">Update</a><br>
-	<a href="">Delete</a><br>
+	<a href="{{ route('schools.index') }}" class="btn btn-warning">School</a>
+	{{-- <a href="{{ url('/schools')}}">Index</a><br> --}}
+
+	<a href="{{ route('sessions.index') }}" class="btn btn-success">Session</a>
+	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
+	
+	<a href="{{ route('clsss.index') }}" class="btn btn-info">Class</a>
+	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
+
+	<a href="{{ route('sections.index') }}" class="btn btn-danger">Section</a><br>
+	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
 
+	<br>
+	<a href="{{ route('sessions.index') }}" class="btn btn-primary">Class-Section</a><br>
+	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
+	<br>
+	@include('admin.layouts.content')
 
 
 <script type="text/javascript">

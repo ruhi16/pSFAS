@@ -25,7 +25,7 @@
                 <th>Pin</th>
                 <th>
                     Action
-                    <a href="{{ route('schools.create') }}" class="btn btn-success"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                    <a href="{{ route('schools.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a>
                 </th>
             </tr>
         </thead>
@@ -55,9 +55,8 @@
                     {{--  {{ Form::hidden('_method', 'DELETE') }}  --}}
                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
                     {{ Form::close() }}
-                    
-
                 </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
