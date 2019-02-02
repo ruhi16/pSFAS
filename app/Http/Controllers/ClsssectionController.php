@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Clsssection;
 use App\Clss;
+use App\Section;
 use Illuminate\Http\Request;
 
 class ClsssectionController extends Controller
@@ -17,9 +18,11 @@ class ClsssectionController extends Controller
     }
 
     public function addSection(Clss $clsss){
-        dd($clsss);
-        echo "Add Class - Section";
-        // return redirect()->route('admin.clsssections');
+        // dd($clsss);
+        // echo "Add Class - Section";
+        $section = Section::find(1);
+        $clsss->clsssections()->save($section);
+        return redirect()->route('admin.clsssections');
     }
 
     public function delSection(Clss $clsss){

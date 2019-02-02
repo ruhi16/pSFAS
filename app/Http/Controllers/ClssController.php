@@ -32,24 +32,19 @@ class ClssController extends Controller
     }
     
     public function show(Clss $clsss)
-    {
-        // $clss = Clss::find($clss_id);
-        
+    {        
         return view('admin.clss.show')
             ->with('clss', $clsss);
     }
 
     public function edit(Clss $clsss)
     {
-        // $clss = Clss::find($clss_id);
-
         return view('admin.clss.edit')
             ->with('clss', $clsss);
     }
     
     public function update(Request $request, Clss $clsss)
     {
-        // $clss = Clss::find($clss_id);
         $clsss->name = $request->name;
         $clsss->next_clss_id = $request->next_clss_id;
         $clsss->status = $request->status;
@@ -59,7 +54,6 @@ class ClssController extends Controller
 
     public function destroy(Clss $clsss)
     {
-        // $clss = Clss::find($clss_id);
         $clsss->delete();
         return redirect()->route('clsss.index');
     }
