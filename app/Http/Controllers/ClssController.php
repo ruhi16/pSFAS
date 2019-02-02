@@ -31,36 +31,36 @@ class ClssController extends Controller
         return redirect()->route('clsss.index');
     }
     
-    public function show($clss_id)
+    public function show(Clss $clsss)
     {
-        $clss = Clss::find($clss_id);
+        // $clss = Clss::find($clss_id);
         
         return view('admin.clss.show')
-            ->with('clss', $clss);
+            ->with('clss', $clsss);
     }
 
-    public function edit($clss_id)
+    public function edit(Clss $clsss)
     {
-        $clss = Clss::find($clss_id);
+        // $clss = Clss::find($clss_id);
 
         return view('admin.clss.edit')
-            ->with('clss', $clss);
+            ->with('clss', $clsss);
     }
     
-    public function update(Request $request, $clss_id)
+    public function update(Request $request, Clss $clsss)
     {
-        $clss = Clss::find($clss_id);
-        $clss->name = $request->name;
-        $clss->next_clss_id = $request->next_clss_id;
-        $clss->status = $request->status;
-        $clss->save();
+        // $clss = Clss::find($clss_id);
+        $clsss->name = $request->name;
+        $clsss->next_clss_id = $request->next_clss_id;
+        $clsss->status = $request->status;
+        $clsss->save();
         return redirect()->route('clsss.index');
     }
 
-    public function destroy($clss_id)
+    public function destroy(Clss $clsss)
     {
-        $clss = Clss::find($clss_id);
-        $clss->delete();
+        // $clss = Clss::find($clss_id);
+        $clsss->delete();
         return redirect()->route('clsss.index');
     }
 }
