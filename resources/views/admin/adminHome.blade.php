@@ -27,7 +27,7 @@
 
 
 	<br>
-	<a href="{{ route('sessions.index') }}" class="btn btn-primary">Class-Section</a><br>
+	<a href="{{ route('admin.clsssections') }}" class="btn btn-primary">Class-Section</a><br>
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
 	<br>

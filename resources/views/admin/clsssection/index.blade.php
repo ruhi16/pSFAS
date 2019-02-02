@@ -11,33 +11,41 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Session/Index Page</h1>
+    <h1>Class-Section > Index Page</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>                
-                <th>Status</th>                
+                <th>Class Name</th>                
+                <th>Active Sections</th>                
                 <th>
                     Action
-                    <a href="{{ route('sections.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                    {{-- <a href="{{ route('sections.index') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a> --}}
+                    
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach($sections as $section)
-            <tr>
-                <td>{{ $section->id }}</td>
-                <td>{{ $section->name }}</td>                
-                <td>{{ $section->status }}</td>                
-                <td>
-                    <a href="{{ route('sections.show',    ['section' => $section]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
-                    <a href="{{ route('sections.edit',    ['section' => $section]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
-                    {!! Form::open(['method'=>'DELETE', 'route'=>['sections.destroy', $section], 'style'=>'display:inline']) !!}                                        
-                        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
-                    {{ Form::close() }}
-                </td>
+            @foreach($clsss as $clss)
+                <tr>
+                    <td>{{ $clss->id }}</td>
+                    <td>{{ $clss->name }}</td>
+                    <td></td>
+                    <td>
+                        <a href="{{ route('admin.addClsssections',    ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-plus"></spna></a>
+                        <a href="{{ route('admin.delClsssections',    ['clss' => $clss]) }}" class="btn btn-danger"><spna class="glyphicon glyphicon-minus"></spna></a>
+                    </td>
+                </tr>
             @endforeach
+            {{-- @foreach($clsssections as $clsssection)
+            <tr>
+                <td>{{ $clsssection->id }}</td>
+                <td>{{ $clsssection->name }}</td>                
+                <td>{{ $clsssection->status }}</td>                
+                <td>
+                    <a href="{{ route('admin.addClsssections',    ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-plus"></spna></a>
+                    <a href="{{ route('admin.delClsssections',    ['clss' => $clss]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-minus"></spna></a>                    
+            @endforeach --}}
         </tbody>
     </table>
 
