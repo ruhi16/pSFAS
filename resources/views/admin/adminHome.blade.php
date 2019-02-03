@@ -27,8 +27,11 @@
 
 
 	<br>
-	<a href="{{ route('admin.clsssections') }}" class="btn btn-primary">Class-Section</a><br>
+	<a href="{{ route('admin.clsssections') }}" class="btn btn-primary">Class-Section</a>
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
+
+	<a href="#" class="btn btn-warning">Fees Schedules</a><br>
+
 
 	<br>
 	@include('admin.layouts.content')

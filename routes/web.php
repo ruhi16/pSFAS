@@ -62,6 +62,8 @@ Route::resource('sessions', 'SessionController');
 Route::resource('clsss', 'ClssController');
 Route::resource('sections', 'SectionController');
 
-Route::get('/index', 'ClsssectionController@index')->name('admin.clsssections');
+Route::get('/index',              'ClsssectionController@index')     ->name('admin.clsssections');
 Route::get('/addSection/{clsss}', 'ClsssectionController@addSection')->name('admin.addClsssections');
 Route::get('/delSection/{clsss}', 'ClsssectionController@delSection')->name('admin.delClsssections');
+
+Route::resource('feeschedules', 'FeescheduleController');

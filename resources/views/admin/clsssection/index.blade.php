@@ -30,7 +30,9 @@
                 <tr>
                     <td>{{ $clss->id }}</td>
                     <td>{{ $clss->name }}</td>
-                    <td></td>
+                    <td>
+                        {{ $clsssections->where('clss_id', $clss->id)->pluck('section_id') }}
+                    </td>
                     <td>
                         <a href="{{ route('admin.addClsssections',    ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-plus"></spna></a>
                         <a href="{{ route('admin.delClsssections',    ['clss' => $clss]) }}" class="btn btn-danger"><spna class="glyphicon glyphicon-minus"></spna></a>
