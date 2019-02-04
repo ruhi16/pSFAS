@@ -18,31 +18,26 @@ class ClsssectionController extends Controller
     }
 
     public function addSection(Clss $clsss){
-        $section = Section::all();
-        // dd($section);
-
-        // $clsssections = Clsssection::firstOrNew(['clss_id'=> $clsss->id]);
-        // dd($clsssections);
         $clsssections = Clsssection::where('clss_id', $clsss->id)->get();
-        dd( $clsssections->pluck('section_id') );
-        // if( $clsssections ){
-
-            // echo $clsssections->section_id;
-        // }else{
-        $section = Section::orderBy('id')->first();//dd($section);
-        $clsssections->clss_id = $clsss->id;
-        $clsssections->section_id = $section->id;
-        $clsssections->status = "Active";
-        $clsssections->save();
-        dd($clsssections);
-        // }
+        
+        $section = Section::whereNotIn('id', $clsssections->pluck('section_id'))->orderBy('id')->first();
+        if( $section ){
+            $clsssection = new Clsssection;
+            $clsssection->clss_id = $clsss->id;
+            $clsssection->section_id = $section->id;
+            $clsssection->status = "Active";
+            $clsssection->save();
+        }
         
         return redirect()->route('admin.clsssections');
     }
 
-    public function delSection(Clss $clsss){
-        dd($clsss);
-        echo "Delete Class - Section";
-        // return redirect()->route('admin.clsssections');
+    public function delSection(Clss $clsss){        
+        $clsssections = Clsssection::where('clss_id', $clsss->id)->orderByDesc('section_id')->first();
+        
+        if( $clsssections ){
+            $clsssections->delete();
+        }
+        return redirect()->route('admin.clsssections');
     }
 }

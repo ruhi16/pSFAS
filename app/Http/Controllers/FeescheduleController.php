@@ -14,7 +14,7 @@ class FeescheduleController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.feeschedule.index');
     }
 
     public function create()
@@ -24,7 +24,7 @@ class FeescheduleController extends Controller
 
     public function store(Request $request)
     {
-        //
+        echo "from Feeschedule Store method";
     }
 
     public function show(Feeschedule $feeschedule)

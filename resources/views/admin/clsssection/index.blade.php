@@ -31,23 +31,16 @@
                     <td>{{ $clss->id }}</td>
                     <td>{{ $clss->name }}</td>
                     <td>
-                        {{ $clsssections->where('clss_id', $clss->id)->pluck('section_id') }}
+                        @foreach( $clsssections->where('clss_id', $clss->id)->sortBy('section_id') as $clsssection )
+                            {{ $clsssection->section->name }},
+                        @endforeach
                     </td>
                     <td>
                         <a href="{{ route('admin.addClsssections',    ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-plus"></spna></a>
                         <a href="{{ route('admin.delClsssections',    ['clss' => $clss]) }}" class="btn btn-danger"><spna class="glyphicon glyphicon-minus"></spna></a>
                     </td>
                 </tr>
-            @endforeach
-            {{-- @foreach($clsssections as $clsssection)
-            <tr>
-                <td>{{ $clsssection->id }}</td>
-                <td>{{ $clsssection->name }}</td>                
-                <td>{{ $clsssection->status }}</td>                
-                <td>
-                    <a href="{{ route('admin.addClsssections',    ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-plus"></spna></a>
-                    <a href="{{ route('admin.delClsssections',    ['clss' => $clss]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-minus"></spna></a>                    
-            @endforeach --}}
+            @endforeach            
         </tbody>
     </table>
 
