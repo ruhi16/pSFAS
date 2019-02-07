@@ -31,7 +31,9 @@
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
 	<a href="{{ route('feeschedules.index') }}" class="btn btn-warning">Fees Schedules</a><br>
-
+	
+	<br>
+	<a href="{{ route('studentdbs.index') }}" class="btn btn-primary">StudentDB Index</a>
 
 	<br>
 	@include('admin.layouts.content')

@@ -67,3 +67,4 @@ Route::get('/addSection/{clsss}', 'ClsssectionController@addSection')->name('adm
 Route::get('/delSection/{clsss}', 'ClsssectionController@delSection')->name('admin.delClsssections');
 
 Route::resource('feeschedules', 'FeescheduleController');
+Route::resource('studentdbs', 'StudentdbController');
