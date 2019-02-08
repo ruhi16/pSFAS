@@ -15,7 +15,8 @@
 			<div class="panel-body">
 
 				{!! Form::open(['method'=>'POST',   'route'=>['studentdbs.update', $studentdb], 'class'=>'form-horizontal']) !!}
-
+					<input name="_method" type="hidden" value="PUT">
+					
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Student Name</label>
 						<div class="col-sm-9">
