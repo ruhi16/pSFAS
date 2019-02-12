@@ -22,20 +22,22 @@
 	<a href="{{ route('clsss.index') }}" class="btn btn-info">Class</a>
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
-	<a href="{{ route('sections.index') }}" class="btn btn-danger">Section</a><br>
+	<a href="{{ route('sections.index') }}" class="btn btn-danger">Section</a>
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
+	<a href="{{ route('studentdbs.index') }}" class="btn btn-primary">StudentDB Index</a>
 
-
-	<br>
+	<a href="{{ route('studentcrs.index') }}" class="btn btn-success">StudentCR Index</a>
+	<br><br>
 	<a href="{{ route('admin.clsssections') }}" class="btn btn-primary">Class-Section</a>
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
 	<a href="{{ route('feeschedules.index') }}" class="btn btn-warning">Fees Schedules</a><br>
 	
 	<br>
-	<a href="{{ route('studentdbs.index') }}" class="btn btn-primary">StudentDB Index</a>
+	
+	<a href="{{ route('feecollections.index') }}" class="btn btn-info">Fees Collection </a>
+	<br><br>
 
-	<br>
 	@include('admin.layouts.content')
 
 

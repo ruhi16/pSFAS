@@ -13,6 +13,11 @@ class Studentcr extends Model
         return $this->belongsTo('App\Clss');
     }
 
+    public function section()
+    {
+        return $this->belongsTo('App\Section');
+    }
+
     public function studentdb()
     {
         return $this->belongsTo('App\Studentdb');

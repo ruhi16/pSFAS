@@ -18,6 +18,7 @@ class CreateStudentcrsTable extends Migration
             $table->integer('studentdb_id');
             $table->integer('clss_id');
             $table->integer('section_id');
+            $table->integer('roll_no')->nullable();
             $table->string('result')->nullable();
             $table->string('description')->nullable();
             $table->integer('next_clss_id')->nullable();

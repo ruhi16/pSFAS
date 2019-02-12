@@ -13,6 +13,11 @@ class Clss extends Model
         return $this->hasMany('App\Studentcr');
     }
 
+    public function studentdbs()
+    {
+        return $this->hasMany('App\Studentdb','adm_clss_id','id');
+    }
+
     public function feeschedules()
     {
         return $this->hasMany('App\Feeschedule');

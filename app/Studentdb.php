@@ -12,4 +12,9 @@ class Studentdb extends Model
     {
         return $this->hasMany('App\Studentcr');
     }
+
+    public function clss()
+    {
+        return $this->belongsTo('App\Clss','adm_clss_id','id');
+    }
 }

@@ -66,5 +66,12 @@ Route::get('/index',              'ClsssectionController@index')     ->name('adm
 Route::get('/addSection/{clsss}', 'ClsssectionController@addSection')->name('admin.addClsssections');
 Route::get('/delSection/{clsss}', 'ClsssectionController@delSection')->name('admin.delClsssections');
 
-Route::resource('feeschedules', 'FeescheduleController');
 Route::resource('studentdbs', 'StudentdbController');
+Route::resource('feeschedules', 'FeescheduleController');
+
+Route::get('/feecollections/findStudentcr', 'FeecollectionController@findStudentcr')->name('admin.findStudentcr');
+Route::resource('feecollections', 'FeecollectionController');
+
+
+Route::post('/studentcrs/{studentcr}/issueRoll', 'StudentcrController@issueRoll')->name('admin.studentcr.issueRoll');
+Route::resource('studentcrs', 'StudentcrController');
