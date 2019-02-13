@@ -16,11 +16,6 @@
     <h1>Fee-Collection > Find_Student_CR Page</h1>
     <div class="panel panel-default">
         <div class="panel panel-head">
-            
-        </div>
-        <div class="panel panel-body">
-
-            
             {!! Form::open(['method'=>'POST',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
                 {{--  <input name="_method" type="hidden" value="GET">  --}}					
                 <div class="form-group">
@@ -33,7 +28,9 @@
                     </div>
                 </div>	
 			{!! Form::close() !!}
+        </div>
 
+        <div class="panel panel-body">
             {{-- {{ dd($feeschedule) }} --}}
             <table class="table table-bordered">
                 <tr>
@@ -43,7 +40,7 @@
                     <th class="pull-right">Roll No</th> <td>{{ $studentcr->roll_no }}</td>
                 </tr>
             </table>
-
+<br><br>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -65,16 +62,17 @@
                         <td></td>
                         <td></td>
                         <td>{{ $feesch->formonth_no }}, {{ $feesch->foryear_no}}</td>
-                        <td>                                
+                        <td>
                             @foreach($stdcrFeeCollection as $stdcrFeeColl)
-                                @if( $stdcrFeeColl->feeschedule_id == $feesch->id )
-                                    {{-- {{ $stdcrFeeColl->feeschedule_id }}, --}}
+                                {{ $stdcrFeeColl->feeschedule_id }}-{{$feesch->id}},
+
+                                {{-- @if( $stdcrFeeColl->feeschedule_id == $feesch->id )
                                     Paid
-                                    {{-- {{ $feesch }} --}}
-                                    @else
+                                @else
                                     Unpaid
-                                @endif
+                                @endif --}}
                             @endforeach
+                            {{ $stdcrFeeCollection->contains($feesch->id) ? 'T' : 'F' }}
                         </td>
                     </tr>
                     @empty
