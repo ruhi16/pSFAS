@@ -50,7 +50,7 @@ class FeecollectionController extends Controller
     //Customize Functions...
     public function findStudentcr()
     {
-
+        
         return view('admin.feecollection.findstudentcr');
     }
 
@@ -62,7 +62,7 @@ class FeecollectionController extends Controller
         $stdcrFeeCollection = Feecollection::where('studentcr_id', $studentcr->id)->get();
         // dd($stdcrFeeCollection);
 
-        return view('admin.feecollection.findstudentcr')
+        return view('admin.feecollection.feedetailsstudentcr')
             ->with('studentcr', $studentcr)
             ->with('feeschedule', $feeschedule)
             ->with('stdcrFeeCollection', $stdcrFeeCollection)
