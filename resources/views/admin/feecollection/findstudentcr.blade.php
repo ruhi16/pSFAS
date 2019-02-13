@@ -27,20 +27,58 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>  --}}
             {!! Form::open(['method'=>'POST',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
-					{{--  <input name="_method" type="hidden" value="GET">  --}}
-					
-					<div class="form-group">
-						<label for="studentcr_id" class="col-sm-2 control-label">Student Id</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="studentcr_id">
-						</div>   
-						<div class="col-sm-2">
-							<button type="submit" class=" btn btn-primary">Save changes</button>                               
-						</div>
-					</div>	
-
+                {{--  <input name="_method" type="hidden" value="GET">  --}}					
+                <div class="form-group">
+                    <label for="studentcr_id" class="col-sm-2 control-label">Student Id</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="studentcr_id">
+                    </div>   
+                    <div class="col-sm-2">
+                        <button type="submit" class=" btn btn-primary">Save changes</button>                               
+                    </div>
+                </div>	
 			{!! Form::close() !!}
 
+            {{-- {{ dd($feeschedule) }} --}}
+            <table class="table table-bordered">
+                <tr>
+                    <th class="pull-right">Name</th>    <td>{{ $studentcr->studentdb->name }}</td>
+                    <th class="pull-right">Class</th>   <td>{{ $studentcr->clss->name }}</td>
+                    <th class="pull-right">Section</th> <td>{{ $studentcr->section->name }}</td>
+                    <th class="pull-right">Roll No</th> <td>{{ $studentcr->roll_no }}</td>
+                </tr>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Discount</th>
+                        <th>Received</th>
+                        <th>Month, Year</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($feeschedule as $feesch)
+                    <tr>
+                        <td>{{ $feesch->id }}</td>
+                        <td>{{ $feesch->name }}</td>
+                        <td>{{ $feesch->total_fee }}</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ $feesch->formonth_no }}, {{ $feesch->foryear_no}}</td>
+                        <td>
+                            {{ $stdcrFeeCollection }}
+                        </td>
+                    </tr>
+                    @empty
+                        adfa
+                    @endforelse
+                </tbody>
+            </table>
 
         </div>
 

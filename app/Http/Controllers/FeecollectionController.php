@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Feecollection;
+use App\Feeschedule;
+use App\Studentcr;
 use Illuminate\Http\Request;
 
 class FeecollectionController extends Controller
@@ -52,9 +54,18 @@ class FeecollectionController extends Controller
         return view('admin.feecollection.findstudentcr');
     }
 
-    public function studentcr($studentcr_id)
+    public function studentcr(Request $request)
     {
-        echo $studentcr;
-        // return view('admin.feecollection.findstudentcr');
+        $studentcr = Studentcr::find($request->studentcr_id);
+        $feeschedule = Feeschedule::where('clss_id', $studentcr->id)->get();
+        
+        $stdcrFeeCollection = Feecollection::where('studentcr_id', $studentcr->id)->get();
+        // dd($stdcrFeeCollection);
+
+        return view('admin.feecollection.findstudentcr')
+            ->with('studentcr', $studentcr)
+            ->with('feeschedule', $feeschedule)
+            ->with('stdcrFeeCollection', $stdcrFeeCollection)
+            ;
     }
 }
