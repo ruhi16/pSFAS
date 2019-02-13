@@ -17,7 +17,7 @@
     <div class="panel panel-default">
         <div class="panel panel-head">
             {{--  <a class="btn btn-primary pull-right" href="{{ route('feecollections.create') }}">New Collection</a>  --}}
-            <a class="btn btn-primary pull-right" href="{{ route('admin.findStudentcr') }}">New Collection</a>
+            <a class="btn btn-primary pull-right" href="{{ route('admin.feecollection.findStudentcr') }}">New Collection</a>
         </div>
         <div class="panel-body">
             <table class="table table-bordered">

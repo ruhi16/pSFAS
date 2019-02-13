@@ -16,60 +16,30 @@
     <h1>Fee-Collection > Find_Student_CR Page</h1>
     <div class="panel panel-default">
         <div class="panel panel-head">
-            hello
+            
         </div>
         <div class="panel panel-body">
 
-            <form class="navbar-form navbar-left">
+            {{--  <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            {!! Form::open(['method'=>'POST',   'route'=>['studentdbs.update', $studentdb], 'class'=>'form-horizontal']) !!}
-					<input name="_method" type="hidden" value="PUT">
+            </form>  --}}
+            {!! Form::open(['method'=>'POST',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
+					{{--  <input name="_method" type="hidden" value="GET">  --}}
 					
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Student Name</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name" value="{{ $studentdb->name }}">
-						</div>                    
+						<label for="studentcr_id" class="col-sm-2 control-label">Student Id</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="studentcr_id">
+						</div>   
+						<div class="col-sm-2">
+							<button type="submit" class=" btn btn-primary">Save changes</button>                               
+						</div>
 					</div>	
 
-					<div class="form-group">
-						<label for="fname" class="col-sm-2 control-label">Father Name</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="fname" id="fname" value="{{ $studentdb->name }}">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="clss" class="col-sm-2 control-label">New Class</label>
-						<div class="col-sm-4">
-							<select name="clss" class="form-control">
-								<option value=""></option>
-								@foreach($clsss as $clss)
-									<option value="{{ $clss->id }}" {{ ($clss->id == $studentdb->adm_clss_id? 'selected' : '') }} >{{ $clss->name }}</option>
-								@endforeach
-							</select>
-						</div>                    
-					</div>					
-					
-					
-					<div class="form-group">
-						<label for="status" class="col-sm-2 control-label">Status</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="status" id="status" value="{{ $studentdb->status }}">
-						</div>                    
-					</div>
-
-
-
-					<button type="reset" class="col-sm-offset-2 btn btn-default">Reset</button>
-					<button type="submit" class=" btn btn-primary">Save changes</button>              
-
-
-					{!! Form::close() !!}
+			{!! Form::close() !!}
 
 
         </div>

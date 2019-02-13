@@ -51,4 +51,10 @@ class FeecollectionController extends Controller
 
         return view('admin.feecollection.findstudentcr');
     }
+
+    public function studentcr($studentcr_id)
+    {
+        echo $studentcr;
+        // return view('admin.feecollection.findstudentcr');
+    }
 }
