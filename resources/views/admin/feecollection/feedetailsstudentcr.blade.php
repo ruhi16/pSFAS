@@ -14,12 +14,15 @@
 @section('body-content-content')
 <link rel="stylesheet" href="{{ url('bs337/fastselect/fastselect.min.css') }}">
     <h1>Fee-Collection > Find_Student_CR Page</h1>
-    <div class="panel panel-default">
+    {{-- <div class="panel panel-default">
         <div class="panel panel-head">
+        <br>
+        </div>
+        <div class="panel panel-body">
             {!! Form::open(['method'=>'POST',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
-                {{--  <input name="_method" type="hidden" value="GET">  --}}					
+                 <input name="_method" type="hidden" value="POST"> 					
                 <div class="form-group">
-                    <label for="studentcr_id" class="col-sm-2 control-label">Student Id</label>
+                    <label for="studentcr_id" class="col-sm-2 control-label">Student CR_Id</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="studentcr_id">
                     </div>   
@@ -29,9 +32,16 @@
                 </div>	
 			{!! Form::close() !!}
         </div>
+    </div> --}}
 
+
+    <div class="panel panel-default">
+        <div class="panel panel-head">
+        <br>
+        </div>
         <div class="panel panel-body">
-            {{-- {{ dd($feeschedule) }} --}}
+            <input type="hidden" class="form-control" name="studentcr_id" value="{{ $studentcr->id }}">
+        
             <table class="table table-bordered">
                 <tr>
                     <th class="pull-right">Name</th>    <td>{{ $studentcr->studentdb->name }}</td>
@@ -40,7 +50,7 @@
                     <th class="pull-right">Roll No</th> <td>{{ $studentcr->roll_no }}</td>
                 </tr>
             </table>
-<br><br>
+            <br><br>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -64,7 +74,7 @@
                         <td>{{ $feesch->formonth_no }}, {{ $feesch->foryear_no}}</td>
                         <td>
                             @foreach($stdcrFeeCollection as $stdcrFeeColl)
-                                {{ $stdcrFeeColl->feeschedule_id }}-{{$feesch->id}},
+                                {{-- {{ $stdcrFeeColl->feeschedule_id }}-{{$feesch->id}}, --}}
 
                                 {{-- @if( $stdcrFeeColl->feeschedule_id == $feesch->id )
                                     Paid
@@ -72,11 +82,18 @@
                                     Unpaid
                                 @endif --}}
                             @endforeach
-                            {{ $stdcrFeeCollection->contains($feesch->id) ? 'T' : 'F' }}
+                            @if( $stdcrFeeCollection->contains('feeschedule_id',$feesch->id) )
+                                    Paid
+                            @else                                     
+                                    <a href="{{ route('admin.feecollection.collection',['studentcr'=>$studentcr, 'feeschedule'=>$feesch]) }}" class="btn btn-success">Pay Fees</a>
+                            @endif
+                            {{-- {{ $stdcrFeeCollection->contains('feeschedule_id',$feesch->id) ? 'Paid' : 'Un-Paid' }} --}}
                         </td>
                     </tr>
-                    @empty
-                        adfa
+                    @empty                        
+                        <tr>
+                            <th colspan="7" class="text-center"> No Records Found!!! </th>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>

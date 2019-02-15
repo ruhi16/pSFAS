@@ -71,6 +71,7 @@ Route::resource('feeschedules', 'FeescheduleController');
 
 Route::get('/feecollections/findStudentcr', 'FeecollectionController@findStudentcr')->name('admin.feecollection.findStudentcr');
 Route::post('/feecollections/studentcr', 'FeecollectionController@studentcr')->name('admin.feecollection.studentcr');
+Route::get('/feecollections/{studentcr}/{feeschedule}', ['uses'=>'FeecollectionController@studentcrCollection'])->name('admin.feecollection.collection');
 Route::resource('feecollections', 'FeecollectionController');
 
 

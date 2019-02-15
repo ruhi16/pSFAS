@@ -23,6 +23,7 @@ class FeecollectionController extends Controller
 
     public function store(Request $request)
     {
+        dd($request);
         return "from store page";
     }
 
@@ -67,5 +68,25 @@ class FeecollectionController extends Controller
             ->with('feeschedule', $feeschedule)
             ->with('stdcrFeeCollection', $stdcrFeeCollection)
             ;
+    }
+
+    public function studentcrCollection(Studentcr $studentcr, Feeschedule $feeschedule)
+    {
+        // dd($feeschedule);
+        $feecollection = Feecollection::firstOrNew(['studentcr_id'  => $studentcr->id, 
+                                                    'feeschedule_id'=> $feeschedule->id ]);
+        $feecollection->studentcr_id    = $studentcr->id;
+        $feecollection->feeschedule_id  = $feeschedule->id;
+        $feecollection->formonth_no     = $feeschedule->formonth_no;
+        $feecollection->foryear_no      = $feeschedule->foryear_no;
+        $feecollection->fee_received    = $feeschedule->total_fee;
+        $feecollection->fee_pending     = 0;//$feeschedule->total_fee;
+        $feecollection->fee_discount    = $feeschedule->total_fee_discount;
+        $feecollection->status          = $feeschedule->status;
+        // $feecollection->save();
+        // $request = new \Illuminate\Http\Request();
+        // $request->replace(['studentcr_id' => $studentcr->id]);
+        return redirect()->route('admin.feecollection.studentcr');
+        
     }
 }

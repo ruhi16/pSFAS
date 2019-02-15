@@ -16,20 +16,14 @@
     <h1>Fee-Collection > Find_Student_CR Page</h1>
     <div class="panel panel-default">
         <div class="panel panel-head">
-            
+            <br>
         </div>
         <div class="panel panel-body">
-
-            {{--  <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>  --}}
+            
             {!! Form::open(['method'=>'POST',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
                 {{--  <input name="_method" type="hidden" value="GET">  --}}					
                 <div class="form-group">
-                    <label for="studentcr_id" class="col-sm-2 control-label">Student Id</label>
+                    <label for="studentcr_id" class="col-sm-2 control-label">Student CR_Id</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="studentcr_id">
                     </div>   
@@ -37,8 +31,7 @@
                         <button type="submit" class=" btn btn-primary">Save changes</button>                               
                     </div>
                 </div>	
-			{!! Form::close() !!}
-          
+			{!! Form::close() !!}          
 
         </div>
 
