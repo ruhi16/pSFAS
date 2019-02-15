@@ -37,25 +37,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($feecollections as $feecollection)
-                    <tr>
-                        <td>{{ $feecollection->id }}</td>
-                        <td>{{ $feecollection->studentcr->studentdb->name }}</td>
-                        <td>{{ $feecollection->feeschedule->name }}</td>
-                        <td>{{ $feecollection->formonth_no }}-{{ $feecollection->foryear_no }}</td>  
-                        <td>{{ $feecollection->feeschedule->total_fee }}</td>
-                        <td>{{ $feecollection->fee_discount }}</td>
-                        <td>{{ $feecollection->fee_received }}</td>
-                        <td>{{ $feecollection->fee_pending }}</td>
-                        <td>{{ $feecollection->user_id }}</td>
-                        <td>{{ $feecollection->status }}</td>
-                        <td>
-                            <a href="{{ route('feecollections.show', ['feecollection' => $feecollection]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
-                            <a href="{{ route('feecollections.edit', ['feecollection' => $feecollection]) }}" class="btn btn-info"><spna class="glyphicon glyphicon-edit"></spna></a>
-                            
-                        </td>
-                    </tr>
-                @endforeach
+                @if($feecollections != null)
+                    @foreach($feecollections as $feecollection)
+                        <tr>
+                            <td>{{ $feecollection->id ?? ''}}</td>
+                            <td>{{ $feecollection->studentcr->studentdb->name ?? '' }}</td>
+                            <td>{{ $feecollection->feeschedule->name ?? ''}}</td>
+                            <td>{{ $feecollection->formonth_no ?? ''}}-{{ $feecollection->foryear_no ?? '' }}</td>  
+                            <td>{{ $feecollection->feeschedule->total_fee ?? ''}}</td>
+                            <td>{{ $feecollection->fee_discount ?? ''}}</td>
+                            <td>{{ $feecollection->fee_received ?? ''}}</td>
+                            <td>{{ $feecollection->fee_pending ?? ''}}</td>
+                            <td>{{ $feecollection->user_id ?? '' }}</td>
+                            <td>{{ $feecollection->status ?? '' }}</td>
+                            <td>
+                                <a href="{{ route('feecollections.show', ['feecollection' => $feecollection]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
+                                <a href="{{ route('feecollections.edit', ['feecollection' => $feecollection]) }}" class="btn btn-info"><spna class="glyphicon glyphicon-edit"></spna></a>
+                                
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
         </div>
