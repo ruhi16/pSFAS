@@ -20,15 +20,15 @@
         </div>
         <div class="panel panel-body">
             
-            {!! Form::open(['method'=>'POST',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
-                {{--  <input name="_method" type="hidden" value="GET">  --}}					
+            {!! Form::open(['method'=>'GET',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
+                 {{-- <input name="_method" type="hidden" value="GET"> 					 --}}
                 <div class="form-group">
                     <label for="studentcr_id" class="col-sm-2 control-label">Student CR_Id</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="studentcr_id">
                     </div>   
                     <div class="col-sm-2">
-                        <button type="submit" class=" btn btn-primary">Save changes</button>                               
+                        <button type="submit" class=" btn btn-primary">Search</button>                               
                     </div>
                 </div>	
 			{!! Form::close() !!}          

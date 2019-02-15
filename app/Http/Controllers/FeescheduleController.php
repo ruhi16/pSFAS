@@ -54,10 +54,9 @@ class FeescheduleController extends Controller
                 $feeschedule->total_fee_discount = $request->disc;
                 $feeschedule->status = $request->remarks;                
                 $feeschedule->save();
-            }
-
-            return redirect()->route('feeschedules.index');
+            }            
         }
+        return redirect()->route('feeschedules.index');
     }
 
     public function show(Feeschedule $feeschedule)

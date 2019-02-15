@@ -57,7 +57,8 @@ class FeecollectionController extends Controller
 
     public function studentcr(Request $request)
     {
-        $studentcr = Studentcr::find($request->studentcr_id);
+        // dd($request);
+        $studentcr   = Studentcr::find($request->studentcr_id);
         $feeschedule = Feeschedule::where('clss_id', $studentcr->id)->get();
         
         $stdcrFeeCollection = Feecollection::where('studentcr_id', $studentcr->id)->get();
@@ -83,10 +84,11 @@ class FeecollectionController extends Controller
         $feecollection->fee_pending     = 0;//$feeschedule->total_fee;
         $feecollection->fee_discount    = $feeschedule->total_fee_discount;
         $feecollection->status          = $feeschedule->status;
-        // $feecollection->save();
+        $feecollection->save();
         // $request = new \Illuminate\Http\Request();
         // $request->replace(['studentcr_id' => $studentcr->id]);
-        return redirect()->route('admin.feecollection.studentcr');
-        
+        // dd($request);
+        return redirect()->route('admin.feecollection.studentcr', ['studentcr_id' => $studentcr->id]);
+        // return redirect()->route('admin.feecollection.findStudentcr');
     }
 }
