@@ -19,23 +19,23 @@
             <a class="btn btn-primary pull-right" href="{{ route('feeschedules.create') }}">New Schedule</a>
         </div>
         <div class="panel-body">
-            {!! Form::open(['method'=>'POST',   'route'=>['feeschedules.update'], 'class'=>'form-horizontal']) !!}
-
+            {!! Form::open(['method'=>'PUT',   'route'=>['feeschedules.update', $feeschedule], 'class'=>'form-horizontal']) !!}
+                {{-- <input name="_method" type="hidden" value="PUT"> 					 --}}
                 <div class="form-group">
                     <label for="name" class="col-sm-3 control-label">Fees Schedule Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Section Name">
+                    <input type="text" class="form-control" name="name" id="name" value="{{ $feeschedule->name }}">
                     </div>                    
                 </div>	
                 <div class="form-group">
                     <label for="clsss" class="col-sm-3 control-label">For Class(es)</label>
-                    <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" name="name" id="name" placeholder="Section Name"> --}}
-                        <select name="clsss[]" class="form-control select2-multiple" multiple="multiple">
+                    <div class="col-sm-9">                        
+                        <select name="clsss" class="form-control">
                             <option value=""></option>
-                            @foreach($clsss as $clss)
+                            <option value="{{ $feeschedule->name }}">{{ $feeschedule->name }}</option>
+                            {{-- @foreach($clsss as $clss)
                                 <option value="{{ $clss->id }}">{{ $clss->name }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>                    
                 </div>
@@ -43,7 +43,7 @@
                     <label for="months" class="col-sm-3 control-label">Fees Schedule At</label>
                     <div class="col-sm-9">
                         <div class="select2-wrapper">
-                            <select name="months[]" class="form-control select2-multiple" multiple="multiple">
+                            {{-- <select name="months[]" class="form-control select2-multiple" multiple="multiple">
                                 <option value=""></option>
                                 <option value="January">January</option>                
                                 <option value="February">February</option>
@@ -57,13 +57,13 @@
                                 <option value="October">October</option>
                                 <option value="November">November</option>
                                 <option value="December">December</option>
-                            </select>
+                            </select> --}}
                         </div>
                         {{-- <input type="text" class="form-control" name="name" id="name" placeholder="Section Name"> --}}
                     </div>                    
                 </div>
                 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="fees" class="col-sm-3 control-label">Fees Structure</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="fees" id="fees" placeholder="Detail Fees Structure">
@@ -86,7 +86,7 @@
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="status" id="status" placeholder="any remarks want to submit">
                     </div>                    
-                </div>
+                </div> --}}
 
 
 
@@ -95,13 +95,10 @@
 
 
                 {!! Form::close() !!}
-            </div>
-        </div>
-
-            </table>
         </div>
     </div>
 
+            
 
         
 

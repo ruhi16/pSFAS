@@ -18,7 +18,7 @@
         <div class="panel-body">
 
             {!! Form::open(['method'=>'POST',   'route'=>['feeschedules.store'], 'class'=>'form-horizontal']) !!}
-
+            {{-- <input name="_method" type="hidden" value="POST"> 					 --}}
                 <div class="form-group">
                     <label for="name" class="col-sm-3 control-label">Fees Schedule Name</label>
                     <div class="col-sm-9">

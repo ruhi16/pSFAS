@@ -61,6 +61,7 @@ class FeescheduleController extends Controller
 
     public function show(Feeschedule $feeschedule)
     {        
+        
         return view('admin.feeschedule.show')
             ->with('feeschedule', $feeschedule);
     }
@@ -68,8 +69,9 @@ class FeescheduleController extends Controller
     public function edit(Feeschedule $feeschedule)
     {
         // echo "I'm from edit";
-        // return view('admin.feeschedule.edit')
-        //     ->with('feeschedule', $feeschedule);
+        // dd($feeschedule);
+        return view('admin.feeschedule.edit')
+            ->with('feeschedule', $feeschedule);
     }
 
     public function update(Request $request, Feeschedule $feeschedule)
