@@ -31,33 +31,32 @@
                     <label for="clsss" class="col-sm-3 control-label">For Class(es)</label>
                     <div class="col-sm-9">                        
                         <select name="clsss" class="form-control">
-                            <option value=""></option>
-                            <option value="{{ $feeschedule->name }}">{{ $feeschedule->name }}</option>
-                            {{-- @foreach($clsss as $clss)
-                                <option value="{{ $clss->id }}">{{ $clss->name }}</option>
-                            @endforeach --}}
+                            <option value=""></option>                            
+                            @foreach($clsss as $clss)
+                                <option value="{{ $clss->id }}" {{ $clss->id == $feeschedule->clss_id ? 'selected':''}}>{{ $clss->name }}</option>
+                            @endforeach
                         </select>
                     </div>                    
                 </div>
                 <div class="form-group"> 
                     <label for="months" class="col-sm-3 control-label">Fees Schedule At</label>
                     <div class="col-sm-9">
-                        <div class="select2-wrapper">
-                            {{-- <select name="months[]" class="form-control select2-multiple" multiple="multiple">
-                                <option value=""></option>
-                                <option value="January">January</option>                
-                                <option value="February">February</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
-                            </select> --}}
+                        <div class="months">
+                            <select name="months" class="form-control">
+                            <option value=""></option>
+                                <option value="January" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>January</option>                
+                                <option value="February" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>February</option>
+                                <option value="March" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>March</option>
+                                <option value="April" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>April</option>
+                                <option value="May" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>May</option>
+                                <option value="June" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>June</option>
+                                <option value="July" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>July</option>
+                                <option value="August" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>August</option>
+                                <option value="September" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>September</option>
+                                <option value="October" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>October</option>
+                                <option value="November" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>November</option>
+                                <option value="December" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>December</option>
+                            </select>
                         </div>
                         {{-- <input type="text" class="form-control" name="name" id="name" placeholder="Section Name"> --}}
                     </div>                    

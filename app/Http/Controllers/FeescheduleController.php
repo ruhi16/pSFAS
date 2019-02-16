@@ -68,10 +68,12 @@ class FeescheduleController extends Controller
 
     public function edit(Feeschedule $feeschedule)
     {
+        $clsss = Clss::all();
         // echo "I'm from edit";
         // dd($feeschedule);
         return view('admin.feeschedule.edit')
-            ->with('feeschedule', $feeschedule);
+            ->with('feeschedule', $feeschedule)
+            ->with('clsss', $clsss);
     }
 
     public function update(Request $request, Feeschedule $feeschedule)
