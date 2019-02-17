@@ -62,9 +62,9 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="fees" class="col-sm-3 control-label">Fees Structure</label>
+                    <label for="years" class="col-sm-3 control-label">For Year</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="fees" id="fees" placeholder="Detail Fees Structure">
+                        <input type="text" class="form-control" name="years" id="years" placeholder="Enter Current Year">
                     </div>                    
                 </div>
                 <div class="form-group">
@@ -80,9 +80,15 @@
                     </div>                    
                 </div>
                 <div class="form-group">
-                    <label for="status" class="col-sm-3 control-label">Remarks(if any)</label>
+                    <label for="fees" class="col-sm-3 control-label">Fees Structure</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="status" id="status" placeholder="any remarks want to submit">
+                        <input type="text" class="form-control" name="fees" id="fees" placeholder="Detail Fees Structure">
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <label for="remarks" class="col-sm-3 control-label">Remarks(if any)</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="remarks" id="remarks" placeholder="any remarks want to submit">
                     </div>                    
                 </div>
 

@@ -51,18 +51,23 @@ class FeecollectionController extends Controller
     //Customize Functions...
     public function findStudentcr()
     {
-        
-        return view('admin.feecollection.findstudentcr');
+        $studentcrs = Studentcr::orderBy('clss_id')->orderBy('section_id')->orderBy('roll_no')->get();
+        return view('admin.feecollection.findstudentcr')
+            ->with('studentcrs', $studentcrs);
     }
 
     public function studentcr(Request $request)
     {
-        // dd($request);
         $studentcr   = Studentcr::find($request->studentcr_id);
-        $feeschedule = Feeschedule::where('clss_id', $studentcr->id)->get();
+
+        if($studentcr == null){
+            $request->session()->put('error','Wrong choice!!!, Enter Correct StudentCr_Id.');
+            return back();
+        }
+
+        $feeschedule = Feeschedule::where('clss_id', $studentcr->clss_id)->get();
         
         $stdcrFeeCollection = Feecollection::where('studentcr_id', $studentcr->id)->get();
-        // dd($stdcrFeeCollection);
 
         return view('admin.feecollection.feedetailsstudentcr')
             ->with('studentcr', $studentcr)

@@ -37,18 +37,19 @@ class FeescheduleController extends Controller
         // dd($request);
         $clsss = $request->clsss;
         $mnths = $request->months;
+        // $years = $requst->years;
         // print_r($clsss);
         foreach($clsss as $key => $clss){            
             foreach($mnths as $mnth){               
 
                 $feeschedule = Feeschedule::firstOrNew(['clss_id' => $clss,
                                                         'formonth_no' => $mnth,
-                                                        'foryear_no'  => 2019
+                                                        'foryear_no'  => $request->years
                                                         ]);
                 $feeschedule->name = $request->name;
                 $feeschedule->clss_id = $clss;
                 $feeschedule->formonth_no = $mnth;
-                $feeschedule->foryear_no = 2019;
+                $feeschedule->foryear_no = $request->years;
                 $feeschedule->total_fee = $request->total;
                 $feeschedule->feestructure = $request->fees;
                 $feeschedule->total_fee_discount = $request->disc;
@@ -78,7 +79,18 @@ class FeescheduleController extends Controller
 
     public function update(Request $request, Feeschedule $feeschedule)
     {
-        //
+        // dd($request);
+        $feeschedule->name = $request->name;
+        $feeschedule->clss_id = $request->clss;
+        $feeschedule->formonth_no = $request->months;
+        $feeschedule->foryear_no = $request->years;
+        $feeschedule->total_fee = $request->total;
+        $feeschedule->feestructure = $request->feestruc;
+        $feeschedule->total_fee_discount = $request->disc;
+        $feeschedule->status = $request->remarks;
+        $feeschedule->save();
+
+        return redirect()->route('feeschedules.index');
     }
 
     public function destroy(Feeschedule $feeschedule)

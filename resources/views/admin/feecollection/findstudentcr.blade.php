@@ -31,36 +31,54 @@
                         <button type="submit" class=" btn btn-primary">Search</button>                               
                     </div>
                 </div>	
-			{!! Form::close() !!}          
-
+            {!! Form::close() !!} 
+            
+            
+            @if( Session::has('error'))
+                <div class="alert alert-danger"><strong> {{ Session::get('error') }}</strong></div>
+                {{ Session::forget('error') }}
+            @endif
+        </div>
+        <div class="panel panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>CR ID</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>Roll No</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>                    
+                    @foreach($studentcrs as $studentcr)
+                    <tr>
+                        <td>{{ $studentcr->id }}</td>
+                        <td>{{ $studentcr->studentdb->name }}</td>
+                        <td>{{ $studentcr->clss->name }}</td>
+                        <td>{{ $studentcr->section->name }}</td>
+                        <td>{{ $studentcr->roll_no }}</td>
+                        <td>
+                            {{--  {!! Form::open(['method'=>'GET',   'route'=>['admin.feecollection.studentcr'], 'class'=>'form-horizontal']) !!}
+                                <input type="hidden" class="form-control" name="studentcr_id" value="{{ $studentcr->id }}">
+                                <button type="submit" class=" btn btn-success btn-sm">Check Out</button>                                   	
+                            {!! Form::close() !!}   --}}
+                            <a href="{{ route('admin.feecollection.studentcr', ['studentcr_id' => $studentcr->id]) }}" class="btn btn-success">Check Out</a>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
 
     </div>
 
         
 
-    <link rel="stylesheet" href="{{ url('bs337/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ url('bs337/select2/select2-bootstrap.css') }}">
-	<link rel="stylesheet" href="{{ url('bs337/select2/gh-pages.css') }}">
-
-    <script src="{{ url('bs337/select2/select2jquery.min.js') }}"></script>
-    <script src="{{ url('bs337/select2/select2.full.js') }}"></script>
-
-    <script>
-        $( ".select2-multiple" ).select2( {
-            theme: "bootstrap",
-            placeholder: "Select a State",
-            maximumSelectionSize: 6,
-            containerCssClass: ':all:'
-        } );
-
-        
-    </script>
-
 
 <script type="text/javascript">
 	$(document).ready(function(e){
-        $('.multipleSelect').fastselect();
+
 	});  
 </script>
 

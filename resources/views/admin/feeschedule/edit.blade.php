@@ -13,10 +13,10 @@
 
 @section('body-content-content')
 <link rel="stylesheet" href="{{ url('bs337/fastselect/fastselect.min.css') }}">
-    <h1>Fee-Schedule > Index Page</h1>
+    <h1>Fee-Schedule > Edit Page</h1>
     <div class="panel panel-default">
         <div class="panel panel-head">
-            <a class="btn btn-primary pull-right" href="{{ route('feeschedules.create') }}">New Schedule</a>
+            {{--  <a class="btn btn-primary pull-right" href="{{ route('feeschedules.create') }}">New Schedule</a>  --}}
         </div>
         <div class="panel-body">
             {!! Form::open(['method'=>'PUT',   'route'=>['feeschedules.update', $feeschedule], 'class'=>'form-horizontal']) !!}
@@ -28,9 +28,9 @@
                     </div>                    
                 </div>	
                 <div class="form-group">
-                    <label for="clsss" class="col-sm-3 control-label">For Class(es)</label>
+                    <label for="clss" class="col-sm-3 control-label">For Class</label>
                     <div class="col-sm-9">                        
-                        <select name="clsss" class="form-control">
+                        <select name="clss" class="form-control">
                             <option value=""></option>                            
                             @foreach($clsss as $clss)
                                 <option value="{{ $clss->id }}" {{ $clss->id == $feeschedule->clss_id ? 'selected':''}}>{{ $clss->name }}</option>
@@ -45,47 +45,52 @@
                             <select name="months" class="form-control">
                             <option value=""></option>
                                 <option value="January" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>January</option>                
-                                <option value="February" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>February</option>
-                                <option value="March" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>March</option>
-                                <option value="April" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>April</option>
-                                <option value="May" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>May</option>
-                                <option value="June" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>June</option>
-                                <option value="July" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>July</option>
-                                <option value="August" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>August</option>
-                                <option value="September" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>September</option>
-                                <option value="October" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>October</option>
-                                <option value="November" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>November</option>
-                                <option value="December" {{$feeschedule->formonth_no == "January" ? 'selected':''}}>December</option>
+                                <option value="February" {{$feeschedule->formonth_no == "February" ? 'selected':''}}>February</option>
+                                <option value="March" {{$feeschedule->formonth_no == "March" ? 'selected':''}}>March</option>
+                                <option value="April" {{$feeschedule->formonth_no == "April" ? 'selected':''}}>April</option>
+                                <option value="May" {{$feeschedule->formonth_no == "May" ? 'selected':''}}>May</option>
+                                <option value="June" {{$feeschedule->formonth_no == "June" ? 'selected':''}}>June</option>
+                                <option value="July" {{$feeschedule->formonth_no == "Jyly" ? 'selected':''}}>July</option>
+                                <option value="August" {{$feeschedule->formonth_no == "August" ? 'selected':''}}>August</option>
+                                <option value="September" {{$feeschedule->formonth_no == "September" ? 'selected':''}}>September</option>
+                                <option value="October" {{$feeschedule->formonth_no == "October" ? 'selected':''}}>October</option>
+                                <option value="November" {{$feeschedule->formonth_no == "November" ? 'selected':''}}>November</option>
+                                <option value="December" {{$feeschedule->formonth_no == "December" ? 'selected':''}}>December</option>
                             </select>
-                        </div>
-                        {{-- <input type="text" class="form-control" name="name" id="name" placeholder="Section Name"> --}}
+                        </div>                        
                     </div>                    
                 </div>
                 
-                {{-- <div class="form-group">
-                    <label for="fees" class="col-sm-3 control-label">Fees Structure</label>
+                <div class="form-group">
+                    <label for="years" class="col-sm-3 control-label">For Year</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="fees" id="fees" placeholder="Detail Fees Structure">
+                        <input type="text" class="form-control" name="years" id="years" value="{{ $feeschedule->foryear_no }}">
                     </div>                    
                 </div>
                 <div class="form-group">
                     <label for="total" class="col-sm-3 control-label">Total Amount</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="total" id="total" placeholder="Total Calculated Amount">
+                        <input type="text" class="form-control" name="total" id="total" value="{{ $feeschedule->total_fee }}">
                     </div>                    
                 </div>
                 <div class="form-group">
                     <label for="disc" class="col-sm-3 control-label">Discount(if any)</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="disc" id="disc" placeholder="any discount in percentage %" value="0">
+                        <input type="text" class="form-control" name="disc" id="disc" value="{{ $feeschedule->total_fee_discount }}">
                     </div>                    
                 </div>
                 <div class="form-group">
-                    <label for="status" class="col-sm-3 control-label">Remarks(if any)</label>
+                    <label for="feestruc" class="col-sm-3 control-label">Fee Structure</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="status" id="status" placeholder="any remarks want to submit">
+                        <input type="text" class="form-control" name="feestruc" id="festruc" value="{{ $feeschedule->feestructure }}">
                     </div>                    
-                </div> --}}
+                </div>
+                <div class="form-group">
+                    <label for="remarks" class="col-sm-3 control-label">Remarks(if any)</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="remarks" id="remarks" value="{{ $feeschedule->status }}">
+                    </div>                    
+                </div>
 
 
 
