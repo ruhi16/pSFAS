@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Observers;
+
 use App\Feecollection;
 
-class FecollectionObserver
+class FeecollectionObserver
 {
     public function created(Feecollection $feecollection){
         dd("new feecollection record inserted");
     }
 }
-
-

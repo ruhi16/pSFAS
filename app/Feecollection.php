@@ -2,16 +2,19 @@
 
 namespace App;
 
-use App\Events\FeecollectionEvent;
+use App\Events\FeecollectionCreatedEvent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Feecollection extends Model
 {
+    use Notifiable;
+
     protected $guarded = [];
 
-    protected $despatchesEvent = [
-        'created' => FeecollectionEvent::class,
-    ];
+    // protected $dispatchesEvents = [
+    //     'created' => FeecollectionCreatedEvent::class
+    // ];
 
     public function studentcr()
     {

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Feecollection;
+// use App\FeecollectionCreatedEvent;
 use App\Observers\FeecollectionObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Feecollection::observer(Feecollection::class);
+        Feecollection::observe(FeecollectionObserver::class);
     }
 
     /**
