@@ -18,7 +18,9 @@ class FeecollectionController extends Controller
     
     public function create()
     {
-        return view('admin.feecollection.create');            
+        // echo "from Feecollection\Create";
+        // dd($studentcr);
+        // return view('admin.feecollection.create');            
     }
 
     public function store(Request $request)
@@ -76,7 +78,15 @@ class FeecollectionController extends Controller
             ;
     }
 
-    public function studentcrCollection(Studentcr $studentcr, Feeschedule $feeschedule)
+    public function studentcrFeeDescription(Studentcr $studentcr, Feeschedule $feeschedule){
+        // echo "hello";
+        // dd($feeschedule);
+        return view('admin.feecollection.feedescriptionstudentcr')
+            ->with('studentcr', $studentcr)
+            ->with('feeschedule', $feeschedule);            
+    }
+
+    public function studentcrFeeCollection(Studentcr $studentcr, Feeschedule $feeschedule)
     {
         // dd($feeschedule);
         $feecollection = Feecollection::firstOrNew(['studentcr_id'  => $studentcr->id, 

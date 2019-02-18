@@ -84,8 +84,9 @@
                             @endforeach
                             @if( $stdcrFeeCollection->contains('feeschedule_id',$feesch->id) )
                                     Paid
-                            @else                                     
-                                    <a href="{{ route('admin.feecollection.collection',['studentcr'=>$studentcr, 'feeschedule'=>$feesch]) }}" class="btn btn-success">Pay Fees</a>
+                            @else
+                                         {{-- <a href="{{ route('feecollections.create',         ['studentcr'=>$studentcr, 'feeschedule'=>$feesch]) }}">Fee Collect</a> --}}
+                                    <a href="{{ route('admin.feecollection.description',['studentcr'=>$studentcr, 'feeschedule'=>$feesch]) }}" class="btn btn-success">Pay Fees</a>
                             @endif
                             {{-- {{ $stdcrFeeCollection->contains('feeschedule_id',$feesch->id) ? 'Paid' : 'Un-Paid' }} --}}
                         </td>

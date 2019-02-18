@@ -51,8 +51,8 @@
                             <td>{{ $feecollection->user_id ?? '' }}</td>
                             <td>{{ $feecollection->status ?? '' }}</td>
                             <td>
-                                <a href="{{ route('feecollections.show', ['feecollection' => $feecollection]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
-                                <a href="{{ route('feecollections.edit', ['feecollection' => $feecollection]) }}" class="btn btn-info"><spna class="glyphicon glyphicon-edit"></spna></a>
+                                <a href="{{ route('feecollections.show', ['feecollection' => $feecollection]) }}" class="btn btn-success"><spna class="glyphicon glyphicon-eye-open"></spna></a>
+                                {{-- <a href="{{ route('feecollections.edit', ['feecollection' => $feecollection]) }}" class="btn btn-info"><spna class="glyphicon glyphicon-edit"></spna></a> --}}
                                 
                             </td>
                         </tr>
