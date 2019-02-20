@@ -12,6 +12,10 @@ class Feecollection extends Model
 
     protected $guarded = [];
 
+    public function getTableColumns()
+    {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
     // protected $dispatchesEvents = [
     //     'created' => FeecollectionCreatedEvent::class
     // ];

@@ -11,6 +11,12 @@
 |
 */
 
+use App\Feecollection;
+Route::get('/columns',function(){
+    $table = new Feecollection;
+    // dd($table->getTableColumns());
+});
+
 Route::get('/', function () {
     return view('admin.adminHome');
     // return view('admin.layouts.baselayout');
