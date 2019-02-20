@@ -11,6 +11,10 @@
 |
 */
 
+// use Illuminate\Foundation\Testing\WithoutMiddleware;
+// use Illuminate\Foundation\Testing\DatabaseMigrations;
+// use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 Route::get('/', function () {
     return view('admin.adminHome');
     // return view('admin.layouts.baselayout');
@@ -56,6 +60,18 @@ Route::get('/vue-app', 'HomeController@vueApp');
 
 
 // });
+
+
+
+Route::get('/tables', function(){
+    // $tables = DB::select("SELECT table_schema,table_name, table_catalog FROM information_schema.tables WHERE table_catalog = 'YOUR TABLE CATALOG HERE' AND table_type = 'BASE TABLE' AND table_schema = 'public' ORDER BY table_name;");
+    $tables = $tables = DB::select("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;");
+    foreach($tables as $table)
+    {
+        echo $table->name."<br>";
+        // print_r($table);//->Tables_in_db_name;
+    }
+});
 
 Route::resource('schools', 'SchoolController');
 Route::resource('sessions', 'SessionController');

@@ -28,7 +28,19 @@
                 </ul>
               </li>
             </ul>            
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">              
+              <li>
+                {{-- <form class="navbar-form" role="search"> --}}
+                  {!! Form::open(['method'=>'GET',   'route'=>['admin.feecollection.studentcr'], 'class'=>'navbar-form']) !!}
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Enter Student_Cr Id" name="studentcr_id" id="studentcr_id">
+                      <div class="input-group-btn">
+                          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                  </div>
+                {{-- </form> --}}
+                {!! Form::close() !!} 
+              </li>
               <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
               <li><a href="../navbar-static-top/">Static top</a></li>
               <li><a href="../navbar-fixed-top/">Fixed top</a></li>
