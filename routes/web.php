@@ -11,9 +11,17 @@
 |
 */
 
+<<<<<<< HEAD
 // use Illuminate\Foundation\Testing\WithoutMiddleware;
 // use Illuminate\Foundation\Testing\DatabaseMigrations;
 // use Illuminate\Foundation\Testing\DatabaseTransactions;
+=======
+use App\Feecollection;
+Route::get('/columns',function(){
+    $table = new Feecollection;
+    // dd($table->getTableColumns());
+});
+>>>>>>> a3c30e35ec5472dc082d0ec19f2b80c0a00dfaed
 
 Route::get('/', function () {
     return view('admin.adminHome');
