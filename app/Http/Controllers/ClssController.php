@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Clss;
+use App\Session;
 use Illuminate\Http\Request;
 
 class ClssController extends Controller
@@ -22,10 +23,12 @@ class ClssController extends Controller
     public function store(Request $request)
     {
         $clss = new Clss;
+        $session = Session::where('status', 'Active')->first();
         if( $clss ){
             $clss->name = $request->name;
             $clss->next_clss_id = $request->next_clss_id;
             $clss->status = $request->status;
+            $clss->session_id = $session->id;
             $clss->save();
         }
         return redirect()->route('clsss.index');

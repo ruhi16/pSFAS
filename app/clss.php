@@ -2,19 +2,20 @@
 
 namespace App;
 
+use App\Session;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 class Clss extends Model
 {
     protected $guarded = [];
-
+    
     protected static function boot()
     {
         parent::boot();
 
-        static::addGlobalScope('next_clss_id', function (Builder $builder) {
-            $builder->where('next_clss_id', '>', 2);
+        static::addGlobalScope('session_id', function (Builder $builder) {
+            $builder->where('session_id', Session::where('status', 'Active')->first()->id );
         });
     }
 
@@ -38,5 +39,9 @@ class Clss extends Model
     public function clsssections()
     {
         return $this->hasMany('App\Clsssection');
+    }
+
+    public function session(){
+        return $this->belongsTo('App\session');
     }
 }

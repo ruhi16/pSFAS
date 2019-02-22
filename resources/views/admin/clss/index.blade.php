@@ -18,10 +18,11 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Next Class</th>
-                <th>Status</th>                
+                <th>Status</th> 
+                <th>Session</th>                                
                 <th>
                     Action
-                    <a href="{{ route('clsss.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                    <a href="{{ route('clsss.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>
                 </th>
             </tr>
         </thead>
@@ -31,7 +32,8 @@
                 <td>{{ $clss->id }}</td>
                 <td>{{ $clss->name }}</td>
                 <td>{{ $clss->next_clss_id }}</td>
-                <td>{{ $clss->status }}</td>                
+                <td>{{ $clss->status }}</td>  
+                <td>{{ $clss->session->name }}</td>
                 <td>
                     <a href="{{ route('clsss.show', ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('clsss.edit', ['clss' => $clss]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>

@@ -27,7 +27,7 @@
 					</div>
 				</div>				
 				<div class="form-group">
-					<label for="next_clss_id" class="col-sm-3 control-label">Next Class Name</label>
+					<label for="next_clss_id" class="col-sm-3 control-label">Next Class Id</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" name="next_clss_id" id="stdate" placeholder="Next Class Name">
 					</div>					
