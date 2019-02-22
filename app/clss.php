@@ -3,10 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Clss extends Model
 {
     protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('next_clss_id', function (Builder $builder) {
+            $builder->where('next_clss_id', '>', 2);
+        });
+    }
+
+
 
     public function studentcrs()
     {
