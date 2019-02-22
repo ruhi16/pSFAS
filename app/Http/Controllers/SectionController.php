@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Section;
+use App\Session;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -26,6 +27,7 @@ class SectionController extends Controller
         if( $section ){
             $section->name = $request->name;
             $section->status = $request->status;
+            $section->session_id = Session::where('status', 'Active')->first()->id;
             $section->save();
         }
         return redirect()->route('sections.index');

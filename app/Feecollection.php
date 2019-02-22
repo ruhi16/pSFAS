@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Session;
+
 use App\Events\FeecollectionCreatedEvent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 
 class Feecollection extends Model
@@ -11,6 +14,16 @@ class Feecollection extends Model
     use Notifiable;
 
     protected $guarded = [];
+    
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('session_id', function (Builder $builder) {
+            $builder->where('session_id', Session::where('status', 'Active')->first()->id);
+        });
+    }
+
 
     public function getTableColumns()
     {
@@ -28,5 +41,9 @@ class Feecollection extends Model
     public function feeschedule()
     {
         return $this->belongsTo('App\Feeschedule');
+    }
+
+    public function session(){
+        return $this->belongsTo('App\Session');
     }
 }

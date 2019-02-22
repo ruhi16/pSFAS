@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Studentdb;
 use App\Studentcr;
 use App\Clsssection;
+use App\Session;
 use Illuminate\Http\Request;
 
 class StudentcrController extends Controller
@@ -39,6 +40,7 @@ class StudentcrController extends Controller
         $studentcr->clss_id = $studentdb->adm_clss_id;
         $studentcr->section_id = $request->stdsection;
         $studentcr->status = "Active";
+        $studentcr->session_id = Session::where('status', 'Active')->first()->id;
         $studentcr->save();
 
         return redirect()->route('studentcrs.index');
@@ -46,23 +48,25 @@ class StudentcrController extends Controller
     public function show(Studentcr $studentcr)
     {
         echo "studentcr show";
-        dd($studentcr);
+        // dd($studentcr);
+        return redirect()->route('studentcrs.index');
     }
 
     public function edit(Studentcr $studentcr)
     {
         echo "studentcr edit";
-        dd($studentcr);
+        // dd($studentcr);
+        return redirect()->route('studentcrs.index');
     }
 
     public function update(Request $request, Studentcr $studentcr)
     {
-        
+        return redirect()->route('studentcrs.index');
     }
 
     public function destroy(Studentcr $studentcr)
     {
-        //
+        return redirect()->route('studentcrs.index');
     }
 
     public function issueRoll(Studentcr $studentcr)

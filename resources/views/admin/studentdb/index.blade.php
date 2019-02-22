@@ -19,7 +19,8 @@
                 <th>Name</th>
                 <th>Class</th>
                 <th>Section</th>
-                <th>Status</th>                
+                <th>Status</th> 
+                <th>Session</th>               
                 <th>
                     Action
                     <a href="{{ route('studentdbs.create') }}" class="btn btn-success pull-right">New Student Admission</a>
@@ -34,6 +35,7 @@
                 <td>{{ $studentdb->adm_clss_id }}</td>
                 <td>Section</td>
                 <td>{{ $studentdb->status }}</td>
+                <td>{{ $studentdb->session->name }}</td>
                 <td>
                     <a href="{{ route('studentdbs.show',    ['studentdb' => $studentdb]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('studentdbs.edit',    ['studentdb' => $studentdb]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>

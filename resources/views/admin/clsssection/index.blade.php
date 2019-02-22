@@ -17,7 +17,8 @@
             <tr>
                 <th>ID</th>
                 <th>Class Name</th>                
-                <th>Active Sections</th>                
+                <th>Active Sections</th> 
+                <th>Session</th>               
                 <th>
                     Action
                     {{-- <a href="{{ route('sections.index') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a> --}}
@@ -35,6 +36,7 @@
                             {{ $clsssection->section->name }},
                         @endforeach
                     </td>
+                    <td>{{ $clss->session->name }}</td>
                     <td>
                         <a href="{{ route('admin.addClsssections',    ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-plus"></spna></a>
                         <a href="{{ route('admin.delClsssections',    ['clss' => $clss]) }}" class="btn btn-danger"><spna class="glyphicon glyphicon-minus"></spna></a>

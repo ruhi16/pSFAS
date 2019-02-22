@@ -23,12 +23,12 @@ class ClssController extends Controller
     public function store(Request $request)
     {
         $clss = new Clss;
-        $session = Session::where('status', 'Active')->first();
+        
         if( $clss ){
             $clss->name = $request->name;
             $clss->next_clss_id = $request->next_clss_id;
             $clss->status = $request->status;
-            $clss->session_id = $session->id;
+            $clss->session_id = Session::where('status', 'Active')->first()->id;
             $clss->save();
         }
         return redirect()->route('clsss.index');
@@ -51,6 +51,7 @@ class ClssController extends Controller
         $clsss->name = $request->name;
         $clsss->next_clss_id = $request->next_clss_id;
         $clsss->status = $request->status;
+        $clsss->session_id = Session::where('status', 'Active')->first()->id;
         $clsss->save();
         return redirect()->route('clsss.index');
     }

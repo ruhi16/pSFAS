@@ -17,7 +17,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>                
-                <th>Status</th>                
+                <th>Status</th>
+                <th>Session</th>                
                 <th>
                     Action
                     <a href="{{ route('sections.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a>
@@ -29,7 +30,8 @@
             <tr>
                 <td>{{ $section->id }}</td>
                 <td>{{ $section->name }}</td>                
-                <td>{{ $section->status }}</td>                
+                <td>{{ $section->status }}</td>      
+                <td>{{ $section->session->name }}</td>
                 <td>
                     <a href="{{ route('sections.show',    ['section' => $section]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('sections.edit',    ['section' => $section]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>

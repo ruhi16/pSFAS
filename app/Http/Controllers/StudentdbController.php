@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Clss;
 use App\Studentdb;
+use App\Session;
 use Illuminate\Http\Request;
 
 class StudentdbController extends Controller
@@ -32,6 +33,7 @@ class StudentdbController extends Controller
         $studentdb->fname = $request->fname;
         $studentdb->adm_clss_id = $request->clss;
         $studentdb->status = $request->status;
+        $studentdb->session_id = Session::where('status','Active')->first()->id;
         $studentdb->save();
 
         return redirect()->route('studentdbs.index');

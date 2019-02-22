@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Clsssection;
+use App\Session;
 use App\Clss;
 use App\Section;
+use App\Clsssection;
 use Illuminate\Http\Request;
+
 
 class ClsssectionController extends Controller
 {
@@ -26,6 +28,7 @@ class ClsssectionController extends Controller
             $clsssection->clss_id = $clsss->id;
             $clsssection->section_id = $section->id;
             $clsssection->status = "Active";
+            $clsssection->session_id = Session::where('status', 'Active')->first()->id;
             $clsssection->save();
         }
         

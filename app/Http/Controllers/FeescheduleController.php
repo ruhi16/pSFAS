@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feeschedule;
 use App\Clss;
+use App\Session;
 use Illuminate\Http\Request;
 
 class FeescheduleController extends Controller
@@ -53,7 +54,8 @@ class FeescheduleController extends Controller
                 $feeschedule->total_fee = $request->total;
                 $feeschedule->feestructure = $request->fees;
                 $feeschedule->total_fee_discount = $request->disc;
-                $feeschedule->status = $request->remarks;                
+                $feeschedule->status = $request->remarks;    
+                $feeschedule->session_id = Session::where('status','Active')->first()->id;                            
                 $feeschedule->save();
             }            
         }
@@ -88,6 +90,7 @@ class FeescheduleController extends Controller
         $feeschedule->feestructure = $request->feestruc;
         $feeschedule->total_fee_discount = $request->disc;
         $feeschedule->status = $request->remarks;
+        $feeschedule->session_id = Session::where('status','Active')->frist()->id;
         $feeschedule->save();
 
         return redirect()->route('feeschedules.index');
