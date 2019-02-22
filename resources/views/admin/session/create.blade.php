@@ -23,7 +23,7 @@
 					</div>
 					<label for="status" class="col-sm-1 control-label">Status</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" name="status" id="status" placeholder="Status">
+						<input type="text" class="form-control" name="status" id="status" placeholder="Status"  value="In-Active" readonly>
 					</div>
 				</div>				
 				<div class="form-group">

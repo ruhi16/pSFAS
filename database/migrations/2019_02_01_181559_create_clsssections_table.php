@@ -18,6 +18,7 @@ class CreateClsssectionsTable extends Migration
             $table->integer('clss_id')->nullable();
             $table->integer('section_id')->nullable();
             $table->string('status')->nullable();
+            $table->integer('session_id');
             $table->timestamps();
         });
     }

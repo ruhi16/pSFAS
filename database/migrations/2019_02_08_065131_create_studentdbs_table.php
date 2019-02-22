@@ -19,6 +19,7 @@ class CreateStudentdbsTable extends Migration
             $table->string('fname')->nullable();
             $table->integer('adm_clss_id');
             $table->string('status')->nullable();
+            $table->integer('session_id');
             $table->timestamps();
         });
     }

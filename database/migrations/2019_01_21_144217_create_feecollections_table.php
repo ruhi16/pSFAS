@@ -25,6 +25,7 @@ class CreateFeecollectionsTable extends Migration
             $table->string('fee_discount_by')->nullable();
             $table->integer('user_id')->nullable();
             $table->string('status')->nullable();
+            $table->integer('session_id');
             $table->timestamps();
         });
     }

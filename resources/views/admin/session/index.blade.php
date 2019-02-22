@@ -18,13 +18,13 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Start Date</th>
-                <th>End Date</th>
-                <th>Status</th>
+                <th>End Date</th>                
                 <th>Prev Session</th>
                 <th>Next Session</th> 
+                <th>Status</th>
                 <th>
                     Action
-                    <a href="{{ route('sessions.create') }}" class="btn btn-success"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                    <a href="{{ route('sessions.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>
                 </th>
             </tr>
         </thead>
@@ -34,10 +34,15 @@
                 <td>{{ $session->id }}</td>
                 <td>{{ $session->name }}</td>
                 <td>{{ $session->stdate }}</td>
-                <td>{{ $session->endate }}</td>
-                <td>{{ $session->status }}</td>
+                <td>{{ $session->endate }}</td>                
                 <td>{{ $session->prevsession_id }}</td>
-                <td>{{ $session->nextsession_id }}</td>                
+                <td>{{ $session->nextsession_id }}</td>
+                <td>
+                    {{ $session->status }}
+                    @if( $session->status != 'Active')
+                        <a href="{{ route('admin.session.setActive',    ['session' => $session]) }}" class="btn btn-info btn-sm pull-right">Active</a>
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('sessions.show',    ['session' => $session]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('sessions.edit',    ['session' => $session]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>

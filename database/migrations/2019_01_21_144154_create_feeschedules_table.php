@@ -23,6 +23,7 @@ class CreateFeeschedulesTable extends Migration
             $table->string('feestructure')->nullable();
             $table->integer('total_fee_discount')->nullable();
             $table->string('status')->nullable();
+            $table->integer('session_id');
             $table->timestamps();
         });
     }

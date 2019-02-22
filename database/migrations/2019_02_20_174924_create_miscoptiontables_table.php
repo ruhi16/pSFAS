@@ -17,6 +17,7 @@ class CreateMiscoptiontablesTable extends Migration
             $table->increments('id');
             $table->string('table_name');
             $table->string('field_name');
+            $table->integer('session_id');
             $table->timestamps();
         });
     }

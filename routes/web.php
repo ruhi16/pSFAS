@@ -76,7 +76,10 @@ Route::get('/tables', function(){
 });
 
 Route::resource('schools', 'SchoolController');
+
+Route::get('/setSessionActive/{session}', 'SessionController@setSessionActive')->name('admin.session.setActive');
 Route::resource('sessions', 'SessionController');
+
 Route::resource('clsss', 'ClssController');
 Route::resource('sections', 'SectionController');
 
