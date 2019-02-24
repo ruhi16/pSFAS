@@ -11,6 +11,8 @@
 @endsection
 
 @section('body-content-content')
+    {{ Breadcrumbs::render('clsss') }}
+
     <h1>Class > Index Page</h1>
     <table class="table table-bordered">
         <thead>

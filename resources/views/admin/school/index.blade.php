@@ -11,6 +11,8 @@
 @endsection
 
 @section('body-content-content')
+    {{ Breadcrumbs::render('schools') }}
+    
     <h1>School/Index Page</h1>
     <table class="table table-bordered">
         <thead>
@@ -25,7 +27,7 @@
                 <th>Pin</th>
                 <th>
                     Action
-                    <a href="{{ route('schools.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-pencil"></spna></a>
+                    <a href="{{ route('schools.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>
                 </th>
             </tr>
         </thead>

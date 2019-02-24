@@ -10,7 +10,9 @@
 
 @endsection
 
+
 @section('body-content-content')
+    {{ Breadcrumbs::render('sessions') }}
     <h1>Session/Index Page</h1>
     <table class="table table-bordered">
         <thead>

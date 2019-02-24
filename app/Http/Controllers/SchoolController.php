@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\School;
+use App\Http\Requests\SchoolRequest;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {   
     public function index() {
-        $schools = School::all();
+        $schools = School::all();        
         return view('admin.school.index')
             ->with('schools', $schools);          
     }
@@ -16,7 +17,7 @@ class SchoolController extends Controller
     public function create(){
         return view('admin.school.create');
     }
-    public function store(Request $request){
+    public function store(SchoolRequest $request){
         $school = new School;
         if( $school ){
             $school->name = $request->name;
@@ -41,7 +42,7 @@ class SchoolController extends Controller
             ->with('school', $school);
     }
 
-    public function update(Request $request, School $school){
+    public function update(SchoolRequest $request, School $school){
         $school->name = $request->name;
         $school->vill = $request->vill;
         $school->post = $request->post;
