@@ -101,3 +101,6 @@ Route::resource('feecollections', 'FeecollectionController');
 
 Route::post('/studentcrs/{studentcr}/issueRoll', 'StudentcrController@issueRoll')->name('admin.studentcr.issueRoll');
 Route::resource('studentcrs', 'StudentcrController');
+
+
+Route::resource( 'miscoptiontables', 'MiscoptiontableController');

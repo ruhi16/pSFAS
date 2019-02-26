@@ -38,6 +38,7 @@
 	<a href="{{ route('feecollections.index') }}" class="btn btn-info">Fees Collection </a>
 	<br><br>
 
+	<a href="{{ route('miscoptiontables.index') }}" class="btn btn-warning">Misc Table Options </a>
 	@include('admin.layouts.content')
 
 

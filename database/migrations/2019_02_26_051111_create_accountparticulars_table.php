@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMiscoptiontablesTable extends Migration
+class CreateAccountparticularsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateMiscoptiontablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('miscoptiontables', function (Blueprint $table) {
+        Schema::create('accountparticulars', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('table_name');
-            $table->string('field_name');
-            $table->string('option');
+            $table->string('particular');
+            $table->string('acctypye');
             $table->string('status');
             $table->string('remarks');
             $table->integer('session_id');
@@ -32,6 +31,6 @@ class CreateMiscoptiontablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('miscoptiontables');
+        Schema::dropIfExists('accountparticulars');
     }
 }
