@@ -18,8 +18,8 @@ class CreateMiscoptiontablesTable extends Migration
             $table->string('table_name');
             $table->string('field_name');
             $table->string('option');
-            $table->string('status');
-            $table->string('remarks');
+            $table->string('status')->nullable()->default(null);
+            $table->string('remarks')->nullable()->default(null);
             $table->integer('session_id');
             $table->timestamps();
         });

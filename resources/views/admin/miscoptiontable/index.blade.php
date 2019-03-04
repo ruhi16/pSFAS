@@ -30,30 +30,26 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
-            @foreach($tabledatas as $key => $tabledata)
-                <strong>{{ $key }}: </strong>
-                @foreach($tabledata as $column)
-                    {{ $column }},
-                @endforeach
-                <br>
-            @endforeach
-            {{--  @foreach($clsss as $clss)
+        <tbody>           
+            @foreach($miscoptiontables as $miscoptiontable)
             <tr>
-                <td>{{ $clss->id }}</td>
-                <td>{{ $clss->name }}</td>
-                <td>{{ $clss->next_clss_id }}</td>
-                <td>{{ $clss->status }}</td>  
-                <td>{{ $clss->session->name }}</td>
+                <td>{{ $miscoptiontable->id }}</td>
+                <td>{{ $miscoptiontable->table_name }}</td>
+                <td>{{ $miscoptiontable->field_name }}</td>
+                <td>{{ $miscoptiontable->option }}</td>  
+                <td>{{ $miscoptiontable->status }}</td>
+                <td>{{ $miscoptiontable->remarks }}</td>
+                <td>{{ $miscoptiontable->session_id }}</td>
                 <td>
-                    <a href="{{ route('clsss.show', ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
-                    <a href="{{ route('clsss.edit', ['clss' => $clss]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
-                    {!! Form::open(['method'=>'DELETE', 'route'=>['clsss.destroy', $clss], 'style'=>'display:inline']) !!}                                        
-                        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
+                    <a href="{{ route('miscoptiontables.show', ['miscoptiontable' => $miscoptiontable]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
+                    <a href="{{ route('miscoptiontables.edit', ['miscoptiontable' => $miscoptiontable]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
+                    
+                    {!! Form::open(['method'=>'DELETE', 'route'=>['miscoptiontables.destroy', $miscoptiontable], 'style'=>'display:inline']) !!}
+                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                     {{ Form::close() }}
                 </td>
             </tr>
-            @endforeach  --}}
+            @endforeach
         </tbody>
     </table>
 

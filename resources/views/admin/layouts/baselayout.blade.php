@@ -3,6 +3,7 @@
 <head>
     <title>@yield('title')</title>
     @include('admin.layouts.supports')
+    @include('admin.layouts.supportScripts')
 </head>
 
 <body>
@@ -26,8 +27,7 @@
         </div>
     </div>
 
-
-    @include('admin.layouts.supportScripts')
+    
     @section('footer')
 
         <div class="container">

@@ -1,5 +1,5 @@
 @extends('admin.layouts.baselayout')
-@section('title','School Index')
+@section('title','Class Index')
 
 @section('header')
 	@include('admin.layouts.navbar')
@@ -11,51 +11,42 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Class > Show Page</h1>
+    {{--  {{ Breadcrumbs::render('clsss') }}  --}}
+
+    <h1>Misc. table-options > Index Page</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Class Name</th>
+                <th>Table</th>
+                <th>Field</th>
+                <th>Particular</th>
                 <th>Status</th>
-                <th>Next Class Name</th>                
+                <th>Remarks</th> 
+                <th>Session</th>                                
                 <th>
                     Action
-                    {{-- <a href="{{ route('clsss.create') }}" class="btn btn-success"><spna class="glyphicon glyphicon-pencil"></spna></a> --}}
+                    {{--  <a href="{{ route('miscoptiontables.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>  --}}
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>           
+            {{--  @foreach($miscoptiontables as $miscoptiontable)  --}}
             <tr>
-                <td>{{ $clss->id }}</td>
-                <td>{{ $clss->name }}</td>
-                <td>{{ $clss->status }}</td>
-                <td>{{ $clss->next_clss_id }}</td>                
+                <td>{{ $miscoptiontable->id }}</td>
+                <td>{{ $miscoptiontable->table_name }}</td>
+                <td>{{ $miscoptiontable->field_name }}</td>
+                <td>{{ $miscoptiontable->option }}</td>  
+                <td>{{ $miscoptiontable->status }}</td>
+                <td>{{ $miscoptiontable->remarks }}</td>
+                <td>{{ $miscoptiontable->session_id }}</td>
                 <td>
-                    <a href="{{ route('clsss.index') }}" class="btn btn-primary">Back</a><br>
-                    {{--  <a href="{{ route('sessions.show',    ['session' => $session]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>  --}}
-                    {{--  <a href="{{ route('sessions.edit',    ['session' => $session]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>  --}}
-                    {{--  {!! Form::open(['method'=>'DELETE', 'route'=>['sessions.destroy', $session], 'style'=>'display:inline']) !!}                                        
-                        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
-                    {{ Form::close() }}  --}}
+                    <a href="{{ route('miscoptiontables.index') }}" class="btn btn-primary">Back</a>                    
                 </td>
             </tr>
+            {{--  @endforeach  --}}
         </tbody>
     </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
