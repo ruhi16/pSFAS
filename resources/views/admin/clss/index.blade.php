@@ -12,8 +12,15 @@
 
 @section('body-content-content')
     {{ Breadcrumbs::render('clsss') }}
-
     <h1>Class > Index Page</h1>
+
+    @if( $errors->any() ) 		
+		@foreach($errors->all() as $error)
+			<div class="alert alert-danger">
+                <strong>Danger!</strong> {{ $error }}
+            </div>
+		@endforeach		
+	@endif
     <table class="table table-bordered">
         <thead>
             <tr>

@@ -23,7 +23,8 @@
                 <th>Session</th>               
                 <th>
                     Action
-                    <a href="{{ route('studentdbs.create') }}" class="btn btn-success pull-right">New Student Admission</a>
+                    {{--  <a href="{{ route('studentdbs.create') }}" class="btn btn-success pull-right">New Student Admission</a>  --}}
+                    <a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-success pull-right">New Student Admission</a>
                 </th>
             </tr>
         </thead>

@@ -11,7 +11,13 @@
 @endsection
 
 @section('body-content-content')
-    
+	
+	@if( Session::has('error') )
+		<div class="alert alert-danger">
+			<strong>Danger!</strong>	{{ Session::get('error') }}
+			{{ Session::forget('error') }}
+		</div>
+	@endif
     <br>
 	<a href="{{ route('schools.index') }}" class="btn btn-warning">School</a>
 	{{-- <a href="{{ url('/schools')}}">Index</a><br> --}}
@@ -28,17 +34,21 @@
 
 	<a href="{{ route('studentcrs.index') }}" class="btn btn-success">StudentCR Index</a>
 	<br><br>
-	<a href="{{ route('admin.clsssections') }}" class="btn btn-primary">Class-Section</a>
+	<a href="{{ route('admin.clsssections') }}" class="btn btn-info">Class-Section</a>
 	{{-- <a href="{{ url('/sessions')}}">Session</a><br> --}}
 
 	<a href="{{ route('feeschedules.index') }}" class="btn btn-warning">Fees Schedules</a><br>
 	
 	<br>
 	
-	<a href="{{ route('feecollections.index') }}" class="btn btn-info">Fees Collection </a>
+	<a href="{{ route('feecollections.index') }}" class="btn btn-danger">Fees Collection </a>
 	<br><br>
 
 	<a href="{{ route('miscoptiontables.index') }}" class="btn btn-warning">Misc Table Options </a>
+
+	<a href="{{ route('accountparticulars.index') }}" class="btn btn-success">Account Particulars</a>
+
+	<br>
 	@include('admin.layouts.content')
 
 

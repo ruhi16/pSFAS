@@ -8,10 +8,12 @@ use App\Session;
 use Illuminate\Http\Request;
 
 class StudentdbController extends Controller
-{
-    
+{    
     public function index()
     {
+        if( !Session::where('status', 'Active')->first() ){
+             return back()->with(['error' => 'Session is Not set to Active']);                
+        }
         $studentdbs = Studentdb::all();
         return view('admin.studentdb.index')
             ->with('studentdbs', $studentdbs);
@@ -23,6 +25,120 @@ class StudentdbController extends Controller
         $clsss = Clss::all();
         return view('admin.studentdb.create')
             ->with('clsss', $clsss);
+    }
+
+
+
+
+    public function createPage01(){
+
+        return view('admin.studentdb.createpage01');
+    }
+    public function createpage01Store(Request $request){
+        // echo "createpage01 store";
+        
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'fname' => 'required',
+            'gender' => 'required',
+            'adhaar' => 'required',            
+        ]);
+
+        if(empty($request->session()->get('studentdb'))){
+            // echo "empty session";
+            $studentdb = new Studentdb();
+            $studentdb->fill($validatedData);                
+            $request->session()->put('studentdb', $studentdb);             
+        }else{
+            // echo "filled session";
+            $studentdb = $request->session()->get('studentdb');
+            $studentdb->fill($validatedData);
+            $request->session()->put('studentdb', $studentdb);             
+        }
+        echo "Page 01 Completed";
+        return view('admin.studentdb.createpage02');
+    }
+
+
+
+
+
+
+    public function createPage02(Request $request){
+
+        return view('admin.studentdb.createpage02');
+    }
+
+    public function createpage02Store(Request $request){
+    
+        echo "createpage 02 store";
+        $validatedData = $request->validate([
+            'vill' => 'required',
+            'post' => 'required',
+            'pols' => 'required',
+            'dist' => 'required',
+        ]);
+        if( empty($request->session()->get('studentdb')) ){
+            echo "empty session";
+            $studentdb = new Studentdb();
+            $studentdb->fill($validatedData);
+            $request->session()->put('studentdb', $studentdb);
+        }else{
+            echo "filled session";
+            $studentdb = $request->session()->get('studentdb');
+            $studentdb->fill($validatedData);
+            $studentdb->session_id = Session::where('status', 'Active')->first()->id;
+            $studentdb->save();
+            $request->session()->put('studentdb', $studentdb);
+        }
+        echo "Page 01 Completed";
+        // dd($request);
+        //return view('admin.studentdb.createpage02');
+    }
+
+
+
+
+
+
+
+
+
+
+    public function createPage03(){
+
+        return view('admin.studentdb.createpage03');
+    }
+    public function createPage04(){
+
+        return view('admin.studentdb.createpage04');
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public function createPage05(){
+
+        return view('admin.studentdb.createpage05');
+    }
+    
+
+
+
+
+
+
+
+    public function createPage06(){
+
+        return view('admin.studentdb.createpage06');
     }
 
     

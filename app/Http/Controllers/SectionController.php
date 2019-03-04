@@ -10,6 +10,9 @@ class SectionController extends Controller
 {    
     public function index()
     {
+        if( !Session::where('status', 'Active')->first()){
+             return back()->with(['error' => 'Session is Not set to Active']);                
+        }
         $sections = Section::all();
         return view('admin.section.index')
             ->with('sections', $sections);

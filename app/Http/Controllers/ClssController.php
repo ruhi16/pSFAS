@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class ClssController extends Controller
 {  
     public function index()
-    {
-        $clsss = Clss::all();
-        return view('admin.clss.index')
-            ->with('clsss', $clsss);
+    {        
+        if( ! Session::where('status', 'Active')->first() ){
+            return back()->with(['error' => 'Session is Not set to Active']);                
+        }
+        $clsss = Clss::all();        
+        return view('admin.clss.index')->with('clsss', $clsss);
     }
     
     public function create()

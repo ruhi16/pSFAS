@@ -17,8 +17,8 @@ class CreateAccountparticularsTable extends Migration
             $table->increments('id');
             $table->string('particular');
             $table->string('acctypye');
-            $table->string('status');
-            $table->string('remarks');
+            $table->string('status')->nullable()->default(null);
+            $table->string('remarks')->nullable()->default(null);
             $table->integer('session_id');
             $table->timestamps();
         });

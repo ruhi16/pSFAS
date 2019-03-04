@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
+    protected $guarded = ['id'];
+
+    
+
     public function clsss(){
-        return $this->hasMany('App\Clss');        
+        return $this->hasMany('App\Clss');//->withDefault(['error' => 'Session is Not set to Active']);        
     }
 
     public function sections(){

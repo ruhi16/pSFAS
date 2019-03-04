@@ -87,7 +87,27 @@ Route::get('/index',              'ClsssectionController@index')     ->name('adm
 Route::get('/addSection/{clsss}', 'ClsssectionController@addSection')->name('admin.addClsssections');
 Route::get('/delSection/{clsss}', 'ClsssectionController@delSection')->name('admin.delClsssections');
 
+
+
+
+
+Route::get ('/studentdbpage01','StudentdbController@createpage01')->name('admin.studentdb.createpage01');
+Route::post('/studentdbpage01','StudentdbController@createpage01Store')->name('admin.studentdb.createpage01.store');
+
+Route::get ('/studentdbpage02','StudentdbController@createpage02')->name('admin.studentdb.createpage02');
+Route::post('/studentdbpage02','StudentdbController@createpage02Store')->name('admin.studentdb.createpage02.store');
+
+Route::get('/studentdbpage03','StudentdbController@createpage03')->name('admin.studentdb.createpage03');
+Route::get('/studentdbpage04','StudentdbController@createpage04')->name('admin.studentdb.createpage04');
+Route::get('/studentdbpage05','StudentdbController@createpage05')->name('admin.studentdb.createpage05');
+Route::get('/studentdbpage06','StudentdbController@createpage06')->name('admin.studentdb.createpage06');
 Route::resource('studentdbs', 'StudentdbController');
+
+
+
+
+
+
 Route::resource('feeschedules', 'FeescheduleController');
 
 Route::get('/feecollections/findStudentcr', 'FeecollectionController@findStudentcr')->name('admin.feecollection.findStudentcr');
@@ -104,3 +124,5 @@ Route::resource('studentcrs', 'StudentcrController');
 
 
 Route::resource( 'miscoptiontables', 'MiscoptiontableController');
+
+Route::resource('accountparticulars', 'AccountparticularController');

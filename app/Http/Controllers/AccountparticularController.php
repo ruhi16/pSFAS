@@ -6,80 +6,40 @@ use App\Accountparticular;
 use Illuminate\Http\Request;
 
 class AccountparticularController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+{    
     public function index()
     {
-        //
+        echo "accountparticular index";
+        return view('admin.accountparticular.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        echo "accountparticular create";
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        echo "accountparticular store";
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Accountparticular  $accountparticular
-     * @return \Illuminate\Http\Response
-     */
     public function show(Accountparticular $accountparticular)
     {
-        //
+        echo "accountparticular show";
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Accountparticular  $accountparticular
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Accountparticular $accountparticular)
     {
-        //
+        echo "accountparticular edit";
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Accountparticular  $accountparticular
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Accountparticular $accountparticular)
     {
-        //
+        echo "accountparticular update";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Accountparticular  $accountparticular
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Accountparticular $accountparticular)
     {
-        //
+        echo "accountparticular destroy";
     }
 }
