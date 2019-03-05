@@ -31,31 +31,36 @@ class StudentdbController extends Controller
 
 
     public function createPage01(){
+        $clsss = Clss::all();
 
-        return view('admin.studentdb.createpage01');
+        return view('admin.studentdb.createpage01')
+            ->with('clsss', $clsss);
     }
     public function createpage01Store(Request $request){
-        // echo "createpage01 store";
         
         $validatedData = $request->validate([
+            'admbkno'=> 'required',
+            'admslno'=> 'required',
+            'admdate'=> 'required', 
             'name' => 'required',
-            'fname' => 'required',
+            'dobirth'=> 'required',             
             'gender' => 'required',
-            'adhaar' => 'required',            
+            'adm_clss_id'=> 'required',
+            'adhaar' => 'required',
+            'adm_clss_id'=> 'required',
+            'nation' => 'required',
         ]);
 
-        if(empty($request->session()->get('studentdb'))){
-            // echo "empty session";
+        if(empty($request->session()->get('studentdb'))){            
             $studentdb = new Studentdb();
-            $studentdb->fill($validatedData);                
+            $studentdb->fill($validatedData);
             $request->session()->put('studentdb', $studentdb);             
-        }else{
-            // echo "filled session";
+        }else{            
             $studentdb = $request->session()->get('studentdb');
             $studentdb->fill($validatedData);
             $request->session()->put('studentdb', $studentdb);             
         }
-        echo "Page 01 Completed";
+        echo "Page 01 Completed";        
         return view('admin.studentdb.createpage02');
     }
 

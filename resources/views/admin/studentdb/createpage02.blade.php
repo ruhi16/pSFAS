@@ -31,7 +31,13 @@
 					@endforeach
 					</ul>
 				@endif 
-		
+				
+				@if(Session::has('studentdb'))
+					{{ Session::get('studentdb')->name }}
+					{{ Session::get('studentdb')->fname }}
+					{{ Session::get('studentdb')->gender }}
+					{{ Session::get('studentdb')->adhaar }}
+				@endif
 					{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage02.store'], 'class'=>'form-horizontal']) !!}
 
 						<div class="form-group">

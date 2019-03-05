@@ -15,6 +15,7 @@ class CreateStudentdbsTable extends Migration
     {
         Schema::create('studentdbs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admbkno')->nullable()->default(null);
             $table->integer('admslno')->nullable()->default(null);
             $table->date('admdate')->nullable()->default(null);
             $table->string('name');
