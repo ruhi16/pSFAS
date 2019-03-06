@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\SessionRequest;
 
 class SessionController extends Controller
 {
@@ -20,9 +21,9 @@ class SessionController extends Controller
         return view('admin.session.create');
     }
 
-    public function store(Request $request)
+    public function store(SessionRequest $request)
     {        
-        $session = new Session;
+        $session = new Session; 
         if( $session ){
             $session->name = $request->name;
             $session->status = "In-Active";//$request->status;
@@ -47,7 +48,7 @@ class SessionController extends Controller
             ->with('session', $session);
     }
 
-    public function update(Request $request, Session $session)
+    public function update(SessionRequest $request, Session $session)
     {
         $session->name = $request->name;
         $session->status = $request->status;

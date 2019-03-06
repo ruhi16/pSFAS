@@ -13,12 +13,22 @@
 	<h2>Student DB > Create Page 03 : Bank Information Details</h2>
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
+				@for($i=1; $i<=6; $i++)
+					@php $str = 'admin.studentdb.createpage0'.$i; @endphp
+					@if( $i <= Session::get('studentdb')->pagestatus )
+						<a href="{{ route($str) }}" class="btn btn-primary" >Page 0{{$i}}</a>
+					@else 
+						{{--  <a href="{{ route($str) }}" class="btn btn-primary" disabled>Page 0{{$i}}</a>  --}}
+					@endif
+
+					
+				@endfor
+				{{--  <a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
 				<a href="{{ route('admin.studentdb.createpage02') }}" class="btn btn-success" >Page 02</a>
 				<a href="{{ route('admin.studentdb.createpage03') }}" class="btn btn-warning" >Page 03</a>
 				<a href="{{ route('admin.studentdb.createpage04') }}" class="btn btn-danger"  >Page 04</a>
 				<a href="{{ route('admin.studentdb.createpage05') }}" class="btn btn-info"    >Page 05</a>
-				<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>
+				<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>  --}}
 			</div>
 		</div>
 
@@ -55,15 +65,15 @@
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="bankname">Bank Name:</label>
-						<input type="text" class="form-control" name="bankname" id="bankname" value="{{ old('bankname') }}">
+						<input type="text" class="form-control" name="bankname" id="bankname" value="{{ old('bankname')  ?? Session::get('studentdb')->bankname ?? ''}}">
 					</div>
 					<div class="col-sm-3">
 						<label for="branch">Branch:</label>
-						<input type="text" class="form-control" name="branch" id="branch" value="{{ old('branch')}}">
+						<input type="text" class="form-control" name="branch" id="branch" value="{{ old('branch')  ?? Session::get('studentdb')->branch ?? ''}}">
 					</div>
 					<div class="col-sm-3">
 						<label for="ifsc">IFSC:</label>
-						<input type="text" class="form-control" name="ifsc" id="ifsc" value="{{ old('ifsc')}}">
+						<input type="text" class="form-control" name="ifsc" id="ifsc" value="{{ old('ifsc')  ?? Session::get('studentdb')->ifsc ?? ''}}">
 					</div>					
 				</div>
 
@@ -71,11 +81,11 @@
 				<div class="form-group">
 					<div class="col-sm-7">
 						<label for="accno">Account No:</label>
-						<input type="text" class="form-control" name="accno" id="accno" value="{{ old('accno') }}">
+						<input type="text" class="form-control" name="accno" id="accno" value="{{ old('accno')  ?? Session::get('studentdb')->accno ?? ''}}">
 					</div>
 					<div class="col-sm-5">
 						<label for="acctype">Account Type:</label>
-						<input type="text" class="form-control" name="acctype" id="acctype" value="{{ old('acctype')}}">
+						<input type="text" class="form-control" name="acctype" id="acctype" value="{{ old('acctype') ?? Session::get('studentdb')->acctype ?? ''}}">
 					</div>
 				</div>
 

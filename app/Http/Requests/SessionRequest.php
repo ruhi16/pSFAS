@@ -13,7 +13,7 @@ class SessionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class SessionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      => 'required',
+            'status'    => 'required',
+            'stdate'    => 'required',
+            'endate'    => 'required',
+            'prevsession'    => 'required',
+            'nextsession'    => 'required',
         ];
     }
 }

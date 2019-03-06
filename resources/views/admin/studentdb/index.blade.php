@@ -40,9 +40,9 @@
                 <td>
                     <a href="{{ route('studentdbs.show',    ['studentdb' => $studentdb]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('studentdbs.edit',    ['studentdb' => $studentdb]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
-                    {{--  {!! Form::open(['method'=>'DELETE', 'route'=>['studentdbs.destroy', $studentdb], 'style'=>'display:inline']) !!}                                        
+                    {!! Form::open(['method'=>'DELETE', 'route'=>['studentdbs.destroy', $studentdb], 'style'=>'display:inline']) !!}                                        
                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
-                    {{ Form::close() }}  --}}
+                    {{ Form::close() }}
                 </td>
             </tr>
             @endforeach

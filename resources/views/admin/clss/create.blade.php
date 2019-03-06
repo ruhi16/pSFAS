@@ -13,23 +13,31 @@
     <h1>Class > Create Page</h1>
 		<div class="panel panel-default">
 			<div class="panel-body">
+			
+			@if( $errors->any() ) 						
+				<p class="alert alert-danger">
+				@foreach($errors->all() as $error)
+					<strong>{{ $error }}</strong><br>
+				@endforeach		
+				</p>				
+			@endif 
 
 			{!! Form::open(['method'=>'POST',   'route'=>['clsss.store'], 'class'=>'form-horizontal']) !!}
 
 				<div class="form-group">
 					<label for="name" class="col-sm-3 control-label">Class Name</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" name="name" id="name" placeholder="New Class Name">
+						<input type="text" class="form-control" name="name" id="name" placeholder="New Class Name" value={{ old('name') }}>
 					</div>
 					<label for="status" class="col-sm-1 control-label">Status</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" name="status" id="status" placeholder="Current Status">
+						<input type="text" class="form-control" name="status" id="status" placeholder="Current Status" value={{ old('status') }}>
 					</div>
 				</div>				
 				<div class="form-group">
 					<label for="next_clss_id" class="col-sm-3 control-label">Next Class Id</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" name="next_clss_id" id="stdate" placeholder="Next Class Name">
+						<input type="text" class="form-control" name="next_clss_id" id="next_clss_id" placeholder="Next Class id" value={{ old('next_clss_id') }}>
 					</div>					
 				</div>				
 				

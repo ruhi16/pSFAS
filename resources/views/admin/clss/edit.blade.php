@@ -15,7 +15,15 @@
 
 		<div class="panel panel-default">
 			<div class="panel-body">
-            
+			
+			@if( $errors->any() ) 						
+				<p class="alert alert-danger">
+				@foreach($errors->all() as $error)
+					<strong>{{ $error }}</strong><br>
+				@endforeach		
+				</p>				
+			@endif 
+
 			{!! Form::open(['method'=>'PUT',   'route'=>['clsss.update', $clss ], 'class'=>'form-horizontal']) !!}
 
 				<div class="form-group">

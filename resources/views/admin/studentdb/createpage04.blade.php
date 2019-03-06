@@ -13,12 +13,22 @@
 	<h2>Student DB > Create Page 04 : Photo & Signature Upload</h2>
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
+				@for($i=1; $i<=6; $i++)
+					@php $str = 'admin.studentdb.createpage0'.$i; @endphp
+					@if( $i <= Session::get('studentdb')->pagestatus )
+						<a href="{{ route($str) }}" class="btn btn-primary" >Page 0{{$i}}</a>
+					@else 
+						{{--  <a href="{{ route($str) }}" class="btn btn-primary" disabled>Page 0{{$i}}</a>  --}}
+					@endif
+
+					
+				@endfor
+				{{--  <a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
 				<a href="{{ route('admin.studentdb.createpage02') }}" class="btn btn-success" >Page 02</a>
 				<a href="{{ route('admin.studentdb.createpage03') }}" class="btn btn-warning" >Page 03</a>
 				<a href="{{ route('admin.studentdb.createpage04') }}" class="btn btn-danger"  >Page 04</a>
 				<a href="{{ route('admin.studentdb.createpage05') }}" class="btn btn-info"    >Page 05</a>
-				<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>
+				<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>  --}}
 			</div>
 		</div>
 
@@ -51,8 +61,17 @@
 					<button type="button" class="close" data-dismiss="alert">×</button>
 					<strong>{{ $message }}</strong>
 				</div>
-				<img src="images/{{ Session::get('image') }}" width="180px" align="center" border="1">
+				<center>
+					<img src="images/{{ Session::get('image') }}" width="180px" align="center" border="1">
+				</center>
+			
+			@else 
+				<center>
+					<img src="images/{{ Session::get('studentdb')->imagename }}" width="180px" align="center" border="" alt="Image not Uploaded">
+				</center>
 			@endif
+
+
 
 			{{-- {!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage04.store'], 'files' => 'true', 'class'=>'form-horizontal', 'enctype' => 'multiport/form-data']) !!}  --}}
 			<form action="{{ route('admin.studentdb.createpage04.store') }}" method="POST" enctype="multipart/form-data">

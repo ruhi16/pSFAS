@@ -10,15 +10,25 @@
 @endsection
 
 @section('body-content-content')
-	<h1>Student DB > Create Page 06 : Customize Information Update</h1>
+	<h2>Student DB > Create Page 06 : Customize Information Update</h2>
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
+			@for($i=1; $i<=6; $i++)
+				@php $str = 'admin.studentdb.createpage0'.$i; @endphp
+				@if( $i <= Session::get('studentdb')->pagestatus )
+					<a href="{{ route($str) }}" class="btn btn-primary" >Page 0{{$i}}</a>
+				@else 
+					{{--  <a href="{{ route($str) }}" class="btn btn-primary" disabled>Page 0{{$i}}</a>  --}}
+				@endif
+
+				
+			@endfor
+			{{--  <a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
 			<a href="{{ route('admin.studentdb.createpage02') }}" class="btn btn-success" >Page 02</a>
 			<a href="{{ route('admin.studentdb.createpage03') }}" class="btn btn-warning" >Page 03</a>
 			<a href="{{ route('admin.studentdb.createpage04') }}" class="btn btn-danger"  >Page 04</a>
 			<a href="{{ route('admin.studentdb.createpage05') }}" class="btn btn-info"    >Page 05</a>
-			<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>
+			<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>  --}}
 		</div>
 	</div>
 	@if( $errors->any() ) 
@@ -46,12 +56,12 @@
 		<div class="panel-body">
 			{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage06.store'], 'class'=>'form-horizontal']) !!}
 
-				
+				<p class="alert alert-success text-center"><strong>Please Check All The Information Submitted, if required Modify and Save, Then Finalize!!!</strong></p>
 				<br><br>
 				<div class="form-group">
 					<div class="col-sm-12">
 						<button type="reset"  class="btn btn-default ">Reset</button>
-						<button type="submit" class="btn btn-success pull-right">Save & Goto Next Page</button>
+						<button type="submit" class="btn btn-success pull-right">Save & ......Finalize</button>
 					</div>
 				</div>					
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Clss;
 use App\Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClssRequest;
 
 class ClssController extends Controller
 {  
@@ -22,7 +23,7 @@ class ClssController extends Controller
         return view('admin.clss.create');
     }
 
-    public function store(Request $request)
+    public function store(ClssRequest $request)
     {
         $clss = new Clss;
         
@@ -48,7 +49,7 @@ class ClssController extends Controller
             ->with('clss', $clsss);
     }
     
-    public function update(Request $request, Clss $clsss)
+    public function update(ClssRequest $request, Clss $clsss)
     {
         $clsss->name = $request->name;
         $clsss->next_clss_id = $request->next_clss_id;
