@@ -98,6 +98,17 @@
 								</select>
 							</div>							
 						</div>
+
+						<div class="form-group">
+							<div class="col-sm-3">
+								<label for="phchlng">Physically Challenged:</label>
+								<input type="text" class="form-control" name="phchlng" id="phchlng" value="{{ old('phchlng')}}">
+							</div>
+							<div class="col-sm-9">
+								<label for="phchlngdsc">Description:</label>
+								<input type="text" class="form-control" name="phchlngdsc" id="phchlngdsc" value="{{ old('phchlngdsc')}}">
+							</div>
+						</div>
 						{{--  <div class="form-group">
 							<div class="col-sm-12">
 								<div class="checkbox">

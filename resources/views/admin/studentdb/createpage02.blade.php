@@ -24,20 +24,32 @@
 	
 		<div class="panel panel-default">
 			<div class="panel-body">
-				@if( $errors->any() ) 
-					<ul class="validation-errors">
+				@if(Session::has('studentdb'))
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td><strong>Name:</strong>{{ Session::get('studentdb')->name }}</td>
+								<td><strong>Father Name:</strong>{{ Session::get('studentdb')->fname }}</td>
+								<td><strong>Gender:</strong>{{ Session::get('studentdb')->gender }}</td>
+								<td><strong>Adhaar No:</strong>{{ Session::get('studentdb')->adhaar }}</td>
+							</tr>
+						</tbody>
+					</table>
+				@endif
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				@if( $errors->any() ) 						
+					<p class="alert alert-danger">
 					@foreach($errors->all() as $error)
-						<li class="validation-error-item">{{ $error }}</li>
-					@endforeach
-					</ul>
+						<strong>{{ $error }}</strong><br>
+					@endforeach		
+					</p>				
 				@endif 
 				
-				@if(Session::has('studentdb'))
-					{{ Session::get('studentdb')->name }}
-					{{ Session::get('studentdb')->fname }}
-					{{ Session::get('studentdb')->gender }}
-					{{ Session::get('studentdb')->adhaar }}
-				@endif
+				
 				{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage02.store'], 'class'=>'form-horizontal']) !!}
 
 					<div class="form-group">
@@ -121,28 +133,24 @@
 						</div>
 					</div>
 
+					
+					
+
 					<div class="form-group">
 						<div class="col-sm-3">
-							<label for="vill">Address Vill:</label>
-							<input type="text" class="form-control" name="vill" id="vill" value="{{ old('vill') }}">
+							<label for="fmlystatus">Family Status:</label>
+							<input type="text" class="form-control" name="fmlystatus" id="fmlystatus" value="{{ old('fmlystatus')}}">
 						</div>
-						<div class="col-sm-3">
-							<label for="post">Post Office:</label>
-							<input type="text" class="form-control" name="post" id="post" value="{{ old('post')}}">
-						</div>
-						<div class="col-sm-2">
-							<label for="pols">Police Station:</label>
-							<input type="text" class="form-control" name="pols" id="pols" value="{{ old('pols')}}">
-						</div>
-						<div class="col-sm-2">
-							<label for="dist">District:</label>
-							<input type="text" class="form-control" name="dist" id="dist" value="{{ old('dist')}}">
-						</div>
-						<div class="col-sm-2">
-							<label for="pinn">Pin No:</label>
-							<input type="text" class="form-control" name="pinn" id="pinn" value="{{ old('pinn')}}">
+						<div class="col-sm-9">
+							<label for="fmlystatusdsc">Description:</label>
+							<input type="text" class="form-control" name="fmlystatusdsc" id="fmlystatusdsc" value="{{ old('fmlystatusdsc')}}">
 						</div>
 					</div>
+
+
+
+
+
 
 
 
@@ -162,14 +170,7 @@
 							<button type="reset"  class="btn btn-default ">Reset</button>
 							<button type="submit" class="btn btn-success pull-right">Save & Goto Next Page</button>
 						</div>
-					</div>
-						{{--  <div class="form-group">
-							<div class="col-sm-12">
-								<div class="checkbox">
-								<label><input type="checkbox"> Remember me</label>
-								</div>
-							</div>
-						</div>  --}}
+					</div>					
 
 						
 					{!! Form::close() !!}

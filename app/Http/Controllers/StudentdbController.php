@@ -49,6 +49,9 @@ class StudentdbController extends Controller
             'adhaar' => 'required',
             'adm_clss_id'=> 'required',
             'nation' => 'required',
+            'phchlng' => 'required',
+            'phchlngdsc' => 'required',
+
         ]);
 
         if(empty($request->session()->get('studentdb'))){            
@@ -78,10 +81,23 @@ class StudentdbController extends Controller
     
         echo "createpage 02 store";
         $validatedData = $request->validate([
+            'fname' => 'required',
+            'foccup' => 'required',
+            'fadhaar' => 'required',
+            'fmobno'=> 'required',
+            'mname' => 'required',
+            'moccup' => 'required',
+            'madhaar' => 'required',
+            'mmobno'=> 'required',
+            'gname' => 'required',
+            'goccup' => 'required',
+            'gadhaar' => 'required',
+            'gmobno'=> 'required', 
             'vill' => 'required',
             'post' => 'required',
             'pols' => 'required',
             'dist' => 'required',
+            'pinn' => 'required',
         ]);
         if( empty($request->session()->get('studentdb')) ){
             echo "empty session";
@@ -93,29 +109,54 @@ class StudentdbController extends Controller
             $studentdb = $request->session()->get('studentdb');
             $studentdb->fill($validatedData);
             $studentdb->session_id = Session::where('status', 'Active')->first()->id;
-            $studentdb->save();
+            // $studentdb->save();
             $request->session()->put('studentdb', $studentdb);
         }
-        echo "Page 01 Completed";
+        echo "Page 02 Completed";
         // dd($request);
-        //return view('admin.studentdb.createpage02');
-    }
-
-
-
-
-
-
-
-
-
-
-    public function createPage03(){
-
         return view('admin.studentdb.createpage03');
     }
-    public function createPage04(){
 
+
+
+
+
+
+
+
+
+
+    public function createPage03(Request $request){
+     
+       return view('admin.studentdb.createpage03');
+    }
+
+    public function createpage03Store(Request $request){
+ 
+        // echo "createpage 03 store";
+        $validatedData = $request->validate([
+            'bankname' => 'required',
+            'branch' => 'required',
+            'ifsc' => 'required',
+            'accno'=> 'required',
+            'acctype' => 'required',            
+        ]);
+
+        if(empty($request->session()->get('studentdb'))){
+            echo  "empty session";
+            $studentdb = new Studentdb();
+            $studentdb->fill($validatedData);
+            $request->session()->put('studentdb', $studentdb);
+        }else{
+            echo "filled session";
+            $studentdb = $request->session()->get('studentdb');
+            $studentdb->fill($validatedData);
+            $studentdb->session_id = Session::where('status', 'Active')->first()->id;
+            // $studentdb->save();
+            $request->session()->put('studentdb', $studentdb);
+        }
+
+        echo "Page 03 Completed";
         return view('admin.studentdb.createpage04');
     }
 
@@ -129,11 +170,49 @@ class StudentdbController extends Controller
 
 
 
+
+
+
+
+
+    public function createPage04(){
+
+        return view('admin.studentdb.createpage04');
+    }
+    public function createpage04Store(Request $request){
+        $this->validate($request, [
+            'imagefile' => 'required|image|mimes:jpeg,png,gif|max:1024',
+        ]);
+        $image = $request->file('imagefile');
+
+        $new_name = rand().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('images'),$new_name);
+
+
+        echo "Page 04 Completed";
+        return back()
+            ->with('success','You have  successfully upload image.')
+            ->with('image', $new_name );
+        // return response()->file(storage_path(''));
+    }
+
+
+
+
+
+
+
+
+
     public function createPage05(){
 
         return view('admin.studentdb.createpage05');
     }
-    
+    public function createpage05Store(Request $request){
+
+        echo "Page 05 Completed";
+        return view('admin.studentdb.createpage06');
+    }
 
 
 
@@ -145,8 +224,41 @@ class StudentdbController extends Controller
 
         return view('admin.studentdb.createpage06');
     }
+    public function createpage06Store(Request $request){
+        $validatedData = $request->validate([
+            
+        ]);
+
+        if(empty($request->session()->get('studentdb'))){
+             echo  "empty session";
+            $studentdb = new Studentdb();
+            $studentdb->fill($validatedData);
+            $request->session()->put('studentdb', $studentdb);
+        }else{
+              echo "filled session";
+            $studentdb = $request->session()->get('studentdb');
+            $studentdb->fill($validatedData);
+            $studentdb->session_id = Session::where('status', 'Active')->first()->id;
+            $studentdb->save();
+            $request->session()->forget('studentdb');
+        }
+        echo "Page 06 Completed";
+        return redirect()->route('studentdbs.index');
+    }
 
     
+
+
+
+
+
+
+
+
+
+
+
+
     public function store(Request $request)
     {
         $studentdb = new Studentdb;
