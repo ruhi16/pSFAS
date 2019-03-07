@@ -11,62 +11,59 @@
 @endsection
 
 @section('body-content-content')
-    <h1>School/Create Page</h1>
-    
+    @if( $errors->any() ) 
+		<ul class="validation-errors">
+		@foreach($errors->all() as $error)
+			<li class="validation-error-item">{{ $error }}</li>
+		@endforeach
+		</ul>
+	@endif
 
+	
+	<h1>Account particular / Edit Page</h1>
 		<div class="panel panel-default">
 			<div class="panel-body">
-            
-			{!! Form::open(['method'=>'PUT',   'route'=>['schools.update', $school ], 'class'=>'form-horizontal']) !!}
+			{{--  {!! Form::open(['method'=>'PUT',   'route'=>['sessions.update', $session ], 'class'=>'form-horizontal']) !!}  --}}
+			{!! Form::open(['method'=>'PUT',   'route'=>['accountparticulars.update', $accountparticular], 'class'=>'form-horizontal']) !!}
+				{{--  <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">  --}}
 
-				<div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-					<label for="name" class="col-sm-2 control-label">Name</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="name" id="name" placeholder="School Name" value="{{ $school->name }}">
-						{!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-					</div>
-				</div>
-
-				<div class="form-group {{ $errors->has('dise') ? 'has-error' : ''}}">
-					<label for="dise" class="col-sm-2 control-label">DISE CODE</label>
+				<div class="form-group {{ $errors->has('particular') ? 'has-error' : ''}}">
+					<label for="name" class="col-sm-2 control-label">Particular:</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="dise" id="dise" placeholder="School DISE Code" value="{{ $school->dise }}">
-						{!! $errors->first('dise', '<p class="help-block">:message</p>') !!}
+						<input type="text" class="form-control" name="particular" id="particular" placeholder="Account Paticular" value="{{ old('particular') ?? $accountparticular->particular }}">
+						{!! $errors->first('particular', '<p class="help-block">:message</p>') !!}
 					</div>
 				</div>
 
-				<div class="form-group {{ $errors->has('vill') || $errors->has('post') ? 'has-error' : ''}}">
-					<label for="vill" class="col-sm-2 control-label">Village</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="vill" id="vill" placeholder="Village" value="{{ $school->vill }}">
-						{!! $errors->first('vill', '<p class="help-block">:message</p>') !!}
+				<div class="form-group {{ $errors->has('acctype') ? 'has-error' : ''}}">
+					<label for="acctype" class="col-sm-2 control-label">Account Type</label>
+					<div class="col-sm-8">
+						<select class="form-control" name="acctype" id="acctype">
+							<option value=""></option>
+							<option value="Income" {{ $accountparticular->acctype == "Income"  ? 'selected' : '' }} >	Income</option>
+							<option value="Expense"{{ $accountparticular->acctype == "Expense" ? 'selected' : '' }} >Expense</option>
+						</select>
 					</div>
-					<label for="post" class="col-sm-2 control-label">Post Office</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="post" id="post" placeholder="Post Office" value="{{ $school->post }}">
-						{!! $errors->first('post', '<p class="help-block">:message</p>') !!}
+					
+				</div>
+
+				<div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+					<label for="status" class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="status" id="status" placeholder="Status, Active or In-active" value="{{ old('status') ?? $accountparticular->status }}">
+						{!! $errors->first('acctype', '<p class="help-block">:message</p>') !!}
 					</div>
 				</div>
-				
-				<div class="form-group {{ ($errors->has('pstn')||$errors->has('dist')||$errors->has('pin')) ? 'has-error' : ''}}">
-					<label for="pstn" class="col-sm-2 control-label">Police Station</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" name="pstn" id="pstn" placeholder="Police Station" value="{{ $school->pstn }}">
-						{!! $errors->first('pstn', '<p class="help-block">:message</p>') !!}
-					</div>
-					<label for="dist" class="col-sm-1 control-label">District</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" name="dist" id="dist" placeholder="District" value="{{ $school->dist }}">
-						{!! $errors->first('dist', '<p class="help-block">:message</p>') !!}
-					</div>
-					<label for="pin" class="col-sm-1 control-label">Pin</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" name="pin" id="pin" placeholder="Pin Number" value="{{ $school->pin }}">
-						{!! $errors->first('pin', '<p class="help-block">:message</p>') !!}
+
+				<div class="form-group {{ $errors->has('remarks') ? 'has-error' : ''}}">
+					<label for="remarks" class="col-sm-2 control-label">Remarks</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="remarks" id="remarks" placeholder="Remarks if any" value="{{ old('remarks') ?? $accountparticular->remarks }}">
+						{!! $errors->first('acctype', '<p class="help-block">:message</p>') !!}
 					</div>
 				</div>
-				
-				
+
+								
 				<br>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-1">
@@ -81,8 +78,6 @@
 				{!! Form::close() !!}
 			</div>
 		</div>
-
-
 
 
 

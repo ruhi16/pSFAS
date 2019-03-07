@@ -11,38 +11,36 @@
 @endsection
 
 @section('body-content-content')
-    <h1>School/Index Page</h1>
+    <h1>Account particular / Show Page</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>DISE Code</td>
-                <td>Village</td>
-                <td>Post</td>
-                <td>PS</td>
-                <td>Dist</td>
-                <td>Pin</td>
-                <td>
+                <th>ID</th>
+                <th>Particular</th>
+                <th>Account Type</th>
+                <th>Status</th>
+                <th>Remarks</th>                                
+                <th>
                     Action
-                </td>
+                     <a href="{{ route('accountparticulars.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a> 
+                </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>            
             <tr>
-                <td>{{ $school->id }}</td>
-                <td>{{ $school->name }}</td>
-                <td>{{ $school->dise }}</td>
-                <td>{{ $school->vill }}</td>
-                <td>{{ $school->post }}</td>
-                <td>{{ $school->pstn }}</td>
-                <td>{{ $school->dist }}</td>
-                <td>{{ $school->pin }}</td>
+                <td>{{ $accountparticular->id }}</td>
+                <td>{{ $accountparticular->particular }}</td>
+                <td>{{ $accountparticular->acctype }}</td>
+                <td>{{ $accountparticular->status }}</td>
+                <td>{{ $accountparticular->remarks }}</td>
                 <td>
-                    <a href="{{ route('schools.index') }}" class="btn btn-primary">Back</a><br>
+                    <a href="{{ route('accountparticulars.index') }}" class="btn btn-primary">Back</a>                    
                 </td>
+            </tr>
+            
         </tbody>
     </table>
+
 
 
 

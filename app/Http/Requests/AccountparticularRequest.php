@@ -13,7 +13,7 @@ class AccountparticularRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class AccountparticularRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'particular'    => 'required',
+            'acctype'   => 'required',
+            'status'    => 'required',
+            'remarks'   => 'required',
         ];
     }
 }

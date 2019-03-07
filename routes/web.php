@@ -61,7 +61,10 @@ Route::get('/vue-app', 'HomeController@vueApp');
 //     }
 // });
 
-
+Route::get('/test', function(){
+    return view('test');
+});
+Route::post('/test', 'ClssController@test')->name('admin.clss.test');
 
 Route::get('/tables', function(){
     // $tables = DB::select("SELECT table_schema,table_name, table_catalog FROM information_schema.tables WHERE table_catalog = 'YOUR TABLE CATALOG HERE' AND table_type = 'BASE TABLE' AND table_schema = 'public' ORDER BY table_name;");
