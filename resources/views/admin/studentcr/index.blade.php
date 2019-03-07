@@ -47,7 +47,7 @@
             </tr>
             {!! Form::close() !!}
             @empty 
-                <tr><td colspan="6" class="text-center">No New Student Admitted!!! </td></tr>
+                <tr><td colspan="6" class="text-center"><p class="alert alert-warning">No New Student Admitted!!! </p></td></tr>
             @endforelse
         </tbody>
     </table>
@@ -86,7 +86,7 @@
             </tr>
             {!! Form::close() !!}
             @empty 
-                <tr><td colspan="6" class="text-center">No Students are waiting for New Roll Nos!!! </td></tr>
+                <tr><td colspan="6" class="text-center"><p class="alert alert-success">No Students are waiting for New Roll Nos!!! </p></td></tr>
             @endforelse
         </tbody>
     </table>
@@ -114,7 +114,7 @@
                 <td>{{ $studentcrWithRoll->clss->name }}</td>
                 <td>{{ $studentcrWithRoll->section->name }}</td>
                 <td>{{ $studentcrWithRoll->roll_no }}</td>
-                <td>
+                <td align="right">
                     <a href="{{ route('studentcrs.show',    ['studentcr' => $studentcrWithRoll]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('studentcrs.edit',    ['studentcr' => $studentcrWithRoll]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
                     {{--  {!! Form::open(['method'=>'DELETE', 'route'=>['studentdbs.destroy', $studentdb], 'style'=>'display:inline']) !!}                                        
@@ -123,7 +123,7 @@
                 </td>                          
             </tr>   
             @empty 
-                <tr><td colspan="6" class="text-center">No Current Student Available!!! </td></tr>         
+                <tr><td colspan="6" class="text-center"><p class="alert alert-danger">No Current Student Available!!! </p></td></tr>         
             @endforelse
         </tbody>
     </table>

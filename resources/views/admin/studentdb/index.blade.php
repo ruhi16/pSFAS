@@ -35,9 +35,9 @@
                 <td>{{ $studentdb->fname }}</td>
                 <td>{{ $studentdb->adm_clss_id }}</td>
                 <td>Section</td>
-                <td>{{ $studentdb->status }}</td>
-                <td>{{ $studentdb->session->name }}</td>
-                <td>
+                <td><img src="{{ asset('images/'.$studentdb->imagename)}}" width="80" /></td>
+                <td>{{ $studentdb->session->name}}</td>
+                <td align="right">
                     <a href="{{ route('studentdbs.show',    ['studentdb' => $studentdb]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
                     <a href="{{ route('studentdbs.edit',    ['studentdb' => $studentdb]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
                     {!! Form::open(['method'=>'DELETE', 'route'=>['studentdbs.destroy', $studentdb], 'style'=>'display:inline']) !!}                                        

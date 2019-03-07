@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Clss;
 use App\Studentdb;
 use App\Session;
+use App\School;
 use Illuminate\Http\Request;
 
 class StudentdbController extends Controller
@@ -22,9 +23,9 @@ class StudentdbController extends Controller
     
     public function create()
     {
-        $clsss = Clss::all();
-        return view('admin.studentdb.create')
-            ->with('clsss', $clsss);
+        // $clsss = Clss::all();
+        // return view('admin.studentdb.create')
+        //     ->with('clsss', $clsss);
     }
 
 
@@ -67,7 +68,7 @@ class StudentdbController extends Controller
             $request->session()->put('studentdb', $studentdb);             
         }
         echo "Page 01 Data-Save Completed";        
-        return view('admin.studentdb.createpage02');
+        return redirect()->route('admin.studentdb.createpage02');
     }
 
 
@@ -117,7 +118,7 @@ class StudentdbController extends Controller
             $request->session()->put('studentdb', $studentdb);
         }
         echo "Page 02 Data-Save Completed";        
-        return view('admin.studentdb.createpage03');
+        return redirect()->route('admin.studentdb.createpage03');
     }
 
 
@@ -159,7 +160,7 @@ class StudentdbController extends Controller
         }
 
         echo "Page 03  Data-Save Completed";
-        return view('admin.studentdb.createpage04');
+        return redirect()->route('admin.studentdb.createpage04');
     }
 
 
@@ -184,7 +185,7 @@ class StudentdbController extends Controller
     public function createpage04Store(Request $request){
 
         $this->validate($request, [
-            'imagefile' => 'required|image|mimes:jpeg,png,gif|max:5024',
+            'imagefile' => 'required|image|mimes:jpeg,png,gif|max:1024',
         ]);
         
 
@@ -240,7 +241,7 @@ class StudentdbController extends Controller
             $request->session()->put('studentdb', $studentdb);
         }
         echo "Page 05 Data-Save Completed";
-        return view('admin.studentdb.createpage06');
+        return redirect()->route('admin.studentdb.createpage06');
     }
 
 
@@ -250,8 +251,10 @@ class StudentdbController extends Controller
 
 
     public function createPage06(){
-
-        return view('admin.studentdb.createpage06');
+        $school = School::find(1);
+        // dd($school);
+        return view('admin.studentdb.createpage06')
+            ->with('school', $school);
     }
     public function createpage06Store(Request $request){
         $validatedData = $request->validate([
@@ -300,30 +303,35 @@ class StudentdbController extends Controller
     }
 
     
-    public function show(Studentdb $studentdb)
+    public function show(Request $request, Studentdb $studentdb)
     {
-        return view('admin.studentdb.show')
-            ->with('studentdb', $studentdb);
+        // return view('admin.studentdb.show')
+        //     ->with('studentdb', $studentdb);
+
+        $request->session()->put('studentdb', $studentdb);
+        return redirect()->route( 'admin.studentdb.createpage06');
     }
 
     
-    public function edit(Studentdb $studentdb)
+    public function edit(Request $request, Studentdb $studentdb)
     {
-        $clsss = Clss::all();
-        return view('admin.studentdb.edit')
-            ->with('studentdb', $studentdb)
-            ->with('clsss', $clsss);
+        // $clsss = Clss::all();
+        // return view('admin.studentdb.edit')
+        //     ->with('studentdb', $studentdb)
+        //     ->with('clsss', $clsss);
+        $request->session()->put('studentdb', $studentdb);
+        return redirect()->route( 'admin.studentdb.createpage01');
     }
 
     
     public function update(Request $request, Studentdb $studentdb)
     {
         // dd($studentdb);
-        $studentdb->name = $request->name;
-        $studentdb->fname = $request->fname;
-        $studentdb->adm_clss_id = $request->clss;
-        $studentdb->status = $request->status;
-        $studentdb->save();
+        // $studentdb->name = $request->name;
+        // $studentdb->fname = $request->fname;
+        // $studentdb->adm_clss_id = $request->clss;
+        // $studentdb->status = $request->status;
+        // $studentdb->save();
 
         return redirect()->route('studentdbs.index');
     }

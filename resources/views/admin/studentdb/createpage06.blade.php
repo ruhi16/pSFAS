@@ -57,6 +57,120 @@
 			{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage06.store'], 'class'=>'form-horizontal']) !!}
 
 				<p class="alert alert-success text-center"><strong>Please Check All The Information Submitted, if required Modify and Save, Then Finalize!!!</strong></p>
+				
+				<center>
+					<h2>{{ $school->name }}</h2>
+					<h5>{{ $school->vill }} * {{ $school->pstn }} * {{ $school->dist }}</h5>
+					<h4>Students Detail Format</h4>
+				</center>
+				<div class="row">
+					<div class="col-sm-9">
+						<h3>For Office Uses/Details:</h3>
+						<strong>Student Id: </strong>{{ Session::get('studentdb')->adm_clss_id}} - {{ Session::get('studentdb')->admslno}} / {{Session::get('studentdb')->admdate}}
+						
+						<h3>Personal Details:</h3>
+						<table class="table table-bordered">					
+							<tbody>
+								<tr><td width="150" align="right"><strong>Name:</strong></td>       <td colspan="4" align="left">{{ Session::get('studentdb')->name }}</td></tr>
+								<tr><td width="150" align="right"><strong>Father Name:</strong></td><td colspan="4">{{ Session::get('studentdb')->fname }}</td></tr>
+								<tr><td width="150" align="right"><strong>Date of Birth:</strong></td><td>{{ Session::get('studentdb')->dobirth }}</td>
+									<td width="150" align="right"><strong>Gender:</strong></td><td>{{ Session::get('studentdb')->gender }}</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-sm-3">
+						<img src="{{ asset('images/'.Session::get('studentdb')->imagename) }}" width="200">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">						
+						<table class="table table-bordered">					
+							<tbody>
+								<tr>
+									<td width="150" align="right"><strong>Language Known:</strong></td> 		<td>{{ Session::get('studentdb')->vill }}</td>
+									<td width="150" align="right"><strong>Religion:</strong></td> 	<td>{{ Session::get('studentdb')->post }}</td>
+									<td width="150" align="right"><strong>Caste</strong></td> 	<td>{{ Session::get('studentdb')->pols }}</td>									
+								</tr>
+								<tr>
+									<td width="150" align="right"><strong>Physically Challenged:</strong></td> 		<td colspan="5">{{ Session::get('studentdb')->dist }}</td>									
+								</tr>
+								
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">						
+						<table class="table table-bordered">					
+							<tbody>
+								<tr>
+									<td width="150" align="right"><strong>Village:</strong></td> 		<td>{{ Session::get('studentdb')->vill }}</td>
+									<td width="150" align="right"><strong>Post Office:</strong></td> 	<td>{{ Session::get('studentdb')->post }}</td>
+									<td width="150" align="right"><strong>Police Station</strong></td> 	<td>{{ Session::get('studentdb')->pols }}</td>									
+								</tr>
+								<tr>
+									<td width="150" align="right"><strong>District:</strong></td> 		<td>{{ Session::get('studentdb')->dist }}</td>
+									<td width="150" align="right"><strong>Pin No:  </strong></td> 		<td>{{ Session::get('studentdb')->pinn }}</td>
+									<td width="150" align="right"><strong>State: </strong></td> 		<td>{{ Session::get('studentdb')->status }}</td>
+								</tr>
+								
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">						
+						<table class="table table-bordered">					
+							<tbody>
+								<tr><td width="150" align="right"><strong>Father Name:</strong></td> <td>{{ Session::get('studentdb')->fname }}</td>
+									<td width="150" align="right"><strong>Aadhar No:  </strong></td> <td>{{ Session::get('studentdb')->fadhaar }}</td>
+									<td width="150" align="right"><strong>Occupation: </strong></td> <td>{{ Session::get('studentdb')->foccup }}</td>
+									<td width="150" align="right"><strong>Mobile No:  </strong></td> <td>{{ Session::get('studentdb')->fmobno }}</td>
+								</tr>
+								<tr><td width="150" align="right"><strong>Mother Name:</strong></td> <td>{{ Session::get('studentdb')->mname }}</td>
+									<td width="150" align="right"><strong>Aadhar No:  </strong></td> <td>{{ Session::get('studentdb')->madhaar }}</td>
+									<td width="150" align="right"><strong>Occupation: </strong></td> <td>{{ Session::get('studentdb')->moccup }}</td>
+									<td width="150" align="right"><strong>Mobile No:  </strong></td> <td>{{ Session::get('studentdb')->mmobno }}</td>
+								</tr>
+								<tr><td width="150" align="right"><strong>Gurdian Name:</strong></td> <td>{{ Session::get('studentdb')->gname }}</td>
+									<td width="150" align="right"><strong>Aadhar No:  </strong></td> <td>{{ Session::get('studentdb')->gadhaar }}</td>
+									<td width="150" align="right"><strong>Occupation: </strong></td> <td>{{ Session::get('studentdb')->goccup }}</td>
+									<td width="150" align="right"><strong>Mobile No:  </strong></td> <td>{{ Session::get('studentdb')->gmobno }}</td>
+								</tr>
+								<tr>
+									<td width="150" align="right"><strong>Family Status:</strong></td> <td colspan="3">{{ Session::get('studentdb')->fmlystatus }}</td>
+									<td width="150" align="right"><strong>Description:  </strong></td> <td colspan="3">{{ Session::get('studentdb')->fmlystatusdsc }}</td>									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">						
+						<table class="table table-bordered">					
+							<tbody>
+								<tr>
+									<td width="150" align="right"><strong>Bank Name:</strong></td> <td>{{ Session::get('studentdb')->bankname }}</td>
+									<td width="150" align="right"><strong>Branch:  </strong></td> <td>{{ Session::get('studentdb')->branch }}</td>
+									<td width="150" align="right"><strong>IFSC: </strong></td> <td>{{ Session::get('studentdb')->ifsc }}</td>									
+								</tr>
+								<tr>
+									<td width="150" align="right"><strong>Account No:</strong></td> <td colspan="3">{{ Session::get('studentdb')->accno }}</td>
+									<td width="150" align="right"><strong>Type:</strong></td> <td>{{ Session::get('studentdb')->acctype }}</td>									
+								</tr>								
+							</tbody>
+						</table>
+					</div>					
+				</div>
+				
+				
 				<br><br>
 				<div class="form-group">
 					<div class="col-sm-12">
