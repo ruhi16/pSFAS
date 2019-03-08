@@ -23,12 +23,9 @@ class CreateStudentdbsTable extends Migration
             $table->string('gender')->nullable()->default(null);
             $table->string('adhaar')->nullable()->default(null);
             $table->integer('adm_clss_id')->nullable()->default(null);
-            $table->string('knlang')->nullable()->default(null);
             $table->string('nation')->nullable()->default(null);
-            $table->string('rlgion')->nullable()->default(null);
-            $table->string('caste')->nullable()->default(null);
-            $table->string('phchlng')->nullable()->default(null);
-            $table->string('phchdsc')->nullable()->default(null);
+           
+            
             $table->string('fname')->nullable()->default(null);
             $table->string('fadhaar')->nullable()->default(null);
             $table->string('foccup')->nullable()->default(null);
@@ -46,6 +43,15 @@ class CreateStudentdbsTable extends Migration
             $table->string('pols')->nullable()->default(null);
             $table->string('dist')->nullable()->default(null);
             $table->string('pinn')->nullable()->default(null);
+
+            $table->string('knlang')->nullable()->default(null);            
+            $table->string('rlgion')->nullable()->default(null);
+            $table->string('caste')->nullable()->default(null);
+            $table->string('phchlng')->nullable()->default(null);
+            $table->string('phchdsc')->nullable()->default(null);
+            
+            
+            
             $table->string('fmlystatus')->nullable()->default(null);            
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
