@@ -25,7 +25,7 @@ class CreateStudentdbsTable extends Migration
             $table->integer('adm_clss_id')->nullable()->default(null);
             $table->string('nation')->nullable()->default(null);
            
-            
+
             $table->string('fname')->nullable()->default(null);
             $table->string('fadhaar')->nullable()->default(null);
             $table->string('foccup')->nullable()->default(null);
@@ -53,6 +53,7 @@ class CreateStudentdbsTable extends Migration
             
             
             $table->string('fmlystatus')->nullable()->default(null);            
+            $table->string('fmlystatusdsc')->nullable()->default(null);            
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
             $table->string('pagestatus')->nullable()->default(null);

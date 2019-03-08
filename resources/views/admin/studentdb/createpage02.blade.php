@@ -123,27 +123,40 @@
 
 					<div class="form-group">
 						<div class="col-sm-3">
-							<label for="vill">Address Vill:</label>
-							<input type="text" class="form-control" name="vill" id="vill" value="{{ old('vill') }}">
+							<label for="knlang">Language Known:</label>
+							<input type="text" class="form-control" name="knlang" id="knlang" value="{{ old('knlang') }}">
 						</div>
 						<div class="col-sm-3">
-							<label for="post">Post Office:</label>
-							<input type="text" class="form-control" name="post" id="post" value="{{ old('post')}}">
+							<label for="rlgion">Religion:</label>
+							<input type="text" class="form-control" name="rlgion" id="rlgion" value="{{ old('rlgion')}}">
 						</div>
-						<div class="col-sm-2">
-							<label for="pols">Police Station:</label>
-							<input type="text" class="form-control" name="pols" id="pols" value="{{ old('pols')}}">
-						</div>
-						<div class="col-sm-2">
-							<label for="dist">District:</label>
-							<input type="text" class="form-control" name="dist" id="dist" value="{{ old('dist')}}">
-						</div>
-						<div class="col-sm-2">
-							<label for="pinn">Pin No:</label>
-							<input type="text" class="form-control" name="pinn" id="pinn" value="{{ old('pinn')}}">
+						<div class="col-sm-4">
+							<label for="caste">Caste:</label>
+							<input type="text" class="form-control" name="caste" id="caste" value="{{ old('caste')}}">
 						</div>
 					</div>
 
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="phchlng">Physical Challenge:</label>
+							<input type="text" class="form-control" name="phchlng" id="phchlng" value="{{ old('phchlng')}}">
+						</div>
+						<div class="col-sm-9">
+							<label for="phchdsc">Description(if Yes):</label>
+							<input type="text" class="form-control" name="phchdsc" id="phchdsc" value="{{ old('phchdsc')}}">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="fmlystatus">Family Status:</label>
+							<input type="text" class="form-control" name="fmlystatus" id="fmlystatus" value="{{ old('fmlystatus')}}">
+						</div>
+						<div class="col-sm-9">
+							<label for="fmlystatusdsc">Family Status:</label>
+							<input type="text" class="form-control" name="fmlystatusdsc" id="fmlystatusdsc" value="{{ old('fmlystatusdsc')}}">
+						</div>
+					</div>
 
 
 

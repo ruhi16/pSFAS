@@ -76,13 +76,34 @@ class StudentdbController extends Controller
 
     public function createpage02Store(Request $request){
     
-        echo "createpage 02 store";
+        // echo "createpage 02 store";
         $validatedData = $request->validate([
+            'fname' => 'required',
+            'foccup' => 'required',
+            'fadhaar' => 'required',
+            'fmobno' => 'required',
+            'mname' => 'required',
+            'moccup' => 'required',
+            'madhaar' => 'required',
+            'mmobno' => 'required',
+            'gname' => 'required',
+            'goccup' => 'required',
+            'gadhaar' => 'required',
+            'gmobno' => 'required',
             'vill' => 'required',
             'post' => 'required',
             'pols' => 'required',
             'dist' => 'required',
+            'pinn' => 'required',
+            'knlang' => 'required',
+            'rlgion' => 'required',
+            'caste' => 'required',
+            'phchlng' => 'required',
+            'phchdsc' => 'required',
+            'fmlystatus' => 'required',
+            'fmlystatusdsc' => 'required',
         ]);
+
         if( empty($request->session()->get('studentdb')) ){
             echo "empty session";
             $studentdb = new Studentdb();
@@ -96,7 +117,7 @@ class StudentdbController extends Controller
             $studentdb->save();
             $request->session()->put('studentdb', $studentdb);
         }
-        echo "Page 01 Completed";
+        echo "Page 02 Completed";
         // dd($request);
         //return view('admin.studentdb.createpage02');
     }
