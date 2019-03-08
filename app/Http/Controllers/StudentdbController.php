@@ -101,7 +101,7 @@ class StudentdbController extends Controller
             'phchlng' => 'required',
             'phchdsc' => 'required',
             'fmlystatus' => 'required',
-            'fmlystatusdsc' => 'required',
+            'fmlystatusdsc' => 'required', 
         ]);
 
         if( empty($request->session()->get('studentdb')) ){
