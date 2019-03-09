@@ -10,9 +10,17 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Session/Create Page</h1>
+    <h1>Secsion > Create Page</h1>
 		<div class="panel panel-default">
 			<div class="panel-body">
+
+			@if( $errors->any() ) 						
+				<p class="alert alert-danger">
+				@foreach($errors->all() as $error)
+					<strong>{{ $error }}</strong><br>
+				@endforeach		
+				</p>				
+			@endif 
 
 			{!! Form::open(['method'=>'POST',   'route'=>['sections.store'], 'class'=>'form-horizontal']) !!}
 

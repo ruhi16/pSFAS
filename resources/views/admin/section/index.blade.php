@@ -11,7 +11,7 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Session/Index Page</h1>
+    <h1>Secsion > Index Page</h1>
     <table class="table table-bordered">
         <thead>
             <tr>

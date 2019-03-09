@@ -26,7 +26,7 @@ Route::get('/columns',function(){
 
 Route::get('/', function () {
     // dd(Auth::user()->email);
-    \Mail::to(Auth::user()->email)->send(new WelcomeEmail(Auth::user()));
+    // \Mail::to(Auth::user()->email)->send(new WelcomeEmail(Auth::user()));
     return view('admin.adminHome');
     // return view('admin.layouts.baselayout');
 });
@@ -35,6 +35,33 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/vue-app', 'HomeController@vueApp');
+
+
+// MAIL_DRIVER=smtp
+// MAIL_HOST=smtp.mailtrap.io
+// MAIL_PORT=2525
+// MAIL_USERNAME=405ae806921398
+// MAIL_PASSWORD=eb44a277dc053f
+// MAIL_ENCRYPTION=null
+
+// MAIL_FROM_ADDRESS=hndas2016@gmail.com
+// MAIL_FROM_NAME=HariNarayan
+
+
+
+
+// MAIL_DRIVER=smtp
+// MAIL_HOST=smtp.gmail.com
+// MAIL_PORT=587
+// MAIL_USERNAME=hndas2016@gmail.com
+// MAIL_PASSWORD=ayantika80
+// MAIL_ENCRYPTION=tls
+
+// MAIL_FROM_ADDRESS=hndas2016@gmail.com
+// MAIL_FROM_NAME=HariNarayan
+
+
+
 
 // Route::get('/test', function(){
 //     $stdcr = App\Studentcr::find(20);
@@ -85,63 +112,70 @@ Route::get('/tables', function(){
     }
 });
 
-Route::resource('schools', 'SchoolController');
-
-Route::get('/setSessionActive/{session}', 'SessionController@setSessionActive')->name('admin.session.setActive');
-Route::resource('sessions', 'SessionController');
-
-Route::resource('clsss', 'ClssController');
-Route::resource('sections', 'SectionController');
-
-Route::get('/index',              'ClsssectionController@index')     ->name('admin.clsssections');
-Route::get('/addSection/{clsss}', 'ClsssectionController@addSection')->name('admin.addClsssections');
-Route::get('/delSection/{clsss}', 'ClsssectionController@delSection')->name('admin.delClsssections');
 
 
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('schools', 'SchoolController');
 
+    Route::get('/setSessionActive/{session}', 'SessionController@setSessionActive')->name('admin.session.setActive');
+    Route::resource('sessions', 'SessionController');
 
-Route::get ('/studentdbpage01','StudentdbController@createpage01')->name('admin.studentdb.createpage01');
-Route::post('/studentdbpage01','StudentdbController@createpage01Store')->name('admin.studentdb.createpage01.store');
+    Route::resource('clsss', 'ClssController');
+    Route::resource('sections', 'SectionController');
 
-Route::get ('/studentdbpage02','StudentdbController@createpage02')->name('admin.studentdb.createpage02');
-Route::post('/studentdbpage02','StudentdbController@createpage02Store')->name('admin.studentdb.createpage02.store');
-
-Route::get ('/studentdbpage03','StudentdbController@createpage03')->name('admin.studentdb.createpage03');
-Route::post('/studentdbpage03','StudentdbController@createpage03Store')->name('admin.studentdb.createpage03.store');
-
-
-Route::get ('/studentdbpage04','StudentdbController@createpage04')->name('admin.studentdb.createpage04');
-Route::post('/studentdbpage04','StudentdbController@createpage04Store')->name('admin.studentdb.createpage04.store');
-
-Route::get ('/studentdbpage05','StudentdbController@createpage05')->name('admin.studentdb.createpage05');
-Route::post('/studentdbpage05','StudentdbController@createpage05Store')->name('admin.studentdb.createpage05.store');
-
-Route::get ('/studentdbpage06','StudentdbController@createpage06')->name('admin.studentdb.createpage06');
-Route::post('/studentdbpage06','StudentdbController@createpage06Store')->name('admin.studentdb.createpage06.store');
-
-Route::resource('studentdbs', 'StudentdbController');
+    Route::get('/index',              'ClsssectionController@index')     ->name('admin.clsssections');
+    Route::get('/addSection/{clsss}', 'ClsssectionController@addSection')->name('admin.addClsssections');
+    Route::get('/delSection/{clsss}', 'ClsssectionController@delSection')->name('admin.delClsssections');
 
 
 
 
 
+    Route::get ('/studentdbpage01','StudentdbController@createpage01')->name('admin.studentdb.createpage01');
+    Route::post('/studentdbpage01','StudentdbController@createpage01Store')->name('admin.studentdb.createpage01.store');
 
-Route::resource('feeschedules', 'FeescheduleController');
+    Route::get ('/studentdbpage02','StudentdbController@createpage02')->name('admin.studentdb.createpage02');
+    Route::post('/studentdbpage02','StudentdbController@createpage02Store')->name('admin.studentdb.createpage02.store');
 
-Route::get('/feecollections/findStudentcr', 'FeecollectionController@findStudentcr')->name('admin.feecollection.findStudentcr');
-Route::get('/feecollections/studentcr', 'FeecollectionController@studentcr')->name('admin.feecollection.studentcr');
-
-Route::get('/feedescriptions/{studentcr}/{feeschedule}', ['uses'=>'FeecollectionController@studentcrFeeDescription'])->name('admin.feecollection.description');
-Route::get('/feecollections/{studentcr}/{feeschedule}',  ['uses'=>'FeecollectionController@studentcrFeeCollection'] )->name('admin.feecollection.collection');
-
-Route::resource('feecollections', 'FeecollectionController');
+    Route::get ('/studentdbpage03','StudentdbController@createpage03')->name('admin.studentdb.createpage03');
+    Route::post('/studentdbpage03','StudentdbController@createpage03Store')->name('admin.studentdb.createpage03.store');
 
 
-Route::post('/studentcrs/{studentcr}/issueRoll', 'StudentcrController@issueRoll')->name('admin.studentcr.issueRoll');
-Route::resource('studentcrs', 'StudentcrController');
+    Route::get ('/studentdbpage04','StudentdbController@createpage04')->name('admin.studentdb.createpage04');
+    Route::post('/studentdbpage04','StudentdbController@createpage04Store')->name('admin.studentdb.createpage04.store');
+
+    Route::get ('/studentdbpage05','StudentdbController@createpage05')->name('admin.studentdb.createpage05');
+    Route::post('/studentdbpage05','StudentdbController@createpage05Store')->name('admin.studentdb.createpage05.store');
+
+    Route::get ('/studentdbpage06','StudentdbController@createpage06')->name('admin.studentdb.createpage06');
+    Route::post('/studentdbpage06','StudentdbController@createpage06Store')->name('admin.studentdb.createpage06.store');
+
+    Route::resource('studentdbs', 'StudentdbController');
 
 
-Route::resource( 'miscoptiontables', 'MiscoptiontableController');
 
-Route::resource('accountparticulars', 'AccountparticularController');
+
+
+
+    Route::resource('feeschedules', 'FeescheduleController');
+
+    Route::get('/feecollections/findStudentcr', 'FeecollectionController@findStudentcr')->name('admin.feecollection.findStudentcr');
+    Route::get('/feecollections/studentcr', 'FeecollectionController@studentcr')->name('admin.feecollection.studentcr');
+
+    Route::get('/feedescriptions/{studentcr}/{feeschedule}', ['uses'=>'FeecollectionController@studentcrFeeDescription'])->name('admin.feecollection.description');
+    Route::get('/feecollections/{studentcr}/{feeschedule}',  ['uses'=>'FeecollectionController@studentcrFeeCollection'] )->name('admin.feecollection.collection');
+
+    Route::resource('feecollections', 'FeecollectionController');
+
+
+    Route::post('/studentcrs/{studentcr}/issueRoll', 'StudentcrController@issueRoll')->name('admin.studentcr.issueRoll');
+    Route::resource('studentcrs', 'StudentcrController');
+
+
+    Route::resource( 'miscoptiontables', 'MiscoptiontableController');
+
+    Route::resource('accountparticulars', 'AccountparticularController');
+
+
+});

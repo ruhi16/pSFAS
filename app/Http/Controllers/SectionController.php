@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Section;
 use App\Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\SectionRequest;
 
 class SectionController extends Controller
 {    
@@ -23,7 +24,7 @@ class SectionController extends Controller
         return view('admin.section.create');
     }
     
-    public function store(Request $request)
+    public function store(SectionRequest $request)
     {
         // dd($request);
         $section = new Section;
@@ -48,7 +49,7 @@ class SectionController extends Controller
             ->with('section', $section);
     }
 
-    public function update(Request $request, Section $section)
+    public function update(SectionRequest $request, Section $section)
     {
         $section->name = $request->name;
         $section->status = $request->status;
