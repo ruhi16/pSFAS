@@ -10,7 +10,7 @@
 @endsection
 
 @section('body-content-content')
-	<h1>Student DB > Create Page 03 : Bank Information Uupdate</h1>
+	<h2>Student DB > Create Page 03 : Bank Information Details</h2>
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>

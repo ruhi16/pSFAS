@@ -95,14 +95,14 @@ Route::post('/studentdbpage01','StudentdbController@createpage01Store')->name('a
 Route::get ('/studentdbpage02','StudentdbController@createpage02')->name('admin.studentdb.createpage02');
 Route::post('/studentdbpage02','StudentdbController@createpage02Store')->name('admin.studentdb.createpage02.store');
 
-Route::get('/studentdbpage03','StudentdbController@createpage03')->name('admin.studentdb.createpage03');
+Route::get ('/studentdbpage03','StudentdbController@createpage03')->name('admin.studentdb.createpage03');
 Route::post('/studentdbpage03','StudentdbController@createpage03Store')->name('admin.studentdb.createpage03.store');
 
 
 Route::get ('/studentdbpage04','StudentdbController@createpage04')->name('admin.studentdb.createpage04');
 Route::post('/studentdbpage04','StudentdbController@createpage04Store')->name('admin.studentdb.createpage04.store');
 
-Route::get('/studentdbpage05','StudentdbController@createpage05')->name('admin.studentdb.createpage05');
+Route::get ('/studentdbpage05','StudentdbController@createpage05')->name('admin.studentdb.createpage05');
 Route::post('/studentdbpage05','StudentdbController@createpage05Store')->name('admin.studentdb.createpage05.store');
 
 Route::get ('/studentdbpage06','StudentdbController@createpage06')->name('admin.studentdb.createpage06');

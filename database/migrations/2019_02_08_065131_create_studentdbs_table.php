@@ -51,10 +51,6 @@ class CreateStudentdbsTable extends Migration
             $table->string('caste')->nullable()->default(null);
             
             
-<<<<<<< HEAD
-            $table->string('fmlystatus')->nullable()->default(null);            
-            $table->string('fmlystatusdsc')->nullable()->default(null);            
-=======
             $table->string('fmlystatus')->nullable()->default(null);
             $table->string('fmlystatusdsc')->nullable()->default(null); 
 
@@ -64,7 +60,6 @@ class CreateStudentdbsTable extends Migration
             $table->string('accno')->nullable()->default(null);
             $table->string('acctype')->nullable()->default(null);
 
->>>>>>> 5de552e5b7b30fc1a6586c1069b67c27b9a4c34b
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
             $table->string('pagestatus')->nullable()->default(null);

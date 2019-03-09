@@ -10,7 +10,7 @@
 @endsection
 
 @section('body-content-content')
-	<h1>Student DB > Create Page 02 : Personal Details</h1>
+	<h2>Student DB > Create Page 02 : Family Details</h2>
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
@@ -138,36 +138,12 @@
 
 					<div class="form-group">
 						<div class="col-sm-3">
-<<<<<<< HEAD
-							<label for="knlang">Language Known:</label>
-							<input type="text" class="form-control" name="knlang" id="knlang" value="{{ old('knlang') }}">
-						</div>
-						<div class="col-sm-3">
-							<label for="rlgion">Religion:</label>
-							<input type="text" class="form-control" name="rlgion" id="rlgion" value="{{ old('rlgion')}}">
-						</div>
-						<div class="col-sm-4">
-							<label for="caste">Caste:</label>
-							<input type="text" class="form-control" name="caste" id="caste" value="{{ old('caste')}}">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-3">
-							<label for="phchlng">Physical Challenge:</label>
-							<input type="text" class="form-control" name="phchlng" id="phchlng" value="{{ old('phchlng')}}">
-						</div>
-						<div class="col-sm-9">
-							<label for="phchdsc">Description(if Yes):</label>
-							<input type="text" class="form-control" name="phchdsc" id="phchdsc" value="{{ old('phchdsc')}}">
-=======
 							<label for="fmlystatus">Family Status:</label>
 							<input type="text" class="form-control" name="fmlystatus" id="fmlystatus" value="{{ old('fmlystatus')}}">
 						</div>
 						<div class="col-sm-9">
 							<label for="fmlystatusdsc">Description:</label>
 							<input type="text" class="form-control" name="fmlystatusdsc" id="fmlystatusdsc" value="{{ old('fmlystatusdsc')}}">
->>>>>>> 5de552e5b7b30fc1a6586c1069b67c27b9a4c34b
 						</div>
 					</div>
 

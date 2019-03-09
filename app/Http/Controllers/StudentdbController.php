@@ -63,7 +63,7 @@ class StudentdbController extends Controller
             $studentdb->fill($validatedData);
             $request->session()->put('studentdb', $studentdb);             
         }
-        echo "Page 01 Completed";        
+        echo "Page 01 Data-Save Completed";        
         return view('admin.studentdb.createpage02');
     }
 
@@ -77,9 +77,8 @@ class StudentdbController extends Controller
         return view('admin.studentdb.createpage02');
     }
 
-    public function createpage02Store(Request $request){
-    
-        // echo "createpage 02 store";
+    public function createpage02Store(Request $request){    
+        
         $validatedData = $request->validate([
             'fname' => 'required',
             'foccup' => 'required',
@@ -109,12 +108,10 @@ class StudentdbController extends Controller
             echo "filled session";
             $studentdb = $request->session()->get('studentdb');
             $studentdb->fill($validatedData);
-            $studentdb->session_id = Session::where('status', 'Active')->first()->id;
-            // $studentdb->save();
+            $studentdb->session_id = Session::where('status', 'Active')->first()->id;            
             $request->session()->put('studentdb', $studentdb);
         }
-        echo "Page 02 Completed";
-        // dd($request);
+        echo "Page 02 Data-Save Completed";        
         return view('admin.studentdb.createpage03');
     }
 
@@ -132,9 +129,8 @@ class StudentdbController extends Controller
        return view('admin.studentdb.createpage03');
     }
 
-    public function createpage03Store(Request $request){
- 
-        // echo "createpage 03 store";
+    public function createpage03Store(Request $request){ 
+        
         $validatedData = $request->validate([
             'bankname' => 'required',
             'branch' => 'required',
@@ -152,12 +148,11 @@ class StudentdbController extends Controller
             echo "filled session";
             $studentdb = $request->session()->get('studentdb');
             $studentdb->fill($validatedData);
-            $studentdb->session_id = Session::where('status', 'Active')->first()->id;
-            // $studentdb->save();
+            $studentdb->session_id = Session::where('status', 'Active')->first()->id;            
             $request->session()->put('studentdb', $studentdb);
         }
 
-        echo "Page 03 Completed";
+        echo "Page 03  Data-Save Completed";
         return view('admin.studentdb.createpage04');
     }
 
@@ -181,16 +176,19 @@ class StudentdbController extends Controller
         return view('admin.studentdb.createpage04');
     }
     public function createpage04Store(Request $request){
+
         $this->validate($request, [
             'imagefile' => 'required|image|mimes:jpeg,png,gif|max:1024',
         ]);
+
         $image = $request->file('imagefile');
 
         $new_name = rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('images'),$new_name);
+        $image->move(public_path('images'), $new_name);
 
 
-        echo "Page 04 Completed";
+        echo "Page 04  Image-Save Completed";
+        
         return back()
             ->with('success','You have  successfully upload image.')
             ->with('image', $new_name );
@@ -211,7 +209,7 @@ class StudentdbController extends Controller
     }
     public function createpage05Store(Request $request){
 
-        echo "Page 05 Completed";
+        echo "Page 05 Data-Save Completed";
         return view('admin.studentdb.createpage06');
     }
 
@@ -243,7 +241,7 @@ class StudentdbController extends Controller
             $studentdb->save();
             $request->session()->forget('studentdb');
         }
-        echo "Page 06 Completed";
+        echo "Page 06  Data-Save & Finalize Completed";
         return redirect()->route('studentdbs.index');
     }
 
