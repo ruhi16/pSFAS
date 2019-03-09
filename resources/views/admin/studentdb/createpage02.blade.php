@@ -147,23 +147,7 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<div class="col-sm-3">
-							<label for="fmlystatus">Family Status:</label>
-							<input type="text" class="form-control" name="fmlystatus" id="fmlystatus" value="{{ old('fmlystatus')}}">
-						</div>
-						<div class="col-sm-9">
-							<label for="fmlystatusdsc">Family Status:</label>
-							<input type="text" class="form-control" name="fmlystatusdsc" id="fmlystatusdsc" value="{{ old('fmlystatusdsc')}}">
-						</div>
-					</div>
-
-
-
-
-
-
-
+					
 
 
 					

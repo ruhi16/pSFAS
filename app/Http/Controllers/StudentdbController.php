@@ -178,7 +178,7 @@ class StudentdbController extends Controller
     public function createpage04Store(Request $request){
 
         $this->validate($request, [
-            'imagefile' => 'required|image|mimes:jpeg,png,gif|max:1024',
+            'imagefile' => 'required|image|mimes:jpeg,png,gif|max:5024',
         ]);
 
         $image = $request->file('imagefile');
@@ -189,7 +189,7 @@ class StudentdbController extends Controller
 
         echo "Page 04  Image-Save Completed";
         
-        return back()
+        return redirect()->route('admin.studentdb.createpage04')
             ->with('success','You have  successfully upload image.')
             ->with('image', $new_name );
         // return response()->file(storage_path(''));

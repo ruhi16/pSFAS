@@ -54,8 +54,8 @@
 				<img src="images/{{ Session::get('image') }}" width="180px" align="center" border="1">
 			@endif
 
-			{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage04.store'], 'files' => 'true', 'class'=>'form-horizontal', 'enctype' => 'multiport/form-data']) !!} 
-			{{-- <form action="{{ route('admin.studentdb.createpage04.store') }}" method="POST" enctype="multipart/form-data"> --}}
+			{{-- {!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage04.store'], 'files' => 'true', 'class'=>'form-horizontal', 'enctype' => 'multiport/form-data']) !!}  --}}
+			<form action="{{ route('admin.studentdb.createpage04.store') }}" method="POST" enctype="multipart/form-data">
 			@csrf
 			
 				<div class="form-group">
