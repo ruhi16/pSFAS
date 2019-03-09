@@ -24,6 +24,8 @@ class CreateStudentdbsTable extends Migration
             $table->string('adhaar')->nullable()->default(null);
             $table->integer('adm_clss_id')->nullable()->default(null);
             $table->string('nation')->nullable()->default(null);
+            $table->string('phchlng')->nullable()->default(null);
+            $table->string('phchlngdsc')->nullable()->default(null);
            
 
             $table->string('fname')->nullable()->default(null);
@@ -47,13 +49,22 @@ class CreateStudentdbsTable extends Migration
             $table->string('knlang')->nullable()->default(null);            
             $table->string('rlgion')->nullable()->default(null);
             $table->string('caste')->nullable()->default(null);
-            $table->string('phchlng')->nullable()->default(null);
-            $table->string('phchdsc')->nullable()->default(null);
             
             
-            
+<<<<<<< HEAD
             $table->string('fmlystatus')->nullable()->default(null);            
             $table->string('fmlystatusdsc')->nullable()->default(null);            
+=======
+            $table->string('fmlystatus')->nullable()->default(null);
+            $table->string('fmlystatusdsc')->nullable()->default(null); 
+
+            $table->string('bankname')->nullable()->default(null);
+            $table->string('branch')->nullable()->default(null);
+            $table->string('ifsc')->nullable()->default(null);
+            $table->string('accno')->nullable()->default(null);
+            $table->string('acctype')->nullable()->default(null);
+
+>>>>>>> 5de552e5b7b30fc1a6586c1069b67c27b9a4c34b
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
             $table->string('pagestatus')->nullable()->default(null);

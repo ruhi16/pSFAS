@@ -24,20 +24,32 @@
 	
 		<div class="panel panel-default">
 			<div class="panel-body">
-				@if( $errors->any() ) 
-					<ul class="validation-errors">
+				@if(Session::has('studentdb'))
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td><strong>Name:</strong>{{ Session::get('studentdb')->name }}</td>
+								<td><strong>Father Name:</strong>{{ Session::get('studentdb')->fname }}</td>
+								<td><strong>Gender:</strong>{{ Session::get('studentdb')->gender }}</td>
+								<td><strong>Adhaar No:</strong>{{ Session::get('studentdb')->adhaar }}</td>
+							</tr>
+						</tbody>
+					</table>
+				@endif
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				@if( $errors->any() ) 						
+					<p class="alert alert-danger">
 					@foreach($errors->all() as $error)
-						<li class="validation-error-item">{{ $error }}</li>
-					@endforeach
-					</ul>
+						<strong>{{ $error }}</strong><br>
+					@endforeach		
+					</p>				
 				@endif 
 				
-				@if(Session::has('studentdb'))
-					{{ Session::get('studentdb')->name }}
-					{{ Session::get('studentdb')->fname }}
-					{{ Session::get('studentdb')->gender }}
-					{{ Session::get('studentdb')->adhaar }}
-				@endif
+				
 				{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage02.store'], 'class'=>'form-horizontal']) !!}
 
 					<div class="form-group">
@@ -121,8 +133,12 @@
 						</div>
 					</div>
 
+					
+					
+
 					<div class="form-group">
 						<div class="col-sm-3">
+<<<<<<< HEAD
 							<label for="knlang">Language Known:</label>
 							<input type="text" class="form-control" name="knlang" id="knlang" value="{{ old('knlang') }}">
 						</div>
@@ -144,6 +160,14 @@
 						<div class="col-sm-9">
 							<label for="phchdsc">Description(if Yes):</label>
 							<input type="text" class="form-control" name="phchdsc" id="phchdsc" value="{{ old('phchdsc')}}">
+=======
+							<label for="fmlystatus">Family Status:</label>
+							<input type="text" class="form-control" name="fmlystatus" id="fmlystatus" value="{{ old('fmlystatus')}}">
+						</div>
+						<div class="col-sm-9">
+							<label for="fmlystatusdsc">Description:</label>
+							<input type="text" class="form-control" name="fmlystatusdsc" id="fmlystatusdsc" value="{{ old('fmlystatusdsc')}}">
+>>>>>>> 5de552e5b7b30fc1a6586c1069b67c27b9a4c34b
 						</div>
 					</div>
 
@@ -157,6 +181,11 @@
 							<input type="text" class="form-control" name="fmlystatusdsc" id="fmlystatusdsc" value="{{ old('fmlystatusdsc')}}">
 						</div>
 					</div>
+
+
+
+
+
 
 
 
@@ -175,14 +204,7 @@
 							<button type="reset"  class="btn btn-default ">Reset</button>
 							<button type="submit" class="btn btn-success pull-right">Save & Goto Next Page</button>
 						</div>
-					</div>
-						{{--  <div class="form-group">
-							<div class="col-sm-12">
-								<div class="checkbox">
-								<label><input type="checkbox"> Remember me</label>
-								</div>
-							</div>
-						</div>  --}}
+					</div>					
 
 						
 					{!! Form::close() !!}

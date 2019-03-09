@@ -10,59 +10,86 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Student DB > Create Page 04 : Extra Information</h1>
+	<h2>Student DB > Create Page 04 : Photo & Signature Upload</h2>
 		<div class="panel panel-default">
 			<div class="panel-body">
-
-				{!! Form::open(['method'=>'POST',   'route'=>['studentdbs.store'], 'class'=>'form-horizontal']) !!}
-
-					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Student Name</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name" placeholder="Student Name">
-						</div>                    
-					</div>	
-
-					<div class="form-group">
-						<label for="fname" class="col-sm-2 control-label">Father Name</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="fname" id="fname" placeholder="Student Father Name">
-						</div>                    
-					</div>	
-
-					<div class="form-group">
-						<label for="clss" class="col-sm-2 control-label">New Class</label>
-						<div class="col-sm-4">
-							<select name="clss" class="form-control">
-								<option value=""></option>
-								@foreach($clsss as $clss)
-									<option value="{{ $clss->id }}">{{ $clss->name }}</option>
-								@endforeach
-							</select>
-						</div>                    
-					</div>					
-					
-					
-					<div class="form-group">
-						<label for="status" class="col-sm-2 control-label">Status</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="status" id="status" placeholder="any remarks want to submit">
-						</div>                    
-					</div>
-
-
-
-					<button type="reset" class="col-sm-offset-2 btn btn-default">Reset</button>
-					<button type="submit" class=" btn btn-primary">Save changes</button>              
-
-
-					{!! Form::close() !!}
-				</div>
+				<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
+				<a href="{{ route('admin.studentdb.createpage02') }}" class="btn btn-success" >Page 02</a>
+				<a href="{{ route('admin.studentdb.createpage03') }}" class="btn btn-warning" >Page 03</a>
+				<a href="{{ route('admin.studentdb.createpage04') }}" class="btn btn-danger"  >Page 04</a>
+				<a href="{{ route('admin.studentdb.createpage05') }}" class="btn btn-info"    >Page 05</a>
+				<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>
 			</div>
+		</div>
 
+	<div class="panel panel-default">
+		<div class="panel-body">
+			@if( $errors->any() ) 
+				<ul class="validation-errors">
+				@foreach($errors->all() as $error)
+					<li class="validation-error-item">{{ $error }}</li>
+				@endforeach
+				</ul>
+			@endif 
+			
+			@if(Session::has('studentdb'))
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td><strong>Name:</strong>{{ Session::get('studentdb')->name }}</td>
+							<td><strong>Father Name:</strong>{{ Session::get('studentdb')->fname }}</td>
+							<td><strong>Gender:</strong>{{ Session::get('studentdb')->gender }}</td>
+							<td><strong>Adhaar No:</strong>{{ Session::get('studentdb')->adhaar }}</td>
+						</tr>
+					</tbody>
+				</table>
+			@endif
+			
+			
+			 @if ($message = Session::get('success'))
+				<div class="alert alert-success alert-block">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<strong>{{ $message }}</strong>
+				</div>
+				<img src="images/{{ Session::get('image') }}" width="180px" align="center" border="1">
+			@endif
+			{{--  {!! Form::open(['method' => 'POST', 'action' => 'PostController@store', 'files' => 'true' ]) !!}  --}}
+			{{--  {!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage04.store'], 'class'=>'form-horizontal', 'enctype' => 'multiport/form-data']) !!}  --}}
+			<form action="{{ route('admin.studentdb.createpage04.store') }}" method="POST" enctype="multipart/form-data">
+			@csrf
+			
+				<div class="form-group">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td width="40%" align="right">
+									<label for="select-file">Select File to Upload</label>
+								</td>
+								<td width="30">
+									<input type="file" name="imagefile" accept=".png, .jpg, .jpeg" />								
+								</td>
+								<td width="30%" align="left">
+									<input type="submit" name="upload" class="btn btn-primary" value="upload">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+						
+
+			</form>
+			{{--  {!! Form::close() !!}  --}}
+
+
+			<br><br>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<button class="btn btn-default ">Reset</button>
+					<a href="{{ route('admin.studentdb.createpage05')}}" class="btn btn-success pull-right">Save & Goto Next Page</a>
+				</div>
+			</div>	
 		</div>
 	</div>
-
 
 
 

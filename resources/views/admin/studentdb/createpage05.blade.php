@@ -10,58 +10,58 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Student DB > Create Page 05 : Students Bank Account Information Details</h1>
-		<div class="panel panel-default">
-			<div class="panel-body">
-
-				{{--  {!! Form::open(['method'=>'POST',   'route'=>['studentdbs.store'], 'class'=>'form-horizontal']) !!}
-
-					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Student Name</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name" placeholder="Student Name">
-						</div>                    
-					</div>	
-
-					<div class="form-group">
-						<label for="fname" class="col-sm-2 control-label">Father Name</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="fname" id="fname" placeholder="Student Father Name">
-						</div>                    
-					</div>	
-
-					<div class="form-group">
-						<label for="clss" class="col-sm-2 control-label">New Class</label>
-						<div class="col-sm-4">
-							<select name="clss" class="form-control">
-								<option value=""></option>
-								@foreach($clsss as $clss)
-									<option value="{{ $clss->id }}">{{ $clss->name }}</option>
-								@endforeach
-							</select>
-						</div>                    
-					</div>					
-					
-					
-					<div class="form-group">
-						<label for="status" class="col-sm-2 control-label">Status</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="status" id="status" placeholder="any remarks want to submit">
-						</div>                    
-					</div>
-
-
-
-					<button type="reset" class="col-sm-offset-2 btn btn-default">Reset</button>
-					<button type="submit" class=" btn btn-primary">Save changes</button>              
-
-
-					{!! Form::close() !!}  --}}
-				</div>
-			</div>
-
+	<h2>Student DB > Create Page 05 : Misclenious Information</h2>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<a href="{{ route('admin.studentdb.createpage01') }}" class="btn btn-primary" >Page 01</a>
+			<a href="{{ route('admin.studentdb.createpage02') }}" class="btn btn-success" >Page 02</a>
+			<a href="{{ route('admin.studentdb.createpage03') }}" class="btn btn-warning" >Page 03</a>
+			<a href="{{ route('admin.studentdb.createpage04') }}" class="btn btn-danger"  >Page 04</a>
+			<a href="{{ route('admin.studentdb.createpage05') }}" class="btn btn-info"    >Page 05</a>
+			<a href="{{ route('admin.studentdb.createpage06') }}" class="btn btn-primary" >Page 06</a>
 		</div>
 	</div>
+	@if( $errors->any() ) 
+				<ul class="validation-errors">
+				@foreach($errors->all() as $error)
+					<li class="validation-error-item">{{ $error }}</li>
+				@endforeach
+				</ul>
+			@endif 
+			
+			@if(Session::has('studentdb'))
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td><strong>Name:</strong>{{ Session::get('studentdb')->name }}</td>
+							<td><strong>Father Name:</strong>{{ Session::get('studentdb')->fname }}</td>
+							<td><strong>Gender:</strong>{{ Session::get('studentdb')->gender }}</td>
+							<td><strong>Adhaar No:</strong>{{ Session::get('studentdb')->adhaar }}</td>
+						</tr>
+					</tbody>
+				</table>
+			@endif
+
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{!! Form::open(['method'=>'POST',   'route'=>['admin.studentdb.createpage05.store'], 'class'=>'form-horizontal']) !!}
+
+				
+					<br><br>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="reset"  class="btn btn-default ">Reset</button>
+							<button type="submit" class="btn btn-success pull-right">Save & Goto Next Page</button>
+						</div>
+					</div>					
+
+					
+				{!! Form::close() !!}
+			
+
+			</div>
+		</div>
 
 
 
