@@ -16,7 +16,7 @@ class CreateAccountparticularsTable extends Migration
         Schema::create('accountparticulars', function (Blueprint $table) {
             $table->increments('id');
             $table->string('particular');
-            $table->string('acctypye');
+            $table->string('acctype');
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
             $table->integer('session_id');

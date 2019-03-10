@@ -26,7 +26,7 @@
                 <th>Pin</th>
                 <th>
                     Action
-                    {{--  <a href="{{ route('schools.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>  --}}
+                     <a href="{{ route('accountparticulars.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a> 
                 </th>
             </tr>
         </thead>

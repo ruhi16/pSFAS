@@ -9,17 +9,19 @@ class AccountparticularController extends Controller
 {    
     public function index()
     {
-        echo "accountparticular index";
+        // echo "accountparticular index";
         return view('admin.accountparticular.index');
     }
 
     public function create()
     {
-        echo "accountparticular create";
+        // echo "accountparticular create";
+        return view('admin.accountparticular.create');
     }
 
     public function store(Request $request)
     {
+        
         echo "accountparticular store";
     }
 
