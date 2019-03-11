@@ -1,5 +1,8 @@
 <?php
 
+use App\Mail\WelcomeEmail;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,17 +15,23 @@
 */
 
 use App\Feecollection;
+
+
+
+Auth::routes();
 Route::get('/columns',function(){
     $table = new Feecollection;
     // dd($table->getTableColumns());
 });
 
 Route::get('/', function () {
+    // dd(Auth::user()->email);
+    \Mail::to(Auth::user()->email)->send(new WelcomeEmail(Auth::user()));
     return view('admin.adminHome');
     // return view('admin.layouts.baselayout');
 });
 
-Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/vue-app', 'HomeController@vueApp');
