@@ -22,6 +22,7 @@ class CreateSchoolsTable extends Migration
             $table->string('dist')->nullable();
             $table->string('pin')->nullable();
             $table->string('dise')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

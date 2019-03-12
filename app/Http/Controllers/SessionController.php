@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Session;
 use Illuminate\Http\Request;
 use App\Http\Requests\SessionRequest;
@@ -31,6 +32,7 @@ class SessionController extends Controller
             $session->endate = $request->endate;
             $session->prevsession_id = $request->prevsession;
             $session->nextsession_id = $request->nextsession;
+            $session->user_id = Auth::user()->id;
             $session->save();
         }
         return redirect()->route('sessions.index');
@@ -56,6 +58,7 @@ class SessionController extends Controller
         $session->endate = $request->endate;
         $session->prevsession_id = $request->prevsession;
         $session->nextsession_id = $request->nextsession;
+        $session->user_id = Auth::user()->id;
         $session->save();
 
         return redirect()->route('sessions.index');

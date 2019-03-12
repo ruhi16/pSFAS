@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Accountparticular;
 use Illuminate\Http\Request;
 use App\Http\Requests\AccountparticularRequest;
@@ -28,6 +29,7 @@ class AccountparticularController extends Controller
         
         $data = $request->all();
         $data['session_id'] = Session::where('status','Active')->first()->id;
+        $data['user_id'] = Auth::user()->id;
         
         Accountparticular::create($data);
         
@@ -51,7 +53,11 @@ class AccountparticularController extends Controller
     public function update(AccountparticularRequest $request, Accountparticular $accountparticular)
     {
         // echo "accountparticular update";
-        $accountparticular->update($request->all());
+        $data = $request->all();
+        $data['session_id'] = Session::where('status','Active')->first()->id;
+        $data['user_id'] = Auth::user()->id;
+        $accountparticular->update($data);
+        
         return redirect()->route('accountparticulars.index');
     }
 

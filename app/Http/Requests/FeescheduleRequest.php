@@ -13,7 +13,7 @@ class FeescheduleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class FeescheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'  => 'required',
+            'clss_id'   => 'required',
+            'formonth'  => 'required',
+            'foryear'   => 'required',
+            'total_fee' => 'required',            
         ];
     }
 }

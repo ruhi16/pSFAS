@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Clss;
 use App\Studentdb;
 use App\Session;
@@ -297,6 +298,7 @@ class StudentdbController extends Controller
         $studentdb->adm_clss_id = $request->clss;
         $studentdb->status = $request->status;
         $studentdb->session_id = Session::where('status','Active')->first()->id;
+        $studentdb->user_id = Auth::user()->id;
         $studentdb->save();
 
         return redirect()->route('studentdbs.index');

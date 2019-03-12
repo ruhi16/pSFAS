@@ -65,6 +65,7 @@ class CreateStudentdbsTable extends Migration
             $table->integer('pagestatus')->nullable()->default(null);
             $table->string('imagename')->nullable()->default(null);
             $table->integer('session_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

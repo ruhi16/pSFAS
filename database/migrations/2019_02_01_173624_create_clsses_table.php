@@ -19,6 +19,7 @@ class CreateClssesTable extends Migration
             $table->integer('next_clss_id');
             $table->string('status')->nullable();
             $table->integer('session_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

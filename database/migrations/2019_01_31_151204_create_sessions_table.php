@@ -21,6 +21,7 @@ class CreateSessionsTable extends Migration
             $table->string('status');
             $table->integer('prevsession_id');
             $table->integer('nextsession_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

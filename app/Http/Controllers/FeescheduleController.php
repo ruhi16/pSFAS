@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Feeschedule;
 use App\Clss;
 use App\Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\FeescheduleRequest;
 
 class FeescheduleController extends Controller
 {
@@ -32,7 +34,7 @@ class FeescheduleController extends Controller
             ->with('clsss', $clsss);
     }
 
-    public function store(Request $request)
+    public function store(FeescheduleRequest $request)
     {
         // echo "from Feeschedule Store method";
         // dd($request);
@@ -56,6 +58,7 @@ class FeescheduleController extends Controller
                 $feeschedule->total_fee_discount = $request->disc;
                 $feeschedule->status = $request->remarks;    
                 $feeschedule->session_id = Session::where('status','Active')->first()->id;                            
+                $feeschedule->user_id = Auth::user()->id;
                 $feeschedule->save();
             }            
         }
@@ -79,7 +82,7 @@ class FeescheduleController extends Controller
             ->with('clsss', $clsss);
     }
 
-    public function update(Request $request, Feeschedule $feeschedule)
+    public function update(FeescheduleRequest $request, Feeschedule $feeschedule)
     {
         // dd($request);
         $feeschedule->name = $request->name;
@@ -91,6 +94,7 @@ class FeescheduleController extends Controller
         $feeschedule->total_fee_discount = $request->disc;
         $feeschedule->status = $request->remarks;
         $feeschedule->session_id = Session::where('status','Active')->frist()->id;
+        $feeschedule->user_id = Auth::user()->id;
         $feeschedule->save();
 
         return redirect()->route('feeschedules.index');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Section;
 use App\Session;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class SectionController extends Controller
             $section->name = $request->name;
             $section->status = $request->status;
             $section->session_id = Session::where('status', 'Active')->first()->id;
+            $section->user_id = Auth::user()->id;
             $section->save();
         }
         return redirect()->route('sections.index');
@@ -53,6 +55,7 @@ class SectionController extends Controller
     {
         $section->name = $request->name;
         $section->status = $request->status;
+        $section->user_id = Auth::user()->id;
         $section->save();
         return redirect()->route('sections.index');
     }

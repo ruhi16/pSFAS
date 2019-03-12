@@ -39,6 +39,7 @@
                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
                     {{ Form::close() }}
                 </td>
+            </tr>
             @endforeach
         </tbody>
     </table>

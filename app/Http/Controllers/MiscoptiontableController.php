@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Support\Facades\Schema;
 use DB;
 use App\Session;
@@ -49,6 +50,7 @@ class MiscoptiontableController extends Controller
             $miscoptiontable->status='';
             $miscoptiontable->remarks= '';
             $miscoptiontable->session_id = Session::where('status','Active')->first()->id;
+            $miscoptiontable->user_id = Auth::user()->id;
             $miscoptiontable->save();
         }
 
@@ -86,6 +88,7 @@ class MiscoptiontableController extends Controller
         $miscoptiontable->status     = $request->status;
         $miscoptiontable->remarks    = $request->remarks;
         $miscoptiontable->session_id = Session::where('status','Active')->first()->id;
+        $miscoptiontable->user_id = Auth::user()->id;
         $miscoptiontable->save();
 
         return redirect()->route('miscoptiontables.index');

@@ -19,6 +19,8 @@ use App\Feecollection;
 
 
 Auth::routes();
+
+
 Route::get('/columns',function(){
     $table = new Feecollection;
     // dd($table->getTableColumns());

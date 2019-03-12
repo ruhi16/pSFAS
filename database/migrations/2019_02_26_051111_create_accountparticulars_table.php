@@ -20,6 +20,7 @@ class CreateAccountparticularsTable extends Migration
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
             $table->integer('session_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

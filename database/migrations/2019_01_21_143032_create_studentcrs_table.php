@@ -25,6 +25,7 @@ class CreateStudentcrsTable extends Migration
             $table->integer('next_section_id')->nullable();
             $table->string('status')->nullable();
             $table->integer('session_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

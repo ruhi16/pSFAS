@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Feecollection;
 use App\Feeschedule;
 use App\Studentcr;
@@ -101,6 +102,7 @@ class FeecollectionController extends Controller
         $feecollection->fee_discount    = $feeschedule->total_fee_discount;
         $feecollection->status          = $feeschedule->status;
         $feecollection->session_id = Session::where('status', 'Active')->first()->id;
+        $feecollection->user_id = Auth::user()->id;
         $feecollection->save();
         // $request = new \Illuminate\Http\Request();
         // $request->replace(['studentcr_id' => $studentcr->id]);

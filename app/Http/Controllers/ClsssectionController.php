@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Session;
 use App\Clss;
 use App\Section;
@@ -29,6 +30,7 @@ class ClsssectionController extends Controller
             $clsssection->section_id = $section->id;
             $clsssection->status = "Active";
             $clsssection->session_id = Session::where('status', 'Active')->first()->id;
+            $clsssection->user_id = Auth::user()->id;
             $clsssection->save();
         }
         

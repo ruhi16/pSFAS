@@ -18,6 +18,7 @@ class CreateSectionsTable extends Migration
             $table->string('name');
             $table->string('status')->nullable();
             $table->integer('session_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Studentdb;
 use App\Studentcr;
 use App\Clsssection;
@@ -41,6 +42,7 @@ class StudentcrController extends Controller
         $studentcr->section_id = $request->stdsection;
         $studentcr->status = "Active";
         $studentcr->session_id = Session::where('status', 'Active')->first()->id;
+        $studentcr->user_id = Auth::user()->id;
         $studentcr->save();
 
         return redirect()->route('studentcrs.index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Clss;
+use Auth;
 use App\Session;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClssRequest;
@@ -32,6 +33,7 @@ class ClssController extends Controller
             $clss->next_clss_id = $request->next_clss_id;
             $clss->status = $request->status;
             $clss->session_id = Session::where('status', 'Active')->first()->id;
+            $clss->user_id = Auth::user()->id;
             $clss->save();
         }
         return redirect()->route('clsss.index');
@@ -54,7 +56,8 @@ class ClssController extends Controller
         $clsss->name = $request->name;
         $clsss->next_clss_id = $request->next_clss_id;
         $clsss->status = $request->status;
-        $clsss->session_id = Session::where('status', 'Active')->first()->id;
+        $clsss->session_id = Session::where('status', 'Active')->first()->id;        
+        $clsss->user_id = Auth::user()->id;
         $clsss->save();
         return redirect()->route('clsss.index');
     }
