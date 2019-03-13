@@ -17,6 +17,11 @@ class SchoolPolicy
      * @param  \App\School  $school
      * @return mixed
      */
+    
+    public function before($user, $ability){
+        return "before policy";
+    }
+
     public function view(User $user, School $school)
     {
         return $user->id == $school->user_id;

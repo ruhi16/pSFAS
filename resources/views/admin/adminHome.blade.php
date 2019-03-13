@@ -18,7 +18,12 @@
 			{{ Session::forget('error') }}
 		</div>
 	@endif
-    <br>
+	<br>
+	@if(Auth::user())
+		{{ Auth::user()->role->name  }}
+	@endif
+
+	<br>
 	<a href="{{ route('schools.index') }}" class="btn btn-warning">School</a>
 	{{-- <a href="{{ url('/schools')}}">Index</a><br> --}}
 
