@@ -180,4 +180,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('accountparticulars', 'AccountparticularController');
 
 
+
+    Route::resource('logrecords', 'LogrecordController');
+
+
 });

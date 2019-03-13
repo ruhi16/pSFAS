@@ -53,7 +53,9 @@
 
 	<a href="{{ route('accountparticulars.index') }}" class="btn btn-success">Account Particulars</a>
 
-	<br>
+	<br><br>
+	<a href="{{ route('logrecords.index') }}" class="btn btn-primary">Log Records Detail</a>
+
 	@include('admin.layouts.content')
 
 

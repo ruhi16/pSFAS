@@ -29,6 +29,11 @@ class Feecollection extends Model
     {
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
+    
+    public function getModelName(){
+        return class_basename($this);
+    }
+    
     // protected $dispatchesEvents = [
     //     'created' => FeecollectionCreatedEvent::class
     // ];

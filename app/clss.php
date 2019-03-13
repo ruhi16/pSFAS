@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Clss extends Model
 {
-    protected $guarded = [];
+    protected $guarded = ['id'];
     
     protected static function boot()
     {

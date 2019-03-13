@@ -17,6 +17,7 @@ class CreateLogrecordsTable extends Migration
             $table->increments('id');            
             $table->string('model_name');
             $table->string('method_name');
+            $table->integer('effected_col_id')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
             $table->string('remarks')->nullable()->default(null);
             $table->integer('session_id');
