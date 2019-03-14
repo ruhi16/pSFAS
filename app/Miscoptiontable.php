@@ -18,4 +18,13 @@ class Miscoptiontable extends Model
             $builder->where('session_id', Session::where('status', 'Active')->first()->id);
         });
     }
+
+    public function getModelName(){
+        return class_basename($this);
+    }
+    
+    public function getTableColumns()
+    {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
 }

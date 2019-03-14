@@ -13,7 +13,7 @@ class Feecollection extends Model
 {
     use Notifiable;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
     
     protected static function boot()
     {
@@ -25,8 +25,7 @@ class Feecollection extends Model
     }
 
 
-    public function getTableColumns()
-    {
+    public function getTableColumns(){
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
     

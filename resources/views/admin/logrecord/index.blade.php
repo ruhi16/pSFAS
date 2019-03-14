@@ -50,7 +50,8 @@
         </tbody>
     </table>
 
-
+{!! $logrecords->links() !!}
+{{--  {!! $logrecords->render() !!}  --}}
 
 
 <script type="text/javascript">

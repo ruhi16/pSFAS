@@ -9,7 +9,7 @@ class LogrecordController extends Controller
 {    
     public function index()
     {
-        $logrecords = Logrecord::all();
+        $logrecords = Logrecord::paginate(10);
 
         return view('admin.logrecord.index')
             ->with('logrecords', $logrecords);

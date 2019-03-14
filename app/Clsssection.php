@@ -19,6 +19,17 @@ class Clsssection extends Model
         });
     }
 
+    public function getModelName(){
+        return class_basename($this);
+    }
+    
+    public function getTableColumns()
+    {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
+
+    
+
     public function clss(){
         return $this->belongsTo('App\Clss');
     }
