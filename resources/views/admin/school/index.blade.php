@@ -63,8 +63,11 @@
         </tbody>
     </table>
 
+    <a class="btnPrint btn btn-primary" href='iframes/iframe2.html'>Print second page!</a>
+    {{-- <button onclick="myFunction()">Try it</button> --}}
 
 
+    <button class="button link-button" data-href="{{URL::to('sessions')}}">New Window</button>
     {{--  @php
         $now = new \DateTime('now');
         echo (int) $now->format('m');
@@ -76,14 +79,26 @@
 
 
 
-
-
-
-
 <script type="text/javascript">
 	$(document).ready(function(e){
-		
-	});  
+		$(".btnPrint").printPage();
+
+
+        $(".link-button").click(function () {
+            // window.location.href = $(this).data('href');
+            // myWindow = window.open($(this).data('href'),"_blank", "top=100,left=150,height=400,width=900,resizable=no,scrollbars=no,status=no");            
+            
+            myWindow = window.open($(this).data('href'),"_blank", "width=420,height=230,resizable=no,scrollbars=yes,status=no,scrollbars=0");
+            myWindow.resizeTo(900, 300);                             // Resizes the new window
+            myWindow.focus();
+        });
+       
+	});
+
+    //  function myFunction() {
+    //         window.open("https://www.google.com","_blank", "top=100,left=150,height=400,width=900,resizable=no,scrollbars=no,status=no");
+    //     }
+  
 </script>
 
 @endsection
