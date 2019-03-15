@@ -183,6 +183,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('logrecords', 'LogrecordController');
+    Route::resource('transactions', 'TransactionController');
 
 
 });

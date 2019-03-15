@@ -21,7 +21,7 @@
 	<br>
 	@if(Auth::user())
 		{{ Auth::user()->role->name  }} - 
-		{{ $session->name }}
+		{{ $session->name }}dsfssdfa
 	@endif
 
 	<br>
@@ -54,10 +54,24 @@
 
 	<a href="{{ route('accountparticulars.index') }}" class="btn btn-success">Account Particulars</a>
 
+
 	<br><br>
 	<a href="{{ route('logrecords.index') }}" class="btn btn-primary">Log Records Detail</a>
+	<a href="">test test</a>
 
-	@include('admin.layouts.content')
+	<br><br>
+	<a href="{{ route('transactions.index') }}" class="btn btn-primary">Make Transaction</a>
+
+
+
+
+
+
+
+
+
+
+	{{-- @include('admin.layouts.content') --}}
 
 
 <script type="text/javascript">
