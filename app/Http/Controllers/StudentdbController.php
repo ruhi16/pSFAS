@@ -270,6 +270,7 @@ class StudentdbController extends Controller
             $studentdb = $request->session()->get('studentdb');
             $studentdb->fill($validatedData);
             $studentdb->session_id = Session::where('status', 'Active')->first()->id;
+            $studentdb->user_id = Auth::user()->id;
             $studentdb->save();
             $request->session()->forget('studentdb');
         }

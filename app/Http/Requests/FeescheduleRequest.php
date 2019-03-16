@@ -24,11 +24,11 @@ class FeescheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required',
-            'clss_id'   => 'required',
-            'formonth'  => 'required',
-            'foryear'   => 'required',
-            'total_fee' => 'required',            
+            'name'    => 'required',
+            'clsss'   => 'required',
+            'months'  => 'required',
+            'years'   => 'required',
+            'total'   => 'required',            
         ];
     }
 }
