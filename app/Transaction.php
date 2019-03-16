@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Session;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Transaction extends Model
 {

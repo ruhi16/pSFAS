@@ -10,7 +10,7 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Class > Create Page</h1>
+    <h1>Transaction > Create Page</h1>
 		<div class="panel panel-default">
 			<div class="panel-body">
 			
@@ -22,9 +22,11 @@
 				</p>				
 			@endif 
 
-			{!! Form::open(['method'=>'POST',   'route'=>['clsss.store'], 'class'=>'form-horizontal']) !!}
-
-				<div class="form-group">
+			{!! Form::open(['method'=>'POST',   'route'=>['transactions.store'], 'class'=>'form-horizontal']) !!}
+				@foreach($accountparticulars as $accountparticular)
+					{{ $accountparticular }}<br>
+				@endforeach
+				{{--  <div class="form-group">
 					<label for="name" class="col-sm-3 control-label">Class Name</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" name="name" id="name" placeholder="New Class Name" value={{ old('name') }}>
@@ -49,7 +51,7 @@
 					<div class="col-sm-8">
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
-				</div>
+				</div>  --}}
 
 
 				{!! Form::close() !!}

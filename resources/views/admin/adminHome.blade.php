@@ -21,7 +21,7 @@
 	<br>
 	@if(Auth::user())
 		{{ Auth::user()->role->name  }} - 
-		{{ $session->name }}dsfssdfa
+		{{ $session->name }}
 	@endif
 
 	<br>
@@ -57,10 +57,10 @@
 
 	<br><br>
 	<a href="{{ route('logrecords.index') }}" class="btn btn-primary">Log Records Detail</a>
-	<a href="">test test</a>
+	
 
 	<br><br>
-	<a href="{{ route('transactions.index') }}" class="btn btn-primary">Make Transaction</a>
+	<a href="{{ route('transactions.index') }}" class="btn btn-info">Make Transaction</a>
 
 
 
