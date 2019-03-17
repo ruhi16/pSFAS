@@ -15,7 +15,7 @@ use App\Mail\WelcomeEmail;
 */
 
 use App\Feecollection;
-
+use App\Session;
 
 
 Auth::routes();
@@ -27,9 +27,10 @@ Route::get('/columns',function(){
 });
 
 Route::get('/', function () {
+    $session = Session::where('status', 'Active')->first();
     // dd(Auth::user()->email);
     // \Mail::to(Auth::user()->email)->send(new WelcomeEmail(Auth::user()));
-    return view('admin.adminHome');
+    return view('admin.adminHome')->with('session', $session);
     // return view('admin.layouts.baselayout');
 });
 

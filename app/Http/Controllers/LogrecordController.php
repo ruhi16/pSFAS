@@ -9,7 +9,7 @@ class LogrecordController extends Controller
 {    
     public function index()
     {
-        $logrecords = Logrecord::paginate(10);
+        $logrecords = Logrecord::orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.logrecord.index')
             ->with('logrecords', $logrecords);

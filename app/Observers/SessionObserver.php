@@ -6,7 +6,7 @@ use Auth;
 use App\Session;
 use App\Logrecord;
 
-class SesssionObserver
+class SessionObserver
 {    
     public function created(Session $session)
     {

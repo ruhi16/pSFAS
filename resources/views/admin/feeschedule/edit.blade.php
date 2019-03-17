@@ -16,6 +16,13 @@
     <h1>Fee-Schedule > Edit Page</h1>
     <div class="panel panel-default">
         <div class="panel panel-head">
+            @if( $errors->any() ) 						
+				<p class="alert alert-danger">
+				@foreach($errors->all() as $error)
+					<strong>{{ $error }}</strong><br>
+				@endforeach		
+				</p>				
+			@endif 
             {{--  <a class="btn btn-primary pull-right" href="{{ route('feeschedules.create') }}">New Schedule</a>  --}}
         </div>
         <div class="panel-body">
@@ -30,7 +37,7 @@
                 <div class="form-group">
                     <label for="clss" class="col-sm-3 control-label">For Class</label>
                     <div class="col-sm-9">                        
-                        <select name="clss" class="form-control">
+                        <select name="clsss" class="form-control">
                             <option value=""></option>                            
                             @foreach($clsss as $clss)
                                 <option value="{{ $clss->id }}" {{ $clss->id == $feeschedule->clss_id ? 'selected':''}}>{{ $clss->name }}</option>

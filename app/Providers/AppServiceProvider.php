@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-use App\Feecollection;
-use App\Observers\FeecollectionObserver;
-// use App\FeecollectionCreatedEvent;
-
 use App\School;
 use App\Observers\SchoolObserver;
 
@@ -17,6 +13,15 @@ use App\Observers\ClssObserver;
 
 use App\Section;
 use App\Observers\SectionObserver;
+
+use App\Feecollection;
+use App\Observers\FeecollectionObserver;
+// use App\FeecollectionCreatedEvent;
+
+use App\Feeschedule;
+use App\Observers\FeescheduleObserver;
+
+
 
 
 
@@ -37,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
         Clss::observe(ClssObserver::class);
         Section::observe(SectionObserver::class);
 
-
+        Feeschedule::observe(FeescheduleObserver::class);
         Feecollection::observe(FeecollectionObserver::class);
     }
 

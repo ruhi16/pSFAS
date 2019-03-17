@@ -20,7 +20,8 @@
 	@endif
 	<br>
 	@if(Auth::user())
-		{{ Auth::user()->role->name  }}
+		{{ Auth::user()->role->name  }} - 
+		{{ $session->name }}
 	@endif
 
 	<br>

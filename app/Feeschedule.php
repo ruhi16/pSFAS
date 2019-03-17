@@ -5,13 +5,13 @@ namespace App;
 use App\Session;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Notifications\Notifiable;
 
 class Feeschedule extends Model
 {
     protected $guarded = [];
     
-    protected static function boot()
-    {
+    protected static function boot(){
         parent::boot();
 
         static::addGlobalScope('session_id', function (Builder $builder) {
@@ -22,8 +22,7 @@ class Feeschedule extends Model
         return class_basename($this);
     }
     
-    public function getTableColumns()
-    {
+    public function getTableColumns(){
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
 

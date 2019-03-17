@@ -35,16 +35,11 @@ class FeescheduleController extends Controller
     }
 
     public function store(FeescheduleRequest $request)
-    {
-        // echo "from Feeschedule Store method";
-        // dd($request);
+    {        
         $clsss = $request->clsss;
         $mnths = $request->months;
-        // $years = $requst->years;
-        // print_r($clsss);
         foreach($clsss as $key => $clss){            
-            foreach($mnths as $mnth){               
-
+            foreach($mnths as $mnth){
                 $feeschedule = Feeschedule::firstOrNew(['clss_id' => $clss,
                                                         'formonth_no' => $mnth,
                                                         'foryear_no'  => $request->years
@@ -75,8 +70,7 @@ class FeescheduleController extends Controller
     public function edit(Feeschedule $feeschedule)
     {
         $clsss = Clss::all();
-        // echo "I'm from edit";
-        // dd($feeschedule);
+
         return view('admin.feeschedule.edit')
             ->with('feeschedule', $feeschedule)
             ->with('clsss', $clsss);
@@ -84,16 +78,15 @@ class FeescheduleController extends Controller
 
     public function update(FeescheduleRequest $request, Feeschedule $feeschedule)
     {
-        // dd($request);
         $feeschedule->name = $request->name;
-        $feeschedule->clss_id = $request->clss;
+        $feeschedule->clss_id = $request->clsss;
         $feeschedule->formonth_no = $request->months;
         $feeschedule->foryear_no = $request->years;
         $feeschedule->total_fee = $request->total;
         $feeschedule->feestructure = $request->feestruc;
         $feeschedule->total_fee_discount = $request->disc;
         $feeschedule->status = $request->remarks;
-        $feeschedule->session_id = Session::where('status','Active')->frist()->id;
+        $feeschedule->session_id = Session::where('status','Active')->first()->id;
         $feeschedule->user_id = Auth::user()->id;
         $feeschedule->save();
 
