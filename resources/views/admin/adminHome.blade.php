@@ -56,10 +56,7 @@
 
 
 	<br><br>
-	<a href="{{ route('logrecords.index') }}" class="btn btn-primary">Log Records Detail</a>
-	
-
-	<br><br>
+	<a href="{{ route('logrecords.index') }}"   class="btn btn-primary">Log Records Detail</a>	
 	<a href="{{ route('transactions.index') }}" class="btn btn-info">Make Transaction</a>
 
 
@@ -71,7 +68,7 @@
 
 
 
-	{{-- @include('admin.layouts.content') --}}
+	@include('admin.layouts.content')
 
 
 <script type="text/javascript">

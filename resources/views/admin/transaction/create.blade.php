@@ -26,6 +26,34 @@
 				@foreach($accountparticulars as $accountparticular)
 					{{ $accountparticular }}<br>
 				@endforeach
+				<div class="form-group {{ $errors->has('acctype') ? 'has-error' : ''}}">
+					<label for="acctype" class="col-sm-2 control-label">Account Type</label>
+					<div class="col-sm-8">
+						<select class="form-control" name="acctype" id="acctype">
+							<option value=""></option>
+							<option value="Income">	Income</option>
+							<option value="Expense">Expense</option>
+						</select>
+					</div>					
+				</div>
+
+				<div class="form-group {{ $errors->has('acctype') ? 'has-error' : ''}}">
+					<label for="acctype" class="col-sm-2 control-label">Particulars</label>
+					<div class="col-sm-8">
+						<select class="form-control" name="acctype" id="acctype">
+							<option value=""></option>
+							<option value="Income">	Income</option>
+							<option value="Expense">Expense</option>
+						</select>
+					</div>					
+				</div>	
+
+				@foreach($accountparticulars->groupBy('acctype') as $key => $val)
+				
+					 :{{$val }}
+				
+				@endforeach
+				{{-- {{ dd($totalData) }} --}}
 				{{--  <div class="form-group">
 					<label for="name" class="col-sm-3 control-label">Class Name</label>
 					<div class="col-sm-4">

@@ -18,9 +18,23 @@ class TransactionController extends Controller
     public function create()
     {
         $accountparticulars = Accountparticular::all();
+        $totalData = [];
+        foreach($accountparticulars->groupBy('acctype') as  $key => $accountparticular){
+            echo '<pre>';
+            echo 'Key: '. $key .': ';
+            $data = [];
+            foreach($accountparticular as $particular){
+                echo $particular->particular .', ';
+                array_push($data, $particular->particular);
+            }        
+            $totalData[$key] = $data; 
+            echo '</pre>';
+            echo '<br>';
+        }
 
         return view('admin.transaction.create')
-            ->with('accountparticulars', $accountparticulars);
+            ->with('accountparticulars', $accountparticulars)
+            ->with('totalData', $totalData);
     }
     
     public function store(Request $request)
