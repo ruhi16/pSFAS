@@ -63,7 +63,7 @@
 				<div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
 					<label for="amount" class="col-sm-2 control-label">Amount</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="amount" id="amount" placeholder="Enter Current Amount" value={{ old('amount') }}>
+						<input type="text" class="form-control" name="amount" id="amount" placeholder="Enter Current Amount" value={{ $transaction->amount }}>
 					</div>					
 				</div>	
 
@@ -89,24 +89,47 @@
 
 <script type="text/javascript">	
 		$(document).ready(function(e){
-		//alert('hello');
-		//var datas = {!! json_encode($data) !!}
+		
+		var datas 	= {!! json_encode($data) !!};
+		var part 	= {!! json_encode($transaction->accountparticular_id) !!};
+		
+		var str 	= "<option value=''></option>";
+		//console.log(datas);
+		var val = $("#accounttype").val();
+	
+		$.each(datas, function(key, value){
+			if(val == key){
+				$.each(value, function(k, v){
+
+					if(part == v){
+						str = str + '<option vallue="'+k+'" selected>'+v+'</option>';
+					}else{
+						str = str + '<option vallue="'+k+'" >'+v+'</option>';
+					}
+				});
+			}
+		});
+		$("#particular").html(str);
+
+
 
 			$("#accounttype").change(function () {
-				//var val = $(this).val();
-				//var str = "<option value=''></option>";
-				alert('hello');
-				//$.each( datas, function( key, value ) {
+				var val = $(this).val();
+				var str = "<option value=''></option>";
+				//alert('hello');
+				
+				//alert(part);
+				$.each( datas, function( key, value ) {
 					//console.log(key);				
-				//	if(val == key){
-				//		$.each( value, function( key, val ){
+					if(val == key){
+						$.each( value, function( key, val ){
 				//			console.log(key);
-				//			str = str + '<option vallue="'+key+'" >'+val+'</option>';
-				//		});
-				//	}
-				//});
+							str = str + '<option vallue="'+key+'" >'+val+'</option>';
+						});
+					}
+				});
 				//console.log(str);
-				//$("#particular").html(str);
+				$("#particular").html(str);
 			});
 		});
 	  
