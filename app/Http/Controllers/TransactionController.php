@@ -70,13 +70,14 @@ class TransactionController extends Controller
     public function update(TransactionRequest $request, Transaction $transaction)
     {
         
-
+        $transaction->update($request->all());
 
         return redirect()->route('transactions.index');
     }
 
     public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+        return redirect()->route('transactions.index');
     }
 }
