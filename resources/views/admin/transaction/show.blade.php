@@ -1,5 +1,5 @@
 @extends('admin.layouts.baselayout')
-@section('title','School Index')
+@section('title','Class Index')
 
 @section('header')
 	@include('admin.layouts.navbar')
@@ -11,52 +11,57 @@
 @endsection
 
 @section('body-content-content')
-    <h1>Class > Show Page</h1>
-    <table class="table table-bordered">
+    {{--  {{ Breadcrumbs::render('clsss') }}  --}}
+    <h1>Transaction > Index Page</h1>
+
+    @if( $errors->any() ) 		
+		@foreach($errors->all() as $error)
+			<div class="alert alert-danger">
+                <strong>Danger!</strong> {{ $error }}
+            </div>
+		@endforeach		
+	@endif
+    <table class="table table-bordered table-hover table-striped table-condensed">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Class Name</th>
-                <th>Status</th>
-                <th>Next Class Name</th>                
+                <th>Particulars</th>
+                <th>Account Type</th>
+                <th>Amountin Rs.</th>
+                <th>Status</th> 
+                <th>Session</th>
+                <th>User</th>
+                <th>Date & Time</th>             
                 <th>
                     Action
-                    {{-- <a href="{{ route('clsss.create') }}" class="btn btn-success"><spna class="glyphicon glyphicon-pencil"></spna></a> --}}
+                    {{--  <a href="{{ route('transactions.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>  --}}
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{ $clss->id }}</td>
-                <td>{{ $clss->name }}</td>
-                <td>{{ $clss->status }}</td>
-                <td>{{ $clss->next_clss_id }}</td>                
+            {{--  @foreach($transactions as $transaction)  --}}
+            <tr class="{{ $transaction->accounttype == 'Income' ? 'success' : 'danger' }}">
+                <td>{{ $transaction->id }}</td>
+                <td>{{ $transaction->accountparticular_id }}</td>
+                <td>{{ $transaction->accounttype }}</td>
+                <td align="right">{{ $transaction->amount }}</td>
+                <td>{{ $transaction->status }}</td>
+                <td>{{ $transaction->session_id }}</td>
+                <td>{{ $transaction->user_id }}</td>
+                <td>{{ $transaction->created_at }}</td>
+                  
                 <td>
-                    <a href="{{ route('clsss.index') }}" class="btn btn-primary">Back</a><br>
-                    {{--  <a href="{{ route('sessions.show',    ['session' => $session]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>  --}}
-                    {{--  <a href="{{ route('sessions.edit',    ['session' => $session]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>  --}}
-                    {{--  {!! Form::open(['method'=>'DELETE', 'route'=>['sessions.destroy', $session], 'style'=>'display:inline']) !!}                                        
+                    <a href="{{ route('transactions.index') }}" class="btn btn-primary">Back</a>
+                    {{--  <a href="{{ route('transactions.show', ['transaction' => $transaction]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
+                    <a href="{{ route('transactions.edit', ['transaction' => $transaction]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
+                    {!! Form::open(['method'=>'DELETE', 'route'=>['transactions.destroy', $transaction], 'style'=>'display:inline']) !!}                                        
                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
                     {{ Form::close() }}  --}}
                 </td>
             </tr>
+            {{--  @endforeach  --}}
         </tbody>
     </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script type="text/javascript">

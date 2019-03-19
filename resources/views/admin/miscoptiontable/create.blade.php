@@ -41,13 +41,15 @@
 							<option value=''></option>
 						</select>						
 					</div>
-				</div>				
+				</div>
+
 				<div class="form-group">
 					<label for="options" class="col-sm-3 control-label">Option</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control col-sm-9" name="options" value="" data-role="tagsinput" >						
 					</div>										
 				</div>
+				
 				<div class="form-group">
 					<label for="remarks" class="col-sm-3 control-label">Remarks</label>
 					<div class="col-sm-4">

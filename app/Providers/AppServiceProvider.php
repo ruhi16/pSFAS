@@ -14,6 +14,9 @@ use App\Observers\ClssObserver;
 use App\Section;
 use App\Observers\SectionObserver;
 
+use App\Transaction;
+use App\Observers\TransactionObserver;
+
 use App\Feecollection;
 use App\Observers\FeecollectionObserver;
 // use App\FeecollectionCreatedEvent;
@@ -42,8 +45,13 @@ class AppServiceProvider extends ServiceProvider
         Clss::observe(ClssObserver::class);
         Section::observe(SectionObserver::class);
 
+
+
+
+        
         Feeschedule::observe(FeescheduleObserver::class);
         Feecollection::observe(FeecollectionObserver::class);
+        Transaction::observe(TransactionObserver::class);
     }
 
     /**

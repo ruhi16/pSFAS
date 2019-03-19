@@ -10,8 +10,7 @@ class Transaction extends Model
 {
     protected $guarded = [];
 
-    protected static function boot()
-    {
+    protected static function boot(){
         parent::boot();
 
         static::addGlobalScope('session_id', function (Builder $builder) {
@@ -20,9 +19,10 @@ class Transaction extends Model
     }
     public function getModelName(){
         return class_basename($this);
-    }
-    
+    }    
     public function getTableColumns(){
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
+
+    
 }

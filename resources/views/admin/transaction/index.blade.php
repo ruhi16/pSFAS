@@ -21,7 +21,7 @@
             </div>
 		@endforeach		
 	@endif
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover table-striped table-condensed">
         <thead>
             <tr>
                 <th>ID</th>
@@ -34,35 +34,35 @@
                 <th>Date & Time</th>             
                 <th>
                     Action
-                    <a href="{{ route('transactions.create') }}" class="btn btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>
+                    <a href="{{ route('transactions.create') }}" class="btn btn-xs btn-success pull-right"><spna class="glyphicon glyphicon-plus"></spna></a>
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach($transactions as $transaction)
-            <tr>
-                <td>{{ $transaction }}</td>
+            <tr class="{{ $transaction->accounttype == 'Income' ? 'success' : 'danger' }}">
+                <td>{{ $transaction->id }}</td>
                 <td>{{ $transaction->accountparticular_id }}</td>
-                <td>{{ $transaction->accounttye }}</td>
-                <td>{{ $transaction->amount }}</td>
+                <td>{{ $transaction->accounttype }}</td>
+                <td align="right">{{ $transaction->amount }}</td>
                 <td>{{ $transaction->status }}</td>
                 <td>{{ $transaction->session_id }}</td>
                 <td>{{ $transaction->user_id }}</td>
                 <td>{{ $transaction->created_at }}</td>
                   
                 <td>
-                    {{--  <a href="{{ route('clsss.show', ['clss' => $clss]) }}" class="btn btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
-                    <a href="{{ route('clsss.edit', ['clss' => $clss]) }}" class="btn btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
-                    {!! Form::open(['method'=>'DELETE', 'route'=>['clsss.destroy', $clss], 'style'=>'display:inline']) !!}                                        
-                        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}                    
-                    {{ Form::close() }}  --}}
+                    <a href="{{ route('transactions.show', ['transaction' => $transaction]) }}" class="btn btn-xs btn-primary"><spna class="glyphicon glyphicon-eye-open"></spna></a>
+                    <a href="{{ route('transactions.edit', ['transaction' => $transaction]) }}" class="btn btn-xs btn-warning"><spna class="glyphicon glyphicon-edit"></spna></a>
+                    {!! Form::open(['method'=>'DELETE', 'route'=>['transactions.destroy', $transaction], 'style'=>'display:inline']) !!}                                        
+                        {{ Form::submit('Delete', array('class' => 'btn btn-xs btn-danger')) }}                    
+                    {{ Form::close() }}
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
-
+    {!! $transactions->links() !!}
 
 <script type="text/javascript">
 	$(document).ready(function(e){

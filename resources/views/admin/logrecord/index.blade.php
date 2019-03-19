@@ -12,7 +12,7 @@
 
 @section('body-content-content')
     <h2>Logrecords > Index Page</h2>
-    <table class="table table-condensed table-bordered">
+    <table class="table table-condensed table-bordered table-hover table-striped">
         <thead>
             <tr>
                 <th>ID</th>
