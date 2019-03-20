@@ -12,7 +12,7 @@
 @endsection
 
 @section('body-content-content')
-<link rel="stylesheet" href="{{ url('bs337/fastselect/fastselect.min.css') }}">
+    {{--  <link rel="stylesheet" href="{{ url('bs337/fastselect/fastselect.min.css') }}">  --}}
     <h1>Fee-Collection > Find_Student_CR Page</h1>
     <div class="panel panel-default">
         <div class="panel panel-head">
@@ -32,23 +32,24 @@
                     </div>
                 </div>	
             {!! Form::close() !!} 
-            
+        </div>
+        
+        <div class="panel panel-body">
             
             @if( Session::has('error'))
                 <div class="alert alert-danger"><strong> {{ Session::get('error') }}</strong></div>
                 {{ Session::forget('error') }}
             @endif
-        </div>
-        <div class="panel panel-body">
-            <table class="table table-bordered">
+        
+            <table class="table table-bordered table-condensed">
                 <thead>
                     <tr>
-                        <th>CR ID</th>
-                        <th>Name</th>
-                        <th>Class</th>
-                        <th>Section</th>
-                        <th>Roll No</th>
-                        <th>Action</th>
+                        <th align="center">CR ID</th>
+                        <th align="center">Name</th>
+                        <th align="center">Class</th>
+                        <th align="center">Section</th>
+                        <th align="center">Roll No</th>
+                        <th align="center">Action</th>
                     </tr>
                 </thead>
                 <tbody>                    
@@ -65,12 +66,14 @@
                                 <button type="submit" class=" btn btn-success btn-sm">Check Out</button>                                   	
                             {!! Form::close() !!}   --}}
                             <a href="{{ route('admin.feecollection.studentcr', ['studentcr_id' => $studentcr->id]) }}" class="btn btn-success">Check Out</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
 
+
+        </div>
     </div>
 
         

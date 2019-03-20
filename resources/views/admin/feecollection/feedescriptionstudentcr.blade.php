@@ -12,7 +12,9 @@
 @endsection
 
 @section('body-content-content')
-<link rel="stylesheet" href="{{ url('bs337/fastselect/fastselect.min.css') }}">
+
+{{--  <link rel="stylesheet" href="{{ url('bs337/fastselect/fastselect.min.css') }}">  --}}
+
     <h1>Fee-Collection > Student CR Fee Description Page</h1>
     <div class="panel panel-default">
         <div class="panel-body">
@@ -23,10 +25,10 @@
                     <label for="name" class="col-sm-5 control-label"></label>
                     
                     <label for="name" class="col-sm-2 control-label">User:</label>
-                    <label for="name" class="col-sm-2 control-label">user_name</label>
+                    <label for="name" class="col-sm-2 control-label">{{ Auth::user()->name }}</label>
                     
                     <label for="name" class="col-sm-1 control-label">Date:</label>
-                    <label for="name" class="col-sm-2 control-label">date</label>                    
+                    <label for="name" class="col-sm-2 control-label text-center">{{ date('d-M-Y') }}</label>                    
                 </div>
                 
                 <div class="form-group">
@@ -80,7 +82,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-offset-2 col-sm-10">
+                    <div class="col-offset-3 col-sm-10">
                         <a href="{{ route('admin.feecollection.studentcr', ['studentcr_id' => $studentcr->id]) }}" class="col-sm-offset-2 btn btn-default ">Cancel</a>
                         <a href="{{ route('admin.feecollection.collection',['studentcr'=>$studentcr, 'feeschedule'=>$feeschedule]) }}" class="btn btn-success ">Pay Fees</a>
                     </div>
@@ -88,10 +90,11 @@
                 
 
 
-                {!! Form::close() !!}
+            {!! Form::close() !!}
             </div>
         </div>
 
+    {{--  
     <link rel="stylesheet" href="{{ url('bs337/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ url('bs337/select2/select2-bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ url('bs337/select2/gh-pages.css') }}">
@@ -100,15 +103,14 @@
     <script src="{{ url('bs337/select2/select2.full.js') }}"></script>
 
     <script>
-        $( ".select2-multiple" ).select2( {
+        $( ".select2-multiple" ).select2({
             theme: "bootstrap",
             placeholder: "Select a State",
             maximumSelectionSize: 6,
             containerCssClass: ':all:'
-        } );
-
-        
-    </script>
+        });
+    </script>  
+    --}}
 
 
 <script type="text/javascript">

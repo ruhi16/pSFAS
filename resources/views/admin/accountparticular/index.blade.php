@@ -13,7 +13,7 @@
 @section('body-content-content')  
     
     <h1>Account Particular > Index Page</h1>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover table-condensed">
         <thead>
             <tr>
                 <th>ID</th>
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
             @foreach($accountparticulars as $accountparticular)
-            <tr>
+            <tr  class={{ $accountparticular->acctype == 'Expense' ? 'danger' : 'success'}}>
                 <td>{{ $accountparticular->id }}</td>
                 <td>{{ $accountparticular->particular }}</td>
                 <td>{{ $accountparticular->acctype }}</td>
