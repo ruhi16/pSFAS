@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Feecollection;
-use App\Feeschedule;
-use App\Studentcr;
+
 use App\Session;
+use App\Studentcr;
+use App\Feeschedule;
+use App\Feecollection;
 use Illuminate\Http\Request;
 
 class FeecollectionController extends Controller
